@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context="com.example.opus.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context="com.example.opus.MainActivity">
+        android:orientation="vertical">
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
             <TableRow
                 android:paddingBottom="10dp"
@@ -23,7 +24,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="item name: " />
+                    android:text="item name: "
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/item_name_spinner"
@@ -31,165 +34,19 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <TableRow android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Item Code: " />
-
-                <EditText
-                    android:id="@+id/item_code_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
-            </TableRow>
 
             <TableRow android:paddingBottom="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Main Category " />
-
-                <EditText
-                    android:id="@+id/main_category_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
-            </TableRow>
-
-            <TableRow android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Description" />
-
-                <EditText
-                    android:id="@+id/description_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
-            </TableRow>
-
-            <TableRow android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Specification" />
-
-                <EditText
-                    android:id="@+id/specification_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </TableRow>
-
-            <TableRow android:gravity="center">
-
-                <ProgressBar
-                    android:id="@+id/load_data_progress_bar"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:visibility="gone"/>
-            </TableRow>
-
-            <TableRow android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Item Category" />
-
-                <EditText
-                    android:id="@+id/item_category_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:focusable="false"/>
-            </TableRow>
-
-            <TableRow android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sub Category" />
-
-                <EditText
-                    android:id="@+id/sub_category_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
-            </TableRow>
-
-            <TableRow android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Unit" />
-
-                <EditText
-                    android:id="@+id/unit_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
-            </TableRow>
-
-            <TableRow android:paddingBottom="10dp">
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Last Price" />
-
-                <EditText
-                    android:id="@+id/last_price_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
-            </TableRow>
-
-            <TableRow android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Quantity" />
-
-                <EditText
-                    android:id="@+id/quantity_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </TableRow>
-
-            <TableRow android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Approx. Price" />
-
-                <EditText
-                    android:id="@+id/approx_price_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </TableRow>
-
-
-            <TableRow android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Requisition Status" />
+                    android:text="Requisition Status"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
                 <Spinner
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:id="@+id/requisition_status_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -198,10 +55,217 @@
 
         </TableLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <EditText
+                android:id="@+id/item_code_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Item Code"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:maxLines="5" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <EditText
+                android:id="@+id/main_category_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Main Category"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:maxLines="5" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <ProgressBar
+            android:id="@+id/load_data_progress_bar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <EditText
+                android:id="@+id/description_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Description"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:maxLines="5" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <EditText
+                android:id="@+id/specification_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Specification"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:maxLines="5" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <EditText
+                android:id="@+id/item_category_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Item Category"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:maxLines="5" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <EditText
+                android:id="@+id/sub_category_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Sub Category"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:maxLines="5" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <EditText
+                android:id="@+id/unit_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Unit"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:maxLines="5" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <EditText
+                android:id="@+id/last_price_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Last Price"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:maxLines="5" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <EditText
+                android:id="@+id/quantity_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Quantity"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="5"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <EditText
+                android:id="@+id/approx_price_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Approx. Price"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="5"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
         <Button
             android:id="@+id/add_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/roundshaped"
             android:text="Add item"

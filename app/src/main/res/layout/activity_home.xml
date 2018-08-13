@@ -14,10 +14,10 @@
         android:paddingBottom="8dp">
 
         <ImageView
-            android:layout_marginStart="8dp"
             android:id="@+id/person_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:scaleType="fitXY"
             android:src="@drawable/default_user" />
@@ -40,7 +40,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/restaurant_name_textview"
+                    android:id="@+id/person_name_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MD. Saddam Hossain"
@@ -57,7 +57,7 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:id="@+id/restaurant_email_textview"
+                    android:id="@+id/person_email_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="saddam@bnb.com"
@@ -69,9 +69,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <android.support.v7.widget.CardView
@@ -87,29 +87,28 @@
 
             <LinearLayout
                 android:id="@+id/requisition_entry_linear_layout"
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/requisition_entry_image_button"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:focusable="true"
                     android:scaleType="fitXY"
-                    android:src="@drawable/requisiton_entry_icon1" />
+                    android:src="@drawable/requisition_entry_icon" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Requisition Entry"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:visibility="visible" />
 
             </LinearLayout>
@@ -119,8 +118,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/card_margin"
             android:layout_weight="1"
+            android:layout_margin="@dimen/card_margin"
             android:elevation="3dp"
             card_view:cardCornerRadius="@dimen/card_album_radius">
 
@@ -128,25 +127,25 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:focusable="true"
                     android:scaleType="fitXY"
-                    android:src="@drawable/requisiton_entry_icon" />
+                    android:src="@drawable/approval_icon" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Requisition Entry"
-                    android:textSize="20sp"
-                    android:visibility="visible" />
+                    android:text="Requisition Approve"
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -154,8 +153,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <android.support.v7.widget.CardView
@@ -171,68 +171,68 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_gravity="center">
 
                 <ImageView
                     android:id="@+id/item_image"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:focusable="true"
                     android:scaleType="fitXY"
-                    android:src="@drawable/requisiton_entry_icon" />
+                    android:src="@drawable/status_icon" />
 
                 <TextView
                     android:id="@+id/restaurant_name"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Requisition Entry"
-                    android:textSize="20sp"
+                    android:text="Requisition Status"
+                    android:textSize="18sp"
                     android:visibility="visible" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/card_margin"
-            android:layout_weight="1"
-            android:elevation="3dp"
-            card_view:cardCornerRadius="@dimen/card_album_radius">
+         <android.support.v7.widget.CardView
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_gravity="center"
+             android:layout_margin="@dimen/card_margin"
+             android:layout_weight="1"
+             android:elevation="3dp"
+             card_view:cardCornerRadius="@dimen/card_album_radius">
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginStart="10dp"
-                android:orientation="vertical">
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical"
+                 android:layout_gravity="center">
 
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/requisiton_entry_icon" />
+                 <ImageView
+                     android:layout_width="130dp"
+                     android:layout_height="130dp"
+                     android:layout_gravity="center"
+                     android:background="?attr/selectableItemBackgroundBorderless"
+                     android:clickable="true"
+                     android:focusable="true"
+                     android:scaleType="fitXY"
+                     android:src="@drawable/requisition_entry_icon" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Requisition Entry"
-                    android:textSize="20sp"
-                    android:visibility="visible" />
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:gravity="center"
+                     android:text="Requisition Entry"
+                     android:textSize="18sp"
+                     android:visibility="visible" />
 
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+             </LinearLayout>
+         </android.support.v7.widget.CardView>
     </LinearLayout>
 
 
