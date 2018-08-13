@@ -225,6 +225,8 @@ public class RequisitionEntryForm extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        // Replacing unwanted quotations
+                        response = response.replaceAll("\"","");
                         requisitionNumberEditText.setText(response);
                     }
                 },
