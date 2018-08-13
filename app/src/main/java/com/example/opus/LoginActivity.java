@@ -2,14 +2,8 @@ package com.example.opus;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.Menu;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -20,8 +14,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-
-import org.json.JSONException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,8 +62,8 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Successfully Logged in",
                             Toast.LENGTH_SHORT).show();
                     Constants.USER_EMAIL = emailTextView.getText().toString();
-                    finish();
-                    startActivity(new Intent(LoginActivity.this, Home.class));
+                    //finish();
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 } else {
                     Toast.makeText(LoginActivity.this, "Invalid email or password! please try again",
                             Toast.LENGTH_SHORT).show();

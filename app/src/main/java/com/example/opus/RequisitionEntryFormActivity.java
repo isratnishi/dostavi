@@ -4,8 +4,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,13 +12,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.TableRow;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -34,11 +29,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class RequisitionEntryForm extends AppCompatActivity {
+public class RequisitionEntryFormActivity extends AppCompatActivity {
 
     EditText requisitionNumberEditText;
     EditText requisitionDateEditText;
@@ -88,7 +81,7 @@ public class RequisitionEntryForm extends AppCompatActivity {
                 if (isPostPR.isChecked())
                     requisitionMaster.setPostPR("1");
 
-                Intent intent = new Intent(RequisitionEntryForm.this, MainActivity.class);
+                Intent intent = new Intent(RequisitionEntryFormActivity.this, MainActivity.class);
                 intent.putExtra(Constants.REQUISITION_MODEL, requisitionModel);
                 intent.putExtra(Constants.REQUISITION_MASTER, requisitionMaster);
                 startActivity(intent);
@@ -99,7 +92,7 @@ public class RequisitionEntryForm extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatePickerDialog mDatePicker;
-                mDatePicker = new DatePickerDialog(RequisitionEntryForm.this,
+                mDatePicker = new DatePickerDialog(RequisitionEntryFormActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             public void onDateSet(DatePicker datepicker, int
@@ -121,7 +114,7 @@ public class RequisitionEntryForm extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatePickerDialog mDatePicker;
-                mDatePicker = new DatePickerDialog(RequisitionEntryForm.this,
+                mDatePicker = new DatePickerDialog(RequisitionEntryFormActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             public void onDateSet(DatePicker datepicker, int
@@ -206,7 +199,7 @@ public class RequisitionEntryForm extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         loadStatusProgressbar.setVisibility(View.GONE);
-                        Toast.makeText(RequisitionEntryForm.this, "Something went wrong! Please try again later",
+                        Toast.makeText(RequisitionEntryFormActivity.this, "Something went wrong! Please try again later",
                                 Toast.LENGTH_SHORT).show();
                         finish();
                     }

@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class Home extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     private LinearLayout requisitionEntryLinearLayout;
     private ImageView requisitionEntryImageView;
@@ -29,7 +29,7 @@ public class Home extends AppCompatActivity {
         requisitionEntryImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Home.this, RequisitionEntryForm.class));
+                startActivity(new Intent(HomeActivity.this, RequisitionEntryFormActivity.class));
             }
         });
 
@@ -37,7 +37,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(getApplicationContext(), "Linear Layout", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Home.this, RequisitionEntryForm.class));
+                startActivity(new Intent(HomeActivity.this, RequisitionEntryFormActivity.class));
             }
         });
     }
