@@ -52,7 +52,7 @@ public class RequisitionEntryForm extends AppCompatActivity {
     CheckBox compititionWaiver;
     Button next;
     EditText supplierNameEditText;
-    TableRow supplierNameRow;
+    //TableRow supplierNameRow;
     ProgressBar loadStatusProgressbar;
 
     String selectedProjectID = null;
@@ -155,9 +155,9 @@ public class RequisitionEntryForm extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    supplierNameRow.setVisibility(View.VISIBLE);
+                    supplierNameEditText.setVisibility(View.VISIBLE);
                 } else {
-                    supplierNameRow.setVisibility(View.GONE);
+                    supplierNameEditText.setVisibility(View.GONE);
                 }
             }
         });
@@ -254,7 +254,7 @@ public class RequisitionEntryForm extends AppCompatActivity {
         compititionWaiver = findViewById(R.id.compitition_waiver_checkbox);
         next = findViewById(R.id.next_button);
         supplierNameEditText = findViewById(R.id.supplier_name_edit_text);
-        supplierNameRow = findViewById(R.id.supplier_name_row);
+        //supplierNameRow = findViewById(R.id.supplier_name_row);
         loadStatusProgressbar = findViewById(R.id.load_data_progress_bar);
 
         mYear = mCurrentDate.get(Calendar.YEAR);

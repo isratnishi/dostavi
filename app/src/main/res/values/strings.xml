@@ -20,4 +20,5 @@
         <item>Draft</item>
         <item>Final</item>
     </string-array>
+    <string name="title_activity_login2">Sign in</string>
 </resources>

@@ -17,9 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".RequisitionEntryForm">
-
-        </activity>
+        <activity android:name=".RequisitionEntryForm"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,13 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Home">
-
-        </activity>
-        <activity android:name=".test">
-
-        </activity>
-        <activity android:name=".RequisitionApproveActivity">
+        <activity android:name=".Home"></activity>
+        <activity android:name=".test"></activity>
+        <activity android:name=".RequisitionApproveActivity"></activity>
+        <activity
+            android:name=".LoginActivity2"
+            android:label="@string/title_activity_login2">
 
         </activity>
     </application>
