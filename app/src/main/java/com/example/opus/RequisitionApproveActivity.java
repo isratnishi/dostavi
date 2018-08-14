@@ -2,6 +2,7 @@ package com.example.opus;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -100,7 +101,7 @@ public class RequisitionApproveActivity extends AppCompatActivity {
                             departmentEditRText.setText(department);
                             maxAmountEditText.setText(maxAmount);
 
-
+                            getRequisitionItem();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -116,10 +117,10 @@ public class RequisitionApproveActivity extends AppCompatActivity {
                 .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
     }
 
-    private void getPraApprover() {
+    private void getRequisitionItem() {
         loadStatusProgressbar.setVisibility(View.VISIBLE);
-        String username = "mamun@bnb.com";
-        String finalURL = Constants.GET_PRA_APPROVER + "?username=" + username;
+        String maxMasterID = "146257";
+        String finalURL = Constants.GET_REQUISITION_LIST + "?MasterId=" + maxMasterID;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
@@ -129,15 +130,8 @@ public class RequisitionApproveActivity extends AppCompatActivity {
                         loadStatusProgressbar.setVisibility(View.GONE);
                         try {
                             JSONArray jsonArray = new JSONArray(response);
-                            JSONObject jsonObject = jsonArray.getJSONObject(0);
 
-                            String approverName = jsonObject.getString("EmpName");
-                            String department = jsonObject.getString("Department");
-                            String maxAmount = jsonObject.getString("MaxAmountPO");
-
-                            approverNameEditText.setText(approverName);
-                            departmentEditRText.setText(department);
-                            maxAmountEditText.setText(maxAmount);
+                            Log.d(Constants.LOGTAG, response);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

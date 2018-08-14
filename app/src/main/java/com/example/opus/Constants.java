@@ -18,6 +18,7 @@ public class Constants {
     public static final String GET_ALL_LIST = BASE_SERVER_ADDRESS +
             "GETITEMLIST";
     public static final String GET_PRA_APPROVER = BASE_SERVER_ADDRESS + "GetPraApprover";
+    public static final String GET_REQUISITION_LIST = BASE_SERVER_ADDRESS + "GetMasterWiseRequisitionDetails";
 
     public static final String GET_REQUISITION_APPROVAL_LIST = BASE_SERVER_ADDRESS +
             "GetRequisitionApprovalData";

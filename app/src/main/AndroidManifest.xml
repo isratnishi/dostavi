@@ -27,13 +27,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="@string/app_title"></activity>
         <activity
             android:name=".HomeActivity"
             android:label="@string/app_title">
@@ -41,15 +35,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity" />
         </activity>
-        <activity android:name=".test"></activity>
+        <activity android:name=".test" />
         <activity android:name=".RequisitionApproveActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".LoginActivity2"
-            android:label="@string/title_activity_login2">
-
-        </activity>
+            android:label="@string/title_activity_login2"></activity>
+        <activity android:name=".RequistionApproveActivity2"></activity>
     </application>
 
 </manifest>
