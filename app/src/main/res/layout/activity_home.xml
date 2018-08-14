@@ -125,12 +125,14 @@
 
 
             <LinearLayout
+                android:id="@+id/requisition_approve_linear_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/requisition_approve_image_button"
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_gravity="center"

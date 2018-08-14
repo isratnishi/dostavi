@@ -1,10 +1,13 @@
 package com.example.opus;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -24,6 +27,7 @@ public class RequisitionApproveActivity3 extends AppCompatActivity {
     private ArrayList<ApprovedPraHistoryModel> items = new ArrayList<>();
     RecyclerView recyclerView;
     ApprovedPraAdapter praAdapter;
+    Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,14 @@ public class RequisitionApproveActivity3 extends AppCompatActivity {
         setContentView(R.layout.activity_requisition_approve3);
         initializeVariables();
         getPraApprovedHistory();
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RequisitionApproveActivity3.this, RequisitionApproveActivity4.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initializeVariables() {
@@ -40,6 +52,8 @@ public class RequisitionApproveActivity3 extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(praAdapter);
+
+        nextButton = findViewById(R.id.next_button);
 
        /* ApprovedPraHistoryModel model = new ApprovedPraHistoryModel();
         model.setDate("a");

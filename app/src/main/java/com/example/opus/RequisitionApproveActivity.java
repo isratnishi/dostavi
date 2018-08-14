@@ -1,9 +1,11 @@
 package com.example.opus;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -32,12 +34,23 @@ public class RequisitionApproveActivity extends AppCompatActivity {
     EditText departmentEditRText;
     EditText maxAmountEditText;
 
+    Button nextButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requisition_approve);
         initializeVariables();
         getJSON();
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(RequisitionApproveActivity.this, RequistionApproveActivity2.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -54,6 +67,7 @@ public class RequisitionApproveActivity extends AppCompatActivity {
         approverNameEditText = findViewById(R.id.approver_name_edit_text);
         departmentEditRText = findViewById(R.id.department_edit_text);
         maxAmountEditText = findViewById(R.id.max_amount_edit_text);
+        nextButton = findViewById(R.id.next_button);
     }
 
 
