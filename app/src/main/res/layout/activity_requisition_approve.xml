@@ -13,128 +13,126 @@
         android:paddingBottom="10dp"
         tools:context=".RequisitionEntryFormActivity">
 
-        <TableLayout
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TableRow
-                android:layout_marginTop="10dp"
-                android:paddingBottom="10dp">
+            <EditText
+                android:id="@+id/requisition_number_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Requisition No"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        </android.support.design.widget.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/requisition_number_edit_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/prompt_password"
-                        android:imeActionId="6"
-                        android:imeActionLabel="@string/action_sign_in_short"
-                        android:imeOptions="actionUnspecified"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:singleLine="true" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/requisition_date_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Requisition Date: "
+                android:imeActionId="6"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-                <!--<TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Requisition No: " />
+        </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/requisition_number_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />-->
-            </TableRow>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TableRow android:paddingBottom="10dp">
+            <EditText
+                android:id="@+id/product_delivery_date_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Product Delivery Target Date:"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Requisition Date: " />
+        </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/requisition_date_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="true"
-                    android:focusable="false" />
-            </TableRow>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TableRow android:paddingBottom="10dp">
+            <EditText
+                android:id="@+id/requisition_by_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Requisition By"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="20dp"
-                    android:text="Product Delivery\nTarget Date: " />
+        </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/product_delivery_date_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:enabled="true"
-                    android:focusable="false" />
-            </TableRow>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TableRow android:paddingBottom="10dp">
+            <EditText
+                android:id="@+id/justification_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Justification"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Requisition By: " />
+        </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/requisition_by_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
-            </TableRow>
+        <ProgressBar
+            android:id="@+id/load_data_progress_bar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
 
-            <TableRow android:gravity="center">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <ProgressBar
-                    android:id="@+id/load_data_progress_bar"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:visibility="gone" />
-            </TableRow>
+            <EditText
+                android:id="@+id/subject_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Subject"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true" />
 
-            <TableRow android:paddingBottom="10dp">
+        </android.support.design.widget.TextInputLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Justification: " />
 
-                <EditText
-                    android:id="@+id/justification_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
-            </TableRow>
-
-            <TableRow android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Subject: " />
-
-                <EditText
-                    android:id="@+id/subject_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false" />
-            </TableRow>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TableRow android:paddingBottom="10dp">
 
@@ -147,26 +145,74 @@
                     android:id="@+id/compitition_waiver_checkbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:enabled="false"/>
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/supplier_name_row"
-                android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Supplier Name: " />
-
-                <EditText
-                    android:id="@+id/supplier_name_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:enabled="false" />
             </TableRow>
-
         </TableLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/supplier_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:hint="Supplier Name"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/approver_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:imeActionId="6"
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/department_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:imeActionId="6"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/max_amount_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:imeActionId="6"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
     </LinearLayout>
 
 </ScrollView>
