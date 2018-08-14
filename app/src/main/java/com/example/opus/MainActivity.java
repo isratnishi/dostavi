@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
     Button saveButton;
     ProgressBar loadStatusProgressbar;
 
+    int count = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,6 +143,8 @@ public class MainActivity extends AppCompatActivity {
 
                 showAlertDialog();
 
+                //postRequisitionDetails(0);
+
                 clearScreen();
             }
         });
@@ -148,10 +152,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void saveWholeDataToServer() {
         sendStringRequestRequisitionJson();
-        for (int i = 0; i < items.size(); i++) {
-            postRequisitionDetails(items.get(i));
-        }
-        postRequisitionStatusLog();
+
+        // Start sending requisition details from item no 0
+        // postRequisitionDetails(0);
+        //postRequisitionStatusLog();
     }
 
     private void clearScreen() {
@@ -184,13 +188,18 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void postRequisitionDetails(final ItemModel itemModel) {
+    /*public void postRequisitionDetails(final ItemModel itemModel) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.POST_REQUISITION_DETAIL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //Log.d(Constants.LOGTAG, response);
+                        Log.d(Constants.LOGTAG, response);
+
+                        if (response.equals("true")) {
+                            count++;
+                            Log.d(Constants.LOGTAG, "saved Item : " + count);
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -202,6 +211,47 @@ public class MainActivity extends AppCompatActivity {
             public byte[] getBody() throws AuthFailureError {
 
                 return getRequisitionDetailsJsonObject(itemModel).toString().getBytes();
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+        AppSingleton.getInstance(getApplicationContext())
+                .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
+    }*/
+
+    private void postRequisitionDetails(final int id) {
+        if (id == items.size()) {
+            Log.d(Constants.LOGTAG, "Saved total " + id);
+
+            //After saving all data, Requisition Status will be saved
+            postRequisitionStatusLog();
+            return;
+        }
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                Constants.POST_REQUISITION_DETAIL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equals("true")) {
+                            Log.d(Constants.LOGTAG, "saved Item : " + id);
+                            postRequisitionDetails(id + 1);
+                        } else
+                            postRequisitionDetails(id);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }) {
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+
+                return getRequisitionDetailsJsonObject(items.get(id)).toString().getBytes();
             }
 
             @Override
@@ -442,10 +492,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                        // Sending other requests
-                        for (int i = 0; i < items.size(); i++) {
-                            postRequisitionDetails(items.get(i));
-                        }
+                        postRequisitionDetails(0);
                     }
                 },
                 new Response.ErrorListener() {
