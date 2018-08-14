@@ -36,14 +36,15 @@
                 android:value=".LoginActivity" />
         </activity>
         <activity android:name=".test" />
-        <activity android:name=".RequisitionApproveActivity"></activity>
+        <activity android:name=".RequisitionApproveActivity" />
         <activity
             android:name=".LoginActivity2"
             android:label="@string/title_activity_login2" />
-        <activity android:name=".RequistionApproveActivity2">
+        <activity android:name=".RequistionApproveActivity2"></activity>
+        <activity android:name=".RequisitionApproveActivity3">
 
         </activity>
-        <activity android:name=".RequisitionApproveActivity3">
+        <activity android:name=".RequisitionApproveActivity4">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -28,6 +28,7 @@ public class Constants {
             "GetRequisitionApprovalData";
 
     public static final String GET_APPROVED_HISTORY = SERVER + "OAK/Project/GetPRApprovadHistory";
+    public static final String POST_APPROVED_DATA = SERVER + "OAK/Requisition/SaveRequisitionApprovalLog";
 
     public static final String REQUISITION_MODEL = "requisitionmodel";
     public static final String REQUISITION_MASTER = "requisitionmastermodel";
