@@ -37,16 +37,18 @@
         </activity>
         <activity android:name=".test" />
         <activity android:name=".RequisitionApproveActivity">
+
+        </activity>
+        <activity
+            android:name=".LoginActivity2"
+            android:label="@string/title_activity_login2"></activity>
+        <activity android:name=".RequistionApproveActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginActivity2"
-            android:label="@string/title_activity_login2"></activity>
-        <activity android:name=".RequistionApproveActivity2"></activity>
     </application>
 
 </manifest>

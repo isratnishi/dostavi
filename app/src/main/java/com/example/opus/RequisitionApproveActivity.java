@@ -101,7 +101,7 @@ public class RequisitionApproveActivity extends AppCompatActivity {
                             departmentEditRText.setText(department);
                             maxAmountEditText.setText(maxAmount);
 
-                            getRequisitionItem();
+                            //getRequisitionItem();
 
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -140,9 +140,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 showAlertDialog();
-
-                //postRequisitionDetails(0);
-
                 clearScreen();
             }
         });
@@ -280,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
     public JSONObject getRequisitionDetailsJsonObject(ItemModel itemModel) {
         int itemID = Integer.parseInt(itemModel.getItemCode());
         String itemSpac = itemModel.getSpecification();
-        int itemQuantity = itemModel.getQuantity();
+        double itemQuantity = itemModel.getQuantity();
         String unitName = itemModel.getUnit();
         int approxCost = Integer.parseInt(itemModel.getApproxPrice());
 

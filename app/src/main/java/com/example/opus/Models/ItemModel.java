@@ -10,8 +10,9 @@ public class ItemModel {
     private String unit;
     private String approxPrice;
     private String total;
-    private int quantity;
+    private double quantity;
     private String specification;
+    private String lastRate;
 
     public ItemModel() {
     }
@@ -64,11 +65,19 @@ public class ItemModel {
         this.specification = specification;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
+    }
+
+    public String getLastRate() {
+        return lastRate;
+    }
+
+    public void setLastRate(String lastRate) {
+        this.lastRate = lastRate;
     }
 }
