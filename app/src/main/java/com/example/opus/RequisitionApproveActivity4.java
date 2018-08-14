@@ -16,6 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.opus.Models.RequisitionApprovalListModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +26,7 @@ public class RequisitionApproveActivity4 extends AppCompatActivity {
     CheckBox returnRejectCheckBox;
     RadioGroup returnRejectRadioGroup;
     Button approveButton;
-
+    RequisitionApprovalListModel model;
     int appType = 1;
 
     @Override
@@ -36,6 +37,8 @@ public class RequisitionApproveActivity4 extends AppCompatActivity {
         returnRejectCheckBox = findViewById(R.id.return_reject_checkbox);
         returnRejectRadioGroup = findViewById(R.id.return_reject_radio_group);
         approveButton = findViewById(R.id.approve_button);
+
+        model = (RequisitionApprovalListModel) getIntent().getSerializableExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL);
 
         approveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,11 +109,11 @@ public class RequisitionApproveActivity4 extends AppCompatActivity {
                 // String email = emailTextView.getText().toString();
                 // String password = passwordEditText.getText().toString();
 
-                String reqMasterID = "1234";
-                String remark = "remark";
+                String reqMasterID = model.getRequisitionID();
+                String remark = "";
                 String tempAppType = String.valueOf(appType);
-                String projectID = "1234";
-                String reqNo = "1234";
+                String projectID = model.getProjectID();
+                String reqNo = model.getRequisitionNo();
 
                 Map<String, String> params = new HashMap<>();
                 params.put("ReqMasterId", reqMasterID);

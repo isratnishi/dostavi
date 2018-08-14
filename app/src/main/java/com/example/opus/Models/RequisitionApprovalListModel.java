@@ -1,10 +1,14 @@
 package com.example.opus.Models;
 
-public class RequisitionApprovalListModel {
+import java.io.Serializable;
+
+public class RequisitionApprovalListModel implements Serializable {
     private String requisitionNo;
     private String requisitionDate;
     private  String subject;
     private String department;
+    private String requisitionID;
+    private String projectID;
 
     public String getRequisitionNo() {
         return requisitionNo;
@@ -36,5 +40,22 @@ public class RequisitionApprovalListModel {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public String getRequisitionID() {
+        return requisitionID;
+    }
+
+    public String getProjectID() {
+        return projectID;
+    }
+
+    public void setProjectID(String projectID) {
+        this.projectID = projectID;
+    }
+
+    public void setRequisitionID(String requisitionID) {
+        this.requisitionID = requisitionID;
+
     }
 }

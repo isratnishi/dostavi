@@ -14,6 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.opus.Models.RequisitionApprovalListModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,8 +34,9 @@ public class RequisitionApproveActivity extends AppCompatActivity {
     EditText approverNameEditText;
     EditText departmentEditRText;
     EditText maxAmountEditText;
-
     Button nextButton;
+
+    RequisitionApprovalListModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,8 @@ public class RequisitionApproveActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(RequisitionApproveActivity.this, RequistionApproveActivity2.class);
+                intent.putExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL, model);
+                //intent.putExtra(Constants.REQUISTION_ID, re);
                 startActivity(intent);
             }
         });
@@ -68,14 +72,16 @@ public class RequisitionApproveActivity extends AppCompatActivity {
         departmentEditRText = findViewById(R.id.department_edit_text);
         maxAmountEditText = findViewById(R.id.max_amount_edit_text);
         nextButton = findViewById(R.id.next_button);
+
+        model = (RequisitionApprovalListModel) getIntent().getSerializableExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL);
     }
 
 
     private void getJSON() {
         loadStatusProgressbar.setVisibility(View.VISIBLE);
-        String id = "146257";
-        String username = "mamun@bnb.com";
-        String finalURL = Constants.GET_PRA_APPROVER + "?username=" + username + "&projectID=" + id;
+        //String id = "146257";
+        //String username = "mamun@bnb.com";
+        String finalURL = Constants.GET_PRA_APPROVER + "?username=" + Constants.USER_EMAIL + "&projectID=" + model.getProjectID();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,

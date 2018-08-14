@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.opus.Adapters.ApprovedPraAdapter;
 import com.example.opus.Models.ApprovedPraHistoryModel;
+import com.example.opus.Models.RequisitionApprovalListModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +30,9 @@ public class RequisitionApproveActivity3 extends AppCompatActivity {
     ApprovedPraAdapter praAdapter;
     Button nextButton;
 
+    RequisitionApprovalListModel model;
+    //String requisitionID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,7 @@ public class RequisitionApproveActivity3 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RequisitionApproveActivity3.this, RequisitionApproveActivity4.class);
+                intent.putExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL, model);
                 startActivity(intent);
             }
         });
@@ -54,24 +59,13 @@ public class RequisitionApproveActivity3 extends AppCompatActivity {
         recyclerView.setAdapter(praAdapter);
 
         nextButton = findViewById(R.id.next_button);
-
-       /* ApprovedPraHistoryModel model = new ApprovedPraHistoryModel();
-        model.setDate("a");
-        model.setNextProcessBy("b");
-        model.setProcessBy("c");
-        model.setRemark("asd");
-
-        items.add(model);
-
-        praAdapter.notifyDataSetChanged();*/
-
-
+        model = (RequisitionApprovalListModel) getIntent().getSerializableExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL);
     }
 
     private void getPraApprovedHistory() {
         // loadStatusProgressbar.setVisibility(View.VISIBLE);
         String maxMasterID = "146257";
-        String finalURL = Constants.GET_APPROVED_HISTORY + "?ReqID=" + maxMasterID;
+        String finalURL = Constants.GET_APPROVED_HISTORY + "?ReqID=" + model.getRequisitionID();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,

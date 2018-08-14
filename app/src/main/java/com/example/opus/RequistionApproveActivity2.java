@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.opus.Adapters.ItemAdapter;
 import com.example.opus.Models.ItemModel;
+import com.example.opus.Models.RequisitionApprovalListModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +31,8 @@ public class RequistionApproveActivity2 extends AppCompatActivity {
 
     Button nextButton;
 
+    RequisitionApprovalListModel model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,7 @@ public class RequistionApproveActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RequistionApproveActivity2.this, RequisitionApproveActivity3.class);
+                intent.putExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL, model);
                 startActivity(intent);
             }
         });
@@ -55,12 +59,14 @@ public class RequistionApproveActivity2 extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(itemAdapter);
+        model = (RequisitionApprovalListModel) getIntent().getSerializableExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL);
+
     }
 
     private void getRequisitionItem() {
         // loadStatusProgressbar.setVisibility(View.VISIBLE);
         String maxMasterID = "146257";
-        String finalURL = Constants.GET_REQUISITION_LIST + "?MasterId=" + maxMasterID;
+        String finalURL = Constants.GET_REQUISITION_LIST + "?MasterId=" + model.getRequisitionID();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,

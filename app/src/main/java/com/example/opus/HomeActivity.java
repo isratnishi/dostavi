@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         requisitionApproveImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, RequisitionEntryFormActivity.class));
+                startActivity(new Intent(HomeActivity.this, RequisitionApprovalListActivity.class));
             }
         });
 
@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(getApplicationContext(), "Linear Layout", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(HomeActivity.this, RequisitionEntryFormActivity.class));
+                startActivity(new Intent(HomeActivity.this, RequisitionApprovalListActivity.class));
             }
         });
     }

@@ -29,8 +29,12 @@ public class Constants {
 
     public static final String GET_APPROVED_HISTORY = SERVER + "OAK/Project/GetPRApprovadHistory";
     public static final String POST_APPROVED_DATA = SERVER + "OAK/Requisition/SaveRequisitionApprovalLog";
+    public static final String GET_REQUISITION_LIST_FOR_APPROVE = SERVER + "OAK/api/OAKAPI/GetRequisitionForApprove";
 
+    // Bundle Constants
+    public static final String REQUISTION_ID = "requisitionid";
     public static final String REQUISITION_MODEL = "requisitionmodel";
     public static final String REQUISITION_MASTER = "requisitionmastermodel";
+    public static final String REQUISITION_APPROVAL_LIST_MODEL = "requistionapprovallistmodel";
 
 }
