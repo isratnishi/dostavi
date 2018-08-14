@@ -219,7 +219,7 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         // Replacing unwanted quotations
-                        response = response.replaceAll("\"","");
+                        response = response.replaceAll("\"", "");
                         requisitionNumberEditText.setText(response);
                     }
                 },
@@ -247,12 +247,21 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
         compititionWaiver = findViewById(R.id.compitition_waiver_checkbox);
         next = findViewById(R.id.next_button);
         supplierNameEditText = findViewById(R.id.supplier_name_edit_text);
-        //supplierNameRow = findViewById(R.id.supplier_name_row);
         loadStatusProgressbar = findViewById(R.id.load_data_progress_bar);
 
         mYear = mCurrentDate.get(Calendar.YEAR);
         mMonth = mCurrentDate.get(Calendar.MONTH);
         mDay = mCurrentDate.get(Calendar.DAY_OF_MONTH);
+
+        requisitionDateEditText.setText(mDay + "/" + mMonth + "/" + mYear);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, 10);
+
+        String tempTargetDate = calendar.get(Calendar.DATE) + "/" + calendar.get(Calendar.MONTH) + "/"
+                + calendar.get(Calendar.YEAR);
+
+        productTargetDateEditText.setText(tempTargetDate);
 
     }
 
