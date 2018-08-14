@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_title"></activity>
+            android:label="@string/app_title" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/app_title">
@@ -36,13 +36,14 @@
                 android:value=".LoginActivity" />
         </activity>
         <activity android:name=".test" />
-        <activity android:name=".RequisitionApproveActivity">
-
-        </activity>
+        <activity android:name=".RequisitionApproveActivity"></activity>
         <activity
             android:name=".LoginActivity2"
-            android:label="@string/title_activity_login2"></activity>
+            android:label="@string/title_activity_login2" />
         <activity android:name=".RequistionApproveActivity2">
+
+        </activity>
+        <activity android:name=".RequisitionApproveActivity3">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

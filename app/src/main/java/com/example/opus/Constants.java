@@ -1,10 +1,14 @@
 package com.example.opus;
 
 public class Constants {
-    private static final String BASE_SERVER_ADDRESS = "http://192.168.0.50/OAK/api/OAKAPI/";
-    //private static final String BASE_SERVER_ADDRESS = "http://119.148.9.154/OAK/api/OAKAPI/";
-    public static final String LOGIN_URL = "http://192.168.0.50/OAK/Account/LoginAPI";
-    //public static final String LOGIN_URL = "http://119.148.9.154/OAK/Account/LoginAPI";
+
+    private static final String SERVER = "http://192.168.0.50/";
+    //private static final String SERVER = "http://192.168.0.50/";
+
+    private static final String BASE_SERVER_ADDRESS = SERVER + "OAK/api/OAKAPI/";
+    //private static final String BASE_SERVER_ADDRESS = SERVER + "OAK/api/OAKAPI/";
+    public static final String LOGIN_URL = SERVER + "OAK/Account/LoginAPI";
+    //public static final String LOGIN_URL = SERVER + "OAK/Account/LoginAPI";
 
     public static String USER_EMAIL = "";
     public static final String LOGTAG = "logtag";
@@ -22,6 +26,8 @@ public class Constants {
 
     public static final String GET_REQUISITION_APPROVAL_LIST = BASE_SERVER_ADDRESS +
             "GetRequisitionApprovalData";
+
+    public static final String GET_APPROVED_HISTORY = SERVER + "OAK/Project/GetPRApprovadHistory";
 
     public static final String REQUISITION_MODEL = "requisitionmodel";
     public static final String REQUISITION_MASTER = "requisitionmastermodel";
