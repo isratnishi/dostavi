@@ -27,7 +27,13 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_title"></activity>
+            android:label="@string/app_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".HomeActivity"
             android:label="@string/app_title">
@@ -45,11 +51,7 @@
         <activity android:name=".RequisitionApproveActivity4" />
         <activity android:name=".RequisitionApprovalListActivity" />
         <activity android:name=".RequisitionStatusHome">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".PrDetailsActivity1">
 

@@ -156,7 +156,7 @@ public class RequisitionStatusHome extends AppCompatActivity {
         String finalURL = Constants.GET_REQUISITION_HOME_DATA + "?fromDate=" +
                 fromDate + "&toDate=" + toDate +
                 "&Search=" +
-                "&searchType=" + selectedType + "&EmailID=mamun@bnb.com";
+                "&searchType=" + selectedType + "&EmailID=" + Constants.USER_EMAIL;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,

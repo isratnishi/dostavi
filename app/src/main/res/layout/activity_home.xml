@@ -171,13 +171,14 @@
 
 
             <LinearLayout
+                android:id="@+id/requisition_status_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center">
 
                 <ImageView
-                    android:id="@+id/item_image"
+                    android:id="@+id/requisition_status_image_view"
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_gravity="center"

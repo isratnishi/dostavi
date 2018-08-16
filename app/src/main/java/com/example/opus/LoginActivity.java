@@ -1,5 +1,6 @@
 package com.example.opus;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView emailTextView;
     private EditText passwordEditText;
     private ProgressBar progressBar;
+    ProgressDialog progress;
 
     TextView signinButton;
 
@@ -45,17 +47,22 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password);
         signinButton = findViewById(R.id.email_sign_in_button);
         progressBar = findViewById(R.id.login_progress);
+
+        progress = new ProgressDialog(this);
+        progress.setMessage("Please Wait");
     }
 
     private void sendLoginRequest() {
-        progressBar.setVisibility(View.VISIBLE);
+        //progressBar.setVisibility(View.VISIBLE);
+        progress.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.LOGIN_URL, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
-                progressBar.setVisibility(View.GONE);
+                //progressBar.setVisibility(View.GONE);
+                progress.dismiss();
 
                 // Successfully Logged in
                 if (response.equals("1")) {

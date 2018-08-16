@@ -14,6 +14,8 @@ public class HomeActivity extends AppCompatActivity {
     private LinearLayout requisitionApproveLinearLayout;
     private ImageView requisitionEntryImageView;
     private ImageView requisitionApproveImageView;
+    private LinearLayout requisitionStatusLinearLayout;
+    private ImageView requisitionStatusImageView;
 
     private TextView emailTextView;
 
@@ -27,6 +29,8 @@ public class HomeActivity extends AppCompatActivity {
         requisitionEntryImageView = findViewById(R.id.requisition_entry_image_button);
         requisitionApproveLinearLayout = findViewById(R.id.requisition_approve_linear_layout);
         requisitionApproveImageView = findViewById(R.id.requisition_approve_image_button);
+        requisitionStatusLinearLayout = findViewById(R.id.requisition_status_layout);
+        requisitionStatusImageView = findViewById(R.id.requisition_status_image_view);
 
         emailTextView.setText(Constants.USER_EMAIL);
 
@@ -41,7 +45,6 @@ public class HomeActivity extends AppCompatActivity {
         requisitionEntryLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(getApplicationContext(), "Linear Layout", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(HomeActivity.this, RequisitionEntryFormActivity.class));
             }
         });
@@ -56,8 +59,21 @@ public class HomeActivity extends AppCompatActivity {
         requisitionApproveLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(getApplicationContext(), "Linear Layout", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(HomeActivity.this, RequisitionApprovalListActivity.class));
+            }
+        });
+
+        requisitionStatusImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, RequisitionStatusHome.class));
+            }
+        });
+
+        requisitionStatusLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, RequisitionStatusHome.class));
             }
         });
     }
