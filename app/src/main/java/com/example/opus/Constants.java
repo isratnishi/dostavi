@@ -31,11 +31,13 @@ public class Constants {
     public static final String POST_APPROVED_DATA = SERVER + "OAK/Requisition/SaveRequisitionApprovalLog";
     public static final String GET_REQUISITION_LIST_FOR_APPROVE = SERVER + "OAK/api/OAKAPI/GetRequisitionForApprove";
     public static final String GET_REQUISITION_HOME_DATA = BASE_SERVER_ADDRESS + "GetRequisitionForStatus";
+    public static final String GET_PRA_BASIC_INFO = SERVER + "OAK/BuyerPreview/GetRequisitionBasicInfo";
 
     // Bundle Constants
     public static final String REQUISTION_ID = "requisitionid";
     public static final String REQUISITION_MODEL = "requisitionmodel";
     public static final String REQUISITION_MASTER = "requisitionmastermodel";
     public static final String REQUISITION_APPROVAL_LIST_MODEL = "requistionapprovallistmodel";
+    public static final String REQUISITION_ID = "requisitionid";
 
 }

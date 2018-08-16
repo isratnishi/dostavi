@@ -65,7 +65,7 @@ public class RequisitionStatusHome extends AppCompatActivity {
                                 mCurrentDate.set(Calendar.YEAR, selectedYear);
                                 mCurrentDate.set(Calendar.MONTH, selectedMonth);
                                 mCurrentDate.set(Calendar.DAY_OF_MONTH, selectedDay);
-                                searchFromEditText.setText(selectedMonth + "/" + selectedDay + "/" + selectedYear);
+                                searchFromEditText.setText((selectedMonth + 1) + "/" + selectedDay + "/" + selectedYear);
 
                             }
                         }, mYear, mMonth, mDay);
@@ -86,7 +86,7 @@ public class RequisitionStatusHome extends AppCompatActivity {
                                 mCurrentDate.set(Calendar.YEAR, selectedYear);
                                 mCurrentDate.set(Calendar.MONTH, selectedMonth);
                                 mCurrentDate.set(Calendar.DAY_OF_MONTH, selectedDay);
-                                searchToEditText.setText(selectedMonth + "/" + selectedDay + "/" + selectedYear);
+                                searchToEditText.setText((selectedMonth + 1) + "/" + selectedDay + "/" + selectedYear);
 
                             }
                         }, mYear, mMonth, mDay);
@@ -178,6 +178,7 @@ public class RequisitionStatusHome extends AppCompatActivity {
                                 model.setCsNO(tempObject.getString("CSNo"));
                                 model.setCsValue(tempObject.getString("CSVALUE"));
                                 model.setSubject(tempObject.getString("Subject"));
+                                model.setRequisitionID(tempObject.getString("RequisitionId"));
 
                                 items.add(model);
                             }

@@ -8,6 +8,7 @@ public class RequisitionStatusHomeModel {
     private String csNO;
     private String csValue;
     private String subject;
+    private String requisitionID;
 
     public String getRequisitionNo() {
         return requisitionNo;
@@ -63,5 +64,13 @@ public class RequisitionStatusHomeModel {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public String getRequisitionID() {
+        return requisitionID;
+    }
+
+    public void setRequisitionID(String requisitionID) {
+        this.requisitionID = requisitionID;
     }
 }

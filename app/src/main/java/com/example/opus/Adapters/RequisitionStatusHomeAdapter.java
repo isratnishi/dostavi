@@ -1,14 +1,18 @@
 package com.example.opus.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.opus.Constants;
 import com.example.opus.Models.RequisitionStatusHomeModel;
+import com.example.opus.PrDetailsActivity1;
 import com.example.opus.R;
 
 import java.util.List;
@@ -42,6 +46,15 @@ public class RequisitionStatusHomeAdapter extends RecyclerView.Adapter<Requisiti
         holder.csNoTextView.setText(itemList.get(position).getPrValue());
         holder.csValueTextView.setText(itemList.get(position).getCsNO());
         holder.subjectTextView.setText(itemList.get(position).getSubject());
+
+        holder.prInfoButtoon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PrDetailsActivity1.class);
+                intent.putExtra(Constants.REQUISITION_ID, itemList.get(position).getRequisitionID());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -58,6 +71,7 @@ public class RequisitionStatusHomeAdapter extends RecyclerView.Adapter<Requisiti
         public TextView csNoTextView;
         public TextView csValueTextView;
         public TextView subjectTextView;
+        public Button prInfoButtoon;
 
 
         public ItemViewHolder(View view) {
@@ -70,6 +84,7 @@ public class RequisitionStatusHomeAdapter extends RecyclerView.Adapter<Requisiti
             csNoTextView = view.findViewById(R.id.cs_no_text_view);
             csValueTextView = view.findViewById(R.id.cs_value_text_view);
             subjectTextView = view.findViewById(R.id.subject_text_view);
+            prInfoButtoon = view.findViewById(R.id.pr_info_button);
         }
     }
 }
