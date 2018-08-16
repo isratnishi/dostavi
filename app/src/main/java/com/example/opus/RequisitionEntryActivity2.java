@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,7 +35,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class RequisitionEntryActivity2 extends AppCompatActivity {
 
     RequisitionMaster requisitionMaster;
     RequisitionModel requisitionModel;
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_requistion_entry_2);
         initialize();
         getJSON();
         recyclerView = findViewById(R.id.requisition_recycler_view);
@@ -130,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 items.add(itemModel);
                 itemAdapter.notifyDataSetChanged();
 
-                Toast.makeText(MainActivity.this, "Item Added!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RequisitionEntryActivity2.this, "Item Added!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -162,10 +161,10 @@ public class MainActivity extends AppCompatActivity {
     private void showAlertDialog() {
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(MainActivity.this,
+            builder = new AlertDialog.Builder(RequisitionEntryActivity2.this,
                     android.R.style.Theme_Material_Dialog_Alert);
         } else {
-            builder = new AlertDialog.Builder(MainActivity.this);
+            builder = new AlertDialog.Builder(RequisitionEntryActivity2.this);
         }
         builder.setTitle("Save Entry")
                 .setMessage("Are you sure you want to save the entries?")
@@ -247,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         //Log.d(Constants.LOGTAG, response);
-                        Toast.makeText(MainActivity.this, "Data saved to server", Toast.LENGTH_SHORT)
+                        Toast.makeText(RequisitionEntryActivity2.this, "Data saved to server", Toast.LENGTH_SHORT)
                                 .show();
                         items.clear();
                         itemAdapter.notifyDataSetChanged();
@@ -374,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         loadStatusProgressbar.setVisibility(View.GONE);
-                        Toast.makeText(MainActivity.this, "Something went wrong! Please try again later",
+                        Toast.makeText(RequisitionEntryActivity2.this, "Something went wrong! Please try again later",
                                 Toast.LENGTH_SHORT).show();
                         finish();
                     }

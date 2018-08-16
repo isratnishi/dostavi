@@ -21,5 +21,11 @@
         <item>Draft</item>
         <item>Final</item>
     </string-array>
+
+    <string-array name="search_type">
+        <item>Select Type</item>
+        <item>PR</item>
+        <item>CS</item>
+    </string-array>
     <string name="title_activity_login2">Sign in</string>
 </resources>

@@ -81,7 +81,7 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
                 if (isPostPR.isChecked())
                     requisitionMaster.setPostPR("1");
 
-                Intent intent = new Intent(RequisitionEntryFormActivity.this, MainActivity.class);
+                Intent intent = new Intent(RequisitionEntryFormActivity.this, RequisitionEntryActivity2.class);
                 intent.putExtra(Constants.REQUISITION_MODEL, requisitionModel);
                 intent.putExtra(Constants.REQUISITION_MASTER, requisitionMaster);
                 startActivity(intent);
