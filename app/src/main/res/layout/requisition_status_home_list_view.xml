@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:id="@+id/requisition_approve_list_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Requisition No" />
+
+                    <TextView
+                        android:id="@+id/requisition_no_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="null" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Requisiton Date: " />
+
+                    <TextView
+                        android:id="@+id/requisition_date_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="null: " />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Project Name: " />
+
+                    <TextView
+                        android:id="@+id/project_name_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="null" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="PR Value: " />
+
+                    <TextView
+                        android:id="@+id/pr_value_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="null" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CS Value: " />
+
+                    <TextView
+                        android:id="@+id/cs_value_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="null: " />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CS No: " />
+
+                    <TextView
+                        android:id="@+id/cs_no_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="null: " />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Subject: " />
+
+                    <TextView
+                        android:id="@+id/subject_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="null: " />
+                </TableRow>
+
+
+            </TableLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
