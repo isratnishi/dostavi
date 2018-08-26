@@ -1,5 +1,6 @@
 package com.example.opus.RequisitionEntry;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -38,6 +40,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class RequisitionEntryActivity2 extends AppCompatActivity {
 
     RequisitionMaster requisitionMaster;
@@ -50,21 +54,21 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
     ItemAdapter itemAdapter;
     String draffOrFinal = "0";
 
-    public EditText itemCodeEditText;
-    public EditText mainCategoryEditText;
-    public EditText descriptionEditText;
+    public TextView itemCodeEditText;
+    public TextView mainCategoryEditText;
+    public TextView descriptionEditText;
+    public TextView itemCategoryEditText;
+    public TextView subCategoryEditText;
+    public TextView unitEditText;
+    public TextView lastPriceEditText;
     public EditText specificationEditText;
-    public EditText itemCategoryEditText;
-    public EditText subCategoryEditText;
-    public EditText unitEditText;
-    public EditText lastPriceEditText;
     public EditText quantityEditText;
     public EditText approxPriceEditText;
     Spinner itemNameSpinner;
     Spinner requisitionStatusSpinner;
     Button addButton;
     Button saveButton;
-    ProgressBar loadStatusProgressbar;
+    ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +136,8 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                 items.add(itemModel);
                 itemAdapter.notifyDataSetChanged();
 
-                Toast.makeText(RequisitionEntryActivity2.this, "Item Added!", Toast.LENGTH_SHORT).show();
+                Toasty.info(getApplicationContext(), "Item Added", Toast.LENGTH_SHORT, true).show();
+
             }
         });
 
@@ -149,10 +154,6 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
 
     private void saveWholeDataToServer() {
         sendStringRequestRequisitionJson();
-
-        // Start sending requisition details from item no 0
-        // postRequisitionDetails(0);
-        //postRequisitionStatusLog();
     }
 
     private void clearScreen() {
@@ -198,7 +199,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if (response.equals("true")) {
-                           // Log.d(Constants.LOGTAG, "saved Item : " + id);
+                            // Log.d(Constants.LOGTAG, "saved Item : " + id);
                             postRequisitionDetails(id + 1);
                         } else
                             postRequisitionDetails(id);
@@ -312,20 +313,22 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
         quantityEditText = findViewById(R.id.quantity_edit_text);
         itemNameSpinner = findViewById(R.id.item_name_spinner);
         requisitionStatusSpinner = findViewById(R.id.requisition_status_spinner);
-        loadStatusProgressbar = findViewById(R.id.load_data_progress_bar);
 
         addButton = findViewById(R.id.add_button);
         saveButton = findViewById(R.id.saveButton);
+
+        progress = new ProgressDialog(this);
+        progress.setMessage("Please Wait");
     }
 
     private void getJSON() {
-        loadStatusProgressbar.setVisibility(View.VISIBLE);
+        progress.show();
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 Constants.GET_ALL_LIST,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        loadStatusProgressbar.setVisibility(View.GONE);
+                        progress.dismiss();
                         try {
                             JSONArray jsonArray = new JSONArray(response);
 
@@ -375,7 +378,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        loadStatusProgressbar.setVisibility(View.GONE);
+                        progress.dismiss();
                         Toast.makeText(RequisitionEntryActivity2.this, "Something went wrong! Please try again later",
                                 Toast.LENGTH_SHORT).show();
                         finish();

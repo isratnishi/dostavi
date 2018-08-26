@@ -19,11 +19,12 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class LoginActivity extends AppCompatActivity {
 
     private TextView emailTextView;
     private EditText passwordEditText;
-    private ProgressBar progressBar;
     ProgressDialog progress;
 
     TextView signinButton;
@@ -46,42 +47,38 @@ public class LoginActivity extends AppCompatActivity {
         emailTextView = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
         signinButton = findViewById(R.id.email_sign_in_button);
-        progressBar = findViewById(R.id.login_progress);
 
         progress = new ProgressDialog(this);
         progress.setMessage("Please Wait");
     }
 
     private void sendLoginRequest() {
-        //progressBar.setVisibility(View.VISIBLE);
         progress.show();
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.LOGIN_URL, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
-                //progressBar.setVisibility(View.GONE);
                 progress.dismiss();
 
                 // Successfully Logged in
                 if (response.equals("1")) {
-                    Toast.makeText(LoginActivity.this, "Successfully Logged in",
-                            Toast.LENGTH_SHORT).show();
+                    Toasty.success(getApplicationContext(), "Successfully Logged in",
+                            Toast.LENGTH_SHORT, true).show();
                     Constants.USER_EMAIL = emailTextView.getText().toString();
                     //finish();
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 } else {
-                    Toast.makeText(LoginActivity.this, "Invalid email or password! please try again",
-                            Toast.LENGTH_SHORT).show();
+                    Toasty.error(getApplicationContext(), "Invalid email or password! please try again",
+                            Toast.LENGTH_SHORT, true).show();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progress.dismiss();
-                Toast.makeText(getApplicationContext(), "Something went wrong!  Please try again later",
-                        Toast.LENGTH_SHORT).show();
+                Toasty.error(getApplicationContext(), "Something went wrong!  Please try again later",
+                        Toast.LENGTH_SHORT, true).show();
             }
         }) {
             @Override

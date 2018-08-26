@@ -1,6 +1,7 @@
 package com.example.opus.RequisitionEntry;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -51,7 +52,8 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
     Button next;
     EditText supplierNameEditText;
     //TableRow supplierNameRow;
-    ProgressBar loadStatusProgressbar;
+    // ProgressBar loadStatusProgressbar;
+    ProgressDialog progress;
 
     String selectedProjectID = null;
     RequisitionModel requisitionModel = new RequisitionModel();
@@ -162,15 +164,14 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
     }
 
     private void getRequisitionJSON() {
-        loadStatusProgressbar.setVisibility(View.VISIBLE);
+        progress.show();
         String finalURL = Constants.GET_REQUISITION_INFO + "?username=" + Constants.USER_EMAIL;
-
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        loadStatusProgressbar.setVisibility(View.GONE);
+                        progress.dismiss();
                         try {
                             JSONObject obj = new JSONObject(response);
 
@@ -203,7 +204,7 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        loadStatusProgressbar.setVisibility(View.GONE);
+                        progress.dismiss();
                         Toast.makeText(RequisitionEntryFormActivity.this, "Something went wrong! Please try again later",
                                 Toast.LENGTH_SHORT).show();
                         finish();
@@ -252,7 +253,6 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
         compititionWaiver = findViewById(R.id.compitition_waiver_checkbox);
         next = findViewById(R.id.next_button);
         supplierNameEditText = findViewById(R.id.supplier_name_edit_text);
-        loadStatusProgressbar = findViewById(R.id.load_data_progress_bar);
 
         mYear = mCurrentDate.get(Calendar.YEAR);
         mMonth = mCurrentDate.get(Calendar.MONTH);
@@ -267,6 +267,8 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
                 + calendar.get(Calendar.YEAR);
 
         productTargetDateEditText.setText(tempTargetDate);
+        progress = new ProgressDialog(this);
+        progress.setMessage("Please Wait");
 
     }
 
