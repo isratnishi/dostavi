@@ -11,10 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.opus.Constants;
-import com.example.opus.Models.ApprovedPraHistoryModel;
 import com.example.opus.Models.RequisitionApprovalListModel;
 import com.example.opus.R;
-import com.example.opus.RequisitionApproveActivity;
+import com.example.opus.RequisitionApproval.RequisitionApproveActivity;
 
 import java.util.List;
 

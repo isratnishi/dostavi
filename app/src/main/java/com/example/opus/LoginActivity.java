@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressBar.setVisibility(View.GONE);
+                progress.dismiss();
                 Toast.makeText(getApplicationContext(), "Something went wrong!  Please try again later",
                         Toast.LENGTH_SHORT).show();
             }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RequisitionApprovalListActivity">
+    tools:context=".RequisitionApproval.RequisitionApprovalListActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/requisition_list_recycler_view"

@@ -1,4 +1,4 @@
-package com.example.opus;
+package com.example.opus.RequisitionEntry;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -14,14 +14,18 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.opus.AppSingleton;
+import com.example.opus.Constants;
 import com.example.opus.Models.RequisitionMaster;
 import com.example.opus.Models.RequisitionModel;
+import com.example.opus.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,12 +37,13 @@ import java.util.List;
 
 public class RequisitionEntryFormActivity extends AppCompatActivity {
 
-    EditText requisitionNumberEditText;
+    TextView requisitionNumberTextView;
+    //EditText requisitionNumberEditText;
     EditText requisitionDateEditText;
     EditText productTargetDateEditText;
     EditText subjectEditText;
-    EditText prRaiserEditText;
-    EditText departmentEditText;
+    TextView prRaiserEditText;
+    TextView departmentEditText;
     EditText justificationEditText;
     Spinner projectNameSpinner;
     CheckBox isPostPR;
@@ -65,7 +70,7 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 RequisitionMaster requisitionMaster = new RequisitionMaster();
-                requisitionMaster.setRequisitionNo(requisitionNumberEditText.getText().toString());
+                requisitionMaster.setRequisitionNo(requisitionNumberTextView.getText().toString());
                 requisitionMaster.setRequisitionDate(requisitionDateEditText.getText().toString());
                 requisitionMaster.setTargetDate(productTargetDateEditText.getText().toString());
                 requisitionMaster.setProjectId(selectedProjectID);
@@ -220,7 +225,7 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         // Replacing unwanted quotations
                         response = response.replaceAll("\"", "");
-                        requisitionNumberEditText.setText(response);
+                        requisitionNumberTextView.setText(response);
                     }
                 },
                 new Response.ErrorListener() {
@@ -235,7 +240,7 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
     }
 
     private void initializeVariables() {
-        requisitionNumberEditText = findViewById(R.id.requisition_number_edit_text);
+        requisitionNumberTextView = findViewById(R.id.requisition_number_text_view);
         requisitionDateEditText = findViewById(R.id.requisition_date_edit_text);
         productTargetDateEditText = findViewById(R.id.product_delivery_date_edit_text);
         subjectEditText = findViewById(R.id.subject_edit_text);

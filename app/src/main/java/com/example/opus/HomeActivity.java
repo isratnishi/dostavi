@@ -8,6 +8,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.opus.RequisitionApproval.RequisitionApprovalListActivity;
+import com.example.opus.RequisitionEntry.RequisitionEntryFormActivity;
+import com.example.opus.RequisitionStatus.RequisitionStatusHome;
+
 public class HomeActivity extends AppCompatActivity {
 
     private LinearLayout requisitionEntryLinearLayout;

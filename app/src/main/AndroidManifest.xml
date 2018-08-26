@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RequisitionEntryActivity2"
+            android:name=".RequisitionEntry.RequisitionEntryActivity2"
             android:label="@string/app_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".RequisitionEntryFormActivity" />
+                android:value=".RequisitionEntry.RequisitionEntryFormActivity" />
         </activity>
         <activity
-            android:name=".RequisitionEntryFormActivity"
+            android:name=".RequisitionEntry.RequisitionEntryFormActivity"
             android:label="@string/app_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -41,16 +41,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity" />
         </activity>
-        <activity android:name=".test" />
-        <activity android:name=".RequisitionApproveActivity" />
-        <activity
-            android:name=".LoginActivity2"
-            android:label="@string/title_activity_login2" />
-        <activity android:name=".RequistionApproveActivity2" />
-        <activity android:name=".RequisitionApproveActivity3" />
-        <activity android:name=".RequisitionApproveActivity4" />
-        <activity android:name=".RequisitionApprovalListActivity" />
-        <activity android:name=".RequisitionStatusHome">
+        <activity android:name=".RequisitionApproval.RequisitionApproveActivity" />
+        <activity android:name=".RequisitionApproval.RequistionApproveActivity2" />
+        <activity android:name=".RequisitionApproval.RequisitionApproveActivity3" />
+        <activity android:name=".RequisitionApproval.RequisitionApproveActivity4" />
+        <activity android:name=".RequisitionApproval.RequisitionApprovalListActivity" />
+        <activity android:name=".RequisitionStatus.RequisitionStatusHome">
 
         </activity>
         <activity android:name=".PrDetailsActivity1">
