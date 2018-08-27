@@ -235,7 +235,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/supplier_name_edit_text"
+                        android:id="@+id/supplier_name_text_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Supplier Name"

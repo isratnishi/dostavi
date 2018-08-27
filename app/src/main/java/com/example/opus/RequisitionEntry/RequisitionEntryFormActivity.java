@@ -13,7 +13,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -252,7 +251,7 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
         isPostPR = findViewById(R.id.is_post_pr_checkbox);
         compititionWaiver = findViewById(R.id.compitition_waiver_checkbox);
         next = findViewById(R.id.next_button);
-        supplierNameEditText = findViewById(R.id.supplier_name_edit_text);
+        supplierNameEditText = findViewById(R.id.supplier_name_text_view);
 
         mYear = mCurrentDate.get(Calendar.YEAR);
         mMonth = mCurrentDate.get(Calendar.MONTH);

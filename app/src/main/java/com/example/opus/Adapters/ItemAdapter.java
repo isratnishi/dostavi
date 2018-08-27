@@ -27,10 +27,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         this.context = context;
     }
 
-    public interface OnItemLongClickListener {
-        public boolean onItemLongClicked(int position);
-    }
-
     @NonNull
     @Override
     public ItemAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -68,7 +64,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
-
         public TextView itemCode;
         public TextView itemName;
         public TextView unit;
@@ -81,7 +76,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         public ItemViewHolder(View view) {
             super(view);
             this.view = view;
-
             itemCode = view.findViewById(R.id.item_code_text_view);
             itemName = view.findViewById(R.id.item_name_text_view);
             unit = view.findViewById(R.id.unit_text_view);

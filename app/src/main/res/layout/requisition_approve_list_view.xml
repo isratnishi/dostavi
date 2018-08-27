@@ -7,12 +7,14 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="5dp"
+        android:elevation="3dp">
 
         <LinearLayout
             android:id="@+id/requisition_approve_list_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:orientation="vertical">
 
             <TableLayout
@@ -20,48 +22,56 @@
                 android:layout_height="wrap_content"
                 android:padding="4dp">
 
-                <TableRow>
+                <TableRow android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Requisition No" />
+                        android:text="Requisition No:"
+                        android:textSize="14sp"/>
 
                     <TextView
                         android:id="@+id/requisition_no_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@android:color/black"
                         android:text="null" />
                 </TableRow>
 
-                <TableRow>
+                <TableRow android:layout_marginBottom="10dp">
 
                     <TextView
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Requisiton Date: " />
+                        android:text="Requisiton Date:"
+                        android:textSize="14sp"/>
 
                     <TextView
                         android:id="@+id/requisition_date_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_marginLeft="10dp"
                         android:text="null: " />
                 </TableRow>
 
-                <TableRow>
+                <TableRow android:layout_marginBottom="10dp">
 
                     <TextView
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Subject: " />
+                        android:text="Subject:"
+                        android:textSize="14sp"/>
 
                     <TextView
                         android:id="@+id/subject_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null: " />
+                        android:text="null"
+                        android:textColor="@android:color/black"
+                        android:layout_marginLeft="10dp"/>
                 </TableRow>
 
                 <TableRow>
@@ -69,13 +79,16 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Department: " />
+                        android:text="Department:"
+                        android:textSize="14sp"/>
 
                     <TextView
                         android:id="@+id/department_by_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null" />
+                        android:text="null"
+                        android:textColor="@android:color/black"
+                        android:layout_marginLeft="10dp"/>
                 </TableRow>
 
 

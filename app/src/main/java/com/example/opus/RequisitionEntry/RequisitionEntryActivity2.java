@@ -118,38 +118,34 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveButton.setVisibility(View.VISIBLE);
                 if (isAlreadyAdded()) {
-                    Toasty.error(getApplicationContext(), "Already Already added!", Toast.LENGTH_SHORT,
+                    Toasty.error(getApplicationContext(), "Item Already added!", Toast.LENGTH_SHORT,
                             false).show();
                     return;
                 }
                 int total = 0;
-                if (!TextUtils.isEmpty(quantityEditText.getText().toString()) &&
-                        !TextUtils.isEmpty(approxPriceEditText.getText().toString())) {
-                    try {
-                        total = Integer.parseInt(quantityEditText.getText().toString())
-                                * Integer.parseInt(approxPriceEditText.getText().toString());
+                try {
+                    total = Integer.parseInt(quantityEditText.getText().toString())
+                            * Integer.parseInt(approxPriceEditText.getText().toString());
 
-                        ItemModel itemModel = new ItemModel();
-                        itemModel.setItemName(itemNameEditText.getText().toString());
-                        itemModel.setItemCode(itemCodeEditText.getText().toString());
-                        itemModel.setUnit(unitEditText.getText().toString());
-                        itemModel.setApproxPrice(approxPriceEditText.getText().toString());
-                        itemModel.setSpecification(specificationEditText.getText().toString());
-                        itemModel.setQuantity(Integer.parseInt(quantityEditText.getText().toString()));
-                        itemModel.setTotal(String.valueOf(total));
+                    ItemModel itemModel = new ItemModel();
+                    itemModel.setItemName(itemNameEditText.getText().toString());
+                    itemModel.setItemCode(itemCodeEditText.getText().toString());
+                    itemModel.setUnit(unitEditText.getText().toString());
+                    itemModel.setApproxPrice(approxPriceEditText.getText().toString());
+                    itemModel.setSpecification(specificationEditText.getText().toString());
+                    itemModel.setQuantity(Integer.parseInt(quantityEditText.getText().toString()));
+                    itemModel.setTotal(String.valueOf(total));
 
-                        items.add(itemModel);
-                        itemAdapter.notifyDataSetChanged();
-                        clearTexts();
-
-                        Toasty.info(getApplicationContext(), "Item Added", Toast.LENGTH_SHORT, true).show();
-                    } catch (Exception e) {
-                        Toasty.error(getApplicationContext(), "Invalid  Quantity or Price!", Toast.LENGTH_SHORT,
-                                true).show();
-                        e.printStackTrace();
-                    }
+                    items.add(itemModel);
+                    itemAdapter.notifyDataSetChanged();
+                    clearTexts();
+                    Toasty.info(getApplicationContext(), "Item Added", Toast.LENGTH_SHORT, true).show();
+                    saveButton.setVisibility(View.VISIBLE);
+                } catch (Exception e) {
+                    Toasty.error(getApplicationContext(), "Invalid Quantity or Price!", Toast.LENGTH_SHORT,
+                            true).show();
+                    e.printStackTrace();
                 }
             }
         });
