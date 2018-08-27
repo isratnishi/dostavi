@@ -14,7 +14,6 @@ import com.example.opus.R;
 import java.util.List;
 
 public class ApprovedPraAdapter extends RecyclerView.Adapter<ApprovedPraAdapter.ItemViewHolder> {
-
     private List<ApprovedPraHistoryModel> itemList;
     private Context context;
 
@@ -23,7 +22,6 @@ public class ApprovedPraAdapter extends RecyclerView.Adapter<ApprovedPraAdapter.
         this.context = context;
     }
 
-
     @NonNull
     @Override
     public ApprovedPraAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,7 +29,6 @@ public class ApprovedPraAdapter extends RecyclerView.Adapter<ApprovedPraAdapter.
                 .inflate(R.layout.approved_pra_history_list_view, parent, false);
         return new ApprovedPraAdapter.ItemViewHolder(itemView);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull ApprovedPraAdapter.ItemViewHolder holder, final int position) {
@@ -47,7 +44,6 @@ public class ApprovedPraAdapter extends RecyclerView.Adapter<ApprovedPraAdapter.
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
-
         public TextView processByTextView;
         public TextView dateTextView;
         public TextView remarkTextView;
@@ -55,7 +51,6 @@ public class ApprovedPraAdapter extends RecyclerView.Adapter<ApprovedPraAdapter.
 
         public ItemViewHolder(View view) {
             super(view);
-
             processByTextView = view.findViewById(R.id.process_by_text_view);
             dateTextView = view.findViewById(R.id.date_text_view);
             remarkTextView = view.findViewById(R.id.remark_text_view);

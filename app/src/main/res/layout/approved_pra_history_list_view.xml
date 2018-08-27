@@ -12,7 +12,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -24,57 +25,69 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Process By: " />
+                        android:text="Process By:"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/process_by_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null" />
+                        android:layout_marginLeft="10dp"
+                        android:text="null"
+                        android:textColor="@android:color/black" />
                 </TableRow>
 
-                <TableRow>
+                <TableRow android:layout_marginTop="10dp">
 
                     <TextView
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date: " />
+                        android:text="Date:"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/date_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null: " />
+                        android:layout_marginLeft="10dp"
+                        android:text="null"
+                        android:textColor="@android:color/black" />
                 </TableRow>
 
-                <TableRow>
+                <TableRow android:layout_marginTop="10dp">
 
                     <TextView
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Remark: " />
+                        android:text="Remark:"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/remark_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null: " />
+                        android:layout_marginLeft="10dp"
+                        android:text="null:"
+                        android:textColor="@android:color/black" />
                 </TableRow>
 
-                <TableRow>
+                <TableRow android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Next Process By: " />
+                        android:text="Next Process By:"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/next_process_by_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="null" />
+                        android:layout_marginLeft="10dp"
+                        android:text="null"
+                        android:textColor="@android:color/black" />
                 </TableRow>
 
 
