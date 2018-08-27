@@ -68,7 +68,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
     public EditText approxPriceEditText;
     Spinner requisitionStatusSpinner;
     Button addButton;
-    Button saveButton;
+    public static Button saveButton;
     ProgressDialog progress;
     AutoCompleteTextView itemNameEditText;
 
@@ -119,6 +119,11 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveButton.setVisibility(View.VISIBLE);
+                if (isAlreadyAdded()) {
+                    Toasty.error(getApplicationContext(), "Already Already added!", Toast.LENGTH_SHORT,
+                            false).show();
+                    return;
+                }
                 int total = 0;
                 if (!TextUtils.isEmpty(quantityEditText.getText().toString()) &&
                         !TextUtils.isEmpty(approxPriceEditText.getText().toString())) {
@@ -137,6 +142,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
 
                         items.add(itemModel);
                         itemAdapter.notifyDataSetChanged();
+                        clearTexts();
 
                         Toasty.info(getApplicationContext(), "Item Added", Toast.LENGTH_SHORT, true).show();
                     } catch (Exception e) {
@@ -156,6 +162,20 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                 clearScreen();
             }
         });
+    }
+
+    private void clearTexts() {
+        specificationEditText.setText("");
+        quantityEditText.setText("");
+        approxPriceEditText.setText("");
+    }
+
+    private boolean isAlreadyAdded() {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getItemCode().equalsIgnoreCase(itemCodeEditText.getText().toString()))
+                return true;
+        }
+        return false;
     }
 
     private void saveWholeDataToServer() {

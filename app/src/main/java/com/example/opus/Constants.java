@@ -2,8 +2,8 @@ package com.example.opus;
 
 public class Constants {
 
-    //private static final String SERVER = "http://192.168.0.50/";
-    private static final String SERVER = "http://119.148.9.154/";
+    private static final String SERVER = "http://192.168.0.50/";
+    //private static final String SERVER = "http://119.148.9.154/";
 
     private static final String BASE_SERVER_ADDRESS = SERVER + "OAK/api/OAKAPI/";
     //private static final String BASE_SERVER_ADDRESS = SERVER + "OAK/api/OAKAPI/";

@@ -7,11 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.opus.Models.ItemModel;
 import com.example.opus.R;
+import com.example.opus.RequisitionEntry.RequisitionEntryActivity2;
 
 import java.util.List;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
@@ -23,6 +27,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         this.context = context;
     }
 
+    public interface OnItemLongClickListener {
+        public boolean onItemLongClicked(int position);
+    }
 
     @NonNull
     @Override
@@ -41,6 +48,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.total.setText(itemList.get(position).getTotal());
         holder.quantity.setText(String.valueOf(itemList.get(position).getQuantity()));
         holder.specification.setText(itemList.get(position).getSpecification());
+
+        holder.view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toasty.info(context, "Item removed", Toast.LENGTH_SHORT, true).show();
+                itemList.remove(position);
+                notifyDataSetChanged();
+                if (itemList.size() == 0)
+                    RequisitionEntryActivity2.saveButton.setVisibility(View.GONE);
+                return false;
+            }
+        });
     }
 
     @Override
@@ -57,9 +76,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         public TextView total;
         public TextView quantity;
         public TextView specification;
+        public View view;
 
         public ItemViewHolder(View view) {
             super(view);
+            this.view = view;
 
             itemCode = view.findViewById(R.id.item_code_text_view);
             itemName = view.findViewById(R.id.item_name_text_view);
