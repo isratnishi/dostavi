@@ -28,46 +28,51 @@
                 android:layout_marginLeft="8dp"
                 android:orientation="vertical">
 
-                <TableLayout
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="item name: "
+                    android:textSize="14sp" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/item_name_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginTop="10dp"
+                    android:imeActionId="6"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black" />
 
-                    <TableRow
-                        android:paddingBottom="10dp"
-                        android:paddingTop="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="20dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="item name: "
-                            android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:paddingBottom="5dp"
+                        android:text="Requisition Status"
+                        android:textSize="14sp" />
 
-                        <Spinner
-                            android:id="@+id/item_name_spinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </TableRow>
+                    <Spinner
+                        android:id="@+id/requisition_status_spinner"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:entries="@array/resuisition_status"
+                        android:gravity="center" />
+                </LinearLayout>
 
-
-                    <TableRow>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Requisition Status"
-                            android:textSize="14sp" />
-
-                        <Spinner
-                            android:id="@+id/requisition_status_spinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:entries="@array/resuisition_status"
-                            android:gravity="center" />
-                    </TableRow>
-
-                </TableLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 

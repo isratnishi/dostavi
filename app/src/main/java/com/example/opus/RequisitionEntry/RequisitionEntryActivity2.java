@@ -8,13 +8,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,17 +66,17 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
     public EditText specificationEditText;
     public EditText quantityEditText;
     public EditText approxPriceEditText;
-    Spinner itemNameSpinner;
     Spinner requisitionStatusSpinner;
     Button addButton;
     Button saveButton;
     ProgressDialog progress;
+    AutoCompleteTextView itemNameEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requistion_entry_2);
-        initialize();
+        initializeVariables();
         getJSON();
         recyclerView = findViewById(R.id.requisition_recycler_view);
         itemAdapter = new ItemAdapter(items, this);
@@ -83,15 +85,20 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(itemAdapter);
 
-        itemNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        itemNameEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                changeTextsAccordingToSpinner(position);
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                changeTextsAccordingToText(itemNameEditText.getText().toString());
             }
         });
 
@@ -112,32 +119,32 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveButton.setVisibility(View.VISIBLE);
-
                 int total = 0;
                 if (!TextUtils.isEmpty(quantityEditText.getText().toString()) &&
                         !TextUtils.isEmpty(approxPriceEditText.getText().toString())) {
                     try {
                         total = Integer.parseInt(quantityEditText.getText().toString())
                                 * Integer.parseInt(approxPriceEditText.getText().toString());
+
+                        ItemModel itemModel = new ItemModel();
+                        itemModel.setItemName(itemNameEditText.getText().toString());
+                        itemModel.setItemCode(itemCodeEditText.getText().toString());
+                        itemModel.setUnit(unitEditText.getText().toString());
+                        itemModel.setApproxPrice(approxPriceEditText.getText().toString());
+                        itemModel.setSpecification(specificationEditText.getText().toString());
+                        itemModel.setQuantity(Integer.parseInt(quantityEditText.getText().toString()));
+                        itemModel.setTotal(String.valueOf(total));
+
+                        items.add(itemModel);
+                        itemAdapter.notifyDataSetChanged();
+
+                        Toasty.info(getApplicationContext(), "Item Added", Toast.LENGTH_SHORT, true).show();
                     } catch (Exception e) {
+                        Toasty.error(getApplicationContext(), "Invalid  Quantity or Price!", Toast.LENGTH_SHORT,
+                                true).show();
                         e.printStackTrace();
                     }
                 }
-
-                ItemModel itemModel = new ItemModel();
-                itemModel.setItemName(itemNameSpinner.getSelectedItem().toString());
-                itemModel.setItemCode(itemCodeEditText.getText().toString());
-                itemModel.setUnit(unitEditText.getText().toString());
-                itemModel.setApproxPrice(approxPriceEditText.getText().toString());
-                itemModel.setSpecification(specificationEditText.getText().toString());
-                itemModel.setQuantity(Integer.parseInt(quantityEditText.getText().toString()));
-                itemModel.setTotal(String.valueOf(total));
-
-                items.add(itemModel);
-                itemAdapter.notifyDataSetChanged();
-
-                Toasty.info(getApplicationContext(), "Item Added", Toast.LENGTH_SHORT, true).show();
-
             }
         });
 
@@ -145,7 +152,6 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
                 showAlertDialog();
                 clearScreen();
             }
@@ -179,7 +185,6 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
@@ -299,8 +304,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
         return jsonObject;
     }
 
-
-    private void initialize() {
+    private void initializeVariables() {
         itemCodeEditText = findViewById(R.id.item_code_edit_text);
         mainCategoryEditText = findViewById(R.id.main_category_edit_text);
         descriptionEditText = findViewById(R.id.description_edit_text);
@@ -311,8 +315,8 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
         approxPriceEditText = findViewById(R.id.approx_price_edit_text);
         specificationEditText = findViewById(R.id.specification_edit_text);
         quantityEditText = findViewById(R.id.quantity_edit_text);
-        itemNameSpinner = findViewById(R.id.item_name_spinner);
         requisitionStatusSpinner = findViewById(R.id.requisition_status_spinner);
+        itemNameEditText = findViewById(R.id.item_name_edit_text);
 
         addButton = findViewById(R.id.add_button);
         saveButton = findViewById(R.id.saveButton);
@@ -368,7 +372,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
 
                                 JsonItems.add(showItemModel);
                             }
-                            addItemsNameToSpinner();
+                            addItemsToAutoCompleteTextView();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -379,8 +383,8 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progress.dismiss();
-                        Toast.makeText(RequisitionEntryActivity2.this, "Something went wrong! Please try again later",
-                                Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RequisitionEntryActivity2.this,
+                                "Something went wrong! Please try again later", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 });
@@ -388,34 +392,52 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                 .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
     }
 
-    private void addItemsNameToSpinner() {
+    private void addItemsToAutoCompleteTextView() {
         List<String> spinnerArray = new ArrayList<>();
         for (int i = 0; i < JsonItems.size(); i++) {
             spinnerArray.add(JsonItems.get(i).getCodeWithName());
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, spinnerArray);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, spinnerArray);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        itemNameSpinner.setAdapter(adapter);
+        itemNameEditText.setAdapter(adapter);
+        itemNameEditText.setThreshold(1);
     }
 
-    private void changeTextsAccordingToSpinner(int position) {
-        itemCodeEditText.setText(JsonItems.get(position).getItemCode());
-        mainCategoryEditText.setText(JsonItems.get(position).getMainCatName());
-        itemCategoryEditText.setText(JsonItems.get(position).getItemCatName());
-        subCategoryEditText.setText(JsonItems.get(position).getSubCatName());
-        unitEditText.setText(JsonItems.get(position).getUnitName());
-        lastPriceEditText.setText(JsonItems.get(position).getReOrderLevel());
-        subCategoryEditText.setText(JsonItems.get(position).getSubCatName());
+    private void changeTextsAccordingToText(String name) {
+        ShowItemModel showItemModel;
+        boolean isFound = false;
+        for (int i = 0; i < JsonItems.size(); i++) {
+            showItemModel = JsonItems.get(i);
+            if (showItemModel.getCodeWithName().equalsIgnoreCase(name)) {
+                itemCodeEditText.setText(showItemModel.getItemCode());
+                mainCategoryEditText.setText(showItemModel.getMainCatName());
+                itemCategoryEditText.setText(showItemModel.getItemCatName());
+                subCategoryEditText.setText(showItemModel.getSubCatName());
+                unitEditText.setText(showItemModel.getUnitName());
+                lastPriceEditText.setText(showItemModel.getReOrderLevel());
+                subCategoryEditText.setText(showItemModel.getSubCatName());
+                isFound = true;
+                break;
+            }
+        }
+        // Not found, Clearing texts
+        if (!isFound) {
+            itemCodeEditText.setText("");
+            mainCategoryEditText.setText("");
+            itemCategoryEditText.setText("");
+            subCategoryEditText.setText("");
+            unitEditText.setText("");
+            lastPriceEditText.setText("");
+            subCategoryEditText.setText("");
+        }
 
         requisitionMaster = (RequisitionMaster) getIntent().getSerializableExtra(Constants.REQUISITION_MASTER);
         requisitionModel = (RequisitionModel) getIntent().getSerializableExtra(Constants.REQUISITION_MODEL);
     }
 
 
-    // break point
     public void sendStringRequestRequisitionJson() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.POST_REQUISITION_INFO,
