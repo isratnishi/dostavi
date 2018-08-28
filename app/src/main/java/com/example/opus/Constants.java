@@ -32,6 +32,7 @@ public class Constants {
     public static final String GET_REQUISITION_LIST_FOR_APPROVE = SERVER + "OAK/api/OAKAPI/GetRequisitionForApprove";
     public static final String GET_REQUISITION_HOME_DATA = BASE_SERVER_ADDRESS + "GetRequisitionForStatus";
     public static final String GET_PRA_BASIC_INFO = SERVER + "OAK/BuyerPreview/GetRequisitionBasicInfo";
+    public static final String GET_PRA_STATUS_INFO = SERVER + "OAK/BuyerPreview/GetRequisitionHistoryLog";
 
     // Bundle Constants
     public static final String REQUISTION_ID = "requisitionid";

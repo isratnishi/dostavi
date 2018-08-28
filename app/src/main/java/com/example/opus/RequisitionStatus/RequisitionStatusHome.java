@@ -63,7 +63,6 @@ public class RequisitionStatusHome extends AppCompatActivity {
                                 mCurrentDate.set(Calendar.MONTH, selectedMonth);
                                 mCurrentDate.set(Calendar.DAY_OF_MONTH, selectedDay);
                                 searchFromEditText.setText((selectedMonth + 1) + "/" + selectedDay + "/" + selectedYear);
-
                             }
                         }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select Date");
@@ -84,7 +83,6 @@ public class RequisitionStatusHome extends AppCompatActivity {
                                 mCurrentDate.set(Calendar.MONTH, selectedMonth);
                                 mCurrentDate.set(Calendar.DAY_OF_MONTH, selectedDay);
                                 searchToEditText.setText((selectedMonth + 1) + "/" + selectedDay + "/" + selectedYear);
-
                             }
                         }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select Date");
