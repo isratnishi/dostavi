@@ -117,18 +117,6 @@ public class RequisitionStatusHome extends AppCompatActivity {
 
         progress = new ProgressDialog(this);
         progress.setMessage("Please Wait");
-
-        /*RequisitionStatusHomeModel model = new RequisitionStatusHomeModel();
-        model.setRequisitionNo("asdf");
-        model.setRequisitionDate("asdf");
-        model.setProjectName("asdf");
-        model.setPrValue("asdf");
-        model.setCsNO("asdf");
-        model.setCsValue("asdf");
-        model.setSubject("asdf");
-
-        items.add(model);*//*
-        adapter.notifyDataSetChanged();*/
     }
 
     private void getRequisitionStatusJson() {
@@ -146,6 +134,7 @@ public class RequisitionStatusHome extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         progress.dismiss();
+                        //Log.d(Constants.LOGTAG, response);
                         try {
                             JSONArray jsonArray = new JSONArray(response);
                             for (int i = 0; i < jsonArray.length(); i++) {
