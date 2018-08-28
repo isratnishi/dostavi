@@ -15,7 +15,10 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="requisiton_entry">Requisition\nEntry</string>
+    <string name="requisition_entry">Requisition\nEntry</string>
+    <string name="requisition_entry_label">Requisition Entry</string>
+    <string name="requisition_approve_label">Requisition Approve</string>
+    <string name="requisition_status_label">Requisition Status</string>
 
     <string-array name="resuisition_status">
         <item>Draft</item>

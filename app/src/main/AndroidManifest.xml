@@ -13,14 +13,14 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".RequisitionEntry.RequisitionEntryActivity2"
-            android:label="@string/app_title">
+            android:label="@string/requisition_entry_label">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".RequisitionEntry.RequisitionEntryFormActivity" />
         </activity>
         <activity
             android:name=".RequisitionEntry.RequisitionEntryFormActivity"
-            android:label="@string/app_title">
+            android:label="@string/requisition_entry_label">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
@@ -36,21 +36,64 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/app_title">
+            android:label="Home">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity" />
         </activity>
-        <activity android:name=".RequisitionApproval.RequisitionApproveActivity" />
-        <activity android:name=".RequisitionApproval.RequistionApproveActivity2" />
-        <activity android:name=".RequisitionApproval.RequisitionApproveActivity3" />
-        <activity android:name=".RequisitionApproval.RequisitionApproveActivity4" />
-        <activity android:name=".RequisitionApproval.RequisitionApprovalListActivity" />
-        <activity android:name=".RequisitionStatus.RequisitionStatusHome"></activity>
-        <activity android:name=".PrDetailsActivity1"></activity>
-        <activity android:name=".RequisitionStatus.PrStatusActivity">
 
+        <activity
+            android:name=".RequisitionApproval.RequisitionApproveActivity"
+            android:label="@string/requisition_approve_label"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity" />
+        </activity>
+
+        <activity android:name=".RequisitionApproval.RequistionApproveActivity2"
+            android:label="@string/requisition_approve_label">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RequisitionApproval.RequisitionApproveActivity" />
+        </activity>
+        <activity android:name=".RequisitionApproval.RequisitionApproveActivity3"
+            android:label="@string/requisition_approve_label">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RequisitionApproval.RequistionApproveActivity2" />
+        </activity>
+        <activity android:name=".RequisitionApproval.RequisitionApproveActivity4"
+            android:label="@string/requisition_approve_label">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RequisitionApproval.RequisitionApproveActivity3" />
+        </activity>
+        <activity android:name=".RequisitionApproval.RequisitionApprovalListActivity"
+            android:label="@string/requisition_approve_label">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RequisitionApproval.RequisitionApproveActivity4" />
+        </activity>
+
+        <activity android:name=".RequisitionStatus.RequisitionStatusHome"
+            android:label="@string/requisition_status_label">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
+        <activity android:name=".PrDetailsActivity1">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RequisitionStatus.RequisitionStatusHome"
+                android:label="@string/requisition_status_label"/>
+        </activity>
+        <activity android:name=".RequisitionStatus.PrStatusActivity"
+            android:label="@string/requisition_status_label">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".RequisitionStatus.RequisitionStatusHome" />
         </activity>
     </application>
 
