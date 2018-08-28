@@ -55,15 +55,6 @@ public class RequisitionStatusHomeAdapter extends RecyclerView.Adapter<Requisiti
                 context.startActivity(intent);
             }
         });
-
-        /*holder.prInfoButtoon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, PrDetailsActivity1.class);
-                intent.putExtra(Constants.REQUISITION_ID, itemList.get(position).getRequisitionID());
-                context.startActivity(intent);
-            }
-        });*/
     }
 
     @Override
@@ -80,7 +71,6 @@ public class RequisitionStatusHomeAdapter extends RecyclerView.Adapter<Requisiti
         public TextView csNoTextView;
         public TextView csValueTextView;
         public TextView subjectTextView;
-        public Button prInfoButtoon;
         public View view;
 
         public ItemViewHolder(View view) {
@@ -93,7 +83,6 @@ public class RequisitionStatusHomeAdapter extends RecyclerView.Adapter<Requisiti
             csNoTextView = view.findViewById(R.id.cs_no_text_view);
             csValueTextView = view.findViewById(R.id.cs_value_text_view);
             subjectTextView = view.findViewById(R.id.subject_text_view);
-            prInfoButtoon = view.findViewById(R.id.pr_info_button);
         }
     }
 }
