@@ -4,7 +4,7 @@ public class ApprovedPraHistoryModel {
     private String processBy;
     private String date;
     private String Remark;
-    private  String nextProcessBy;
+    private String nextProcessBy;
 
     public String getProcessBy() {
         return processBy;

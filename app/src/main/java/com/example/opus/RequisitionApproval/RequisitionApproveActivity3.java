@@ -66,9 +66,8 @@ public class RequisitionApproveActivity3 extends AppCompatActivity {
     }
 
     private void getPraApprovedHistory() {
-        // loadStatusProgressbar.setVisibility(View.VISIBLE);
-        String maxMasterID = "146257";
         String finalURL = Constants.GET_APPROVED_HISTORY + "?ReqID=" + model.getRequisitionID();
+        Log.d(Constants.LOGTAG, "from activity 3 " + finalURL);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
@@ -77,7 +76,6 @@ public class RequisitionApproveActivity3 extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         Log.d(Constants.LOGTAG, response);
-                        //loadStatusProgressbar.setVisibility(View.GONE);
                         try {
                             JSONArray jsonArray = new JSONArray(response);
 
@@ -93,9 +91,8 @@ public class RequisitionApproveActivity3 extends AppCompatActivity {
                                 historyModel.setProcessBy(tempProcessBy);
                                 historyModel.setDate(tempDate);
                                 historyModel.setRemark(tempRemark);
-                                historyModel.setProcessBy(tempNextProcessBy);
+                                historyModel.setNextProcessBy(tempNextProcessBy);
                                 items.add(historyModel);
-
                             }
                             praAdapter.notifyDataSetChanged();
 
