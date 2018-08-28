@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -35,13 +36,9 @@ public class RequisitionStatusHome extends AppCompatActivity {
     private ArrayList<RequisitionStatusHomeModel> items = new ArrayList<>();
     RecyclerView recyclerView;
     RequisitionStatusHomeAdapter adapter;
-    String selectedType;
-
-    Spinner selectedTypeSpinner;
     EditText searchFromEditText;
     EditText searchToEditText;
     Button search_button;
-
     ProgressDialog progress;
 
     Calendar mCurrentDate = Calendar.getInstance();
@@ -95,17 +92,6 @@ public class RequisitionStatusHome extends AppCompatActivity {
             }
         });
 
-        selectedTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedType = (String) selectedTypeSpinner.getSelectedItem();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
         search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,7 +104,6 @@ public class RequisitionStatusHome extends AppCompatActivity {
         searchFromEditText = findViewById(R.id.requisition_date_edit_text);
         searchToEditText = findViewById(R.id.product_delivery_date_edit_text);
         recyclerView = findViewById(R.id.requisition_status_home_recycler_view);
-        selectedTypeSpinner = findViewById(R.id.selected_type_spinner);
         search_button = findViewById(R.id.search_button);
 
         mYear = mCurrentDate.get(Calendar.YEAR);
@@ -148,15 +133,12 @@ public class RequisitionStatusHome extends AppCompatActivity {
 
     private void getRequisitionStatusJson() {
         progress.show();
-        // loadStatusProgressbar.setVisibility(View.VISIBLE);
         String fromDate = searchFromEditText.getText().toString();
         String toDate = searchToEditText.getText().toString();
-        //String email = "mamun@bnb.com";
-
         String finalURL = Constants.GET_REQUISITION_HOME_DATA + "?fromDate=" +
                 fromDate + "&toDate=" + toDate +
                 "&Search=" +
-                "&searchType=" + selectedType + "&EmailID=" + Constants.USER_EMAIL;
+                "&searchType=&EmailID=" + Constants.USER_EMAIL;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
@@ -166,7 +148,6 @@ public class RequisitionStatusHome extends AppCompatActivity {
                         progress.dismiss();
                         try {
                             JSONArray jsonArray = new JSONArray(response);
-
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject tempObject = jsonArray.getJSONObject(i);
 
@@ -183,7 +164,6 @@ public class RequisitionStatusHome extends AppCompatActivity {
                                 items.add(model);
                             }
                             adapter.notifyDataSetChanged();
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     android:orientation="vertical"
     tools:context=".RequisitionStatus.RequisitionStatusHome">
 
@@ -25,9 +26,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="false"
-                android:hint="Requisition Date: "
+                android:layout_weight="1"
+                android:hint="Requisition Date"
                 android:imeActionId="6"
-                android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionUnspecified"
                 android:maxLines="1"
                 android:singleLine="true" />
@@ -45,38 +46,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:focusable="false"
+                android:layout_weight="1"
                 android:hint="Product Delivery Target Date: "
                 android:imeActionId="6"
-                android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionUnspecified"
                 android:maxLines="1"
                 android:singleLine="true" />
         </TableRow>
-
-        <TableRow android:paddingBottom="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Search Type: " />
-
-            <Spinner
-                android:id="@+id/selected_type_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="2"
-                android:entries="@array/search_type" />
-        </TableRow>
     </TableLayout>
 
     <Button
+        android:layout_marginTop="10dp"
         android:id="@+id/search_button"
         android:layout_width="match_parent"
+        android:background="@drawable/roundshaped"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
         android:layout_height="wrap_content"
         android:text="Search"/>
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="10dp"
         android:id="@+id/requisition_status_home_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
