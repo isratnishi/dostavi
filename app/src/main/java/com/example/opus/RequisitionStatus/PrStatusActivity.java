@@ -12,11 +12,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.opus.Adapters.PrStatusAdapter;
-import com.example.opus.Adapters.RequisitionStatusHomeAdapter;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
 import com.example.opus.Models.PrStatusModel;
-import com.example.opus.Models.RequisitionStatusHomeModel;
 import com.example.opus.R;
 
 import org.json.JSONArray;
@@ -24,7 +22,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class PrStatusActivity extends AppCompatActivity {
     private ArrayList<PrStatusModel> items = new ArrayList<>();
@@ -49,7 +46,7 @@ public class PrStatusActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         progress = new ProgressDialog(this);
         progress.setMessage("Please Wait");
-        requisitionID = getIntent().getExtras().getString(Constants.REQUISTION_ID);
+        requisitionID = getIntent().getExtras().getString(Constants.REQUISITION_ID);
     }
 
     private void getPrStatusJson() {

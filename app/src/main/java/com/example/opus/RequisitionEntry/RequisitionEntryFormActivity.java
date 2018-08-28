@@ -69,7 +69,6 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 RequisitionMaster requisitionMaster = new RequisitionMaster();
                 requisitionMaster.setRequisitionNo(requisitionNumberTextView.getText().toString());
                 requisitionMaster.setRequisitionDate(requisitionDateEditText.getText().toString());
@@ -108,7 +107,6 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
                                 mCurrentDate.set(Calendar.DAY_OF_MONTH, selectedDay);
 
                                 requisitionDateEditText.setText(selectedDay + "/" + selectedMonth + "/" + selectedYear);
-
                             }
                         }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select Date");
@@ -130,7 +128,6 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
                                 mCurrentDate.set(Calendar.DAY_OF_MONTH, selectedDay);
 
                                 productTargetDateEditText.setText(selectedDay + "/" + selectedMonth + "/" + selectedYear);
-
                             }
                         }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select Date");

@@ -67,15 +67,14 @@ public class RequisitionApproveActivity3 extends AppCompatActivity {
 
     private void getPraApprovedHistory() {
         String finalURL = Constants.GET_APPROVED_HISTORY + "?ReqID=" + model.getRequisitionID();
-        Log.d(Constants.LOGTAG, "from activity 3 " + finalURL);
+       // Log.d(Constants.LOGTAG, "from activity 3 " + finalURL);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
-                        Log.d(Constants.LOGTAG, response);
+                        //Log.d(Constants.LOGTAG, response);
                         try {
                             JSONArray jsonArray = new JSONArray(response);
 

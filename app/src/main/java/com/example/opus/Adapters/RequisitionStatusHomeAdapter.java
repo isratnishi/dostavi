@@ -7,12 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.opus.Constants;
 import com.example.opus.Models.RequisitionStatusHomeModel;
-import com.example.opus.PrDetailsActivity1;
 import com.example.opus.R;
 import com.example.opus.RequisitionStatus.PrStatusActivity;
 
@@ -51,7 +49,7 @@ public class RequisitionStatusHomeAdapter extends RecyclerView.Adapter<Requisiti
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PrStatusActivity.class);
-                intent.putExtra(Constants.REQUISTION_ID, itemList.get(position).getRequisitionID());
+                intent.putExtra(Constants.REQUISITION_ID, itemList.get(position).getRequisitionID());
                 context.startActivity(intent);
             }
         });

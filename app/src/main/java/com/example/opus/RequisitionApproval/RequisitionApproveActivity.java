@@ -86,7 +86,7 @@ public class RequisitionApproveActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d(Constants.LOGTAG, response);
+                        //Log.d(Constants.LOGTAG, response);
                         loadStatusProgressbar.setVisibility(View.GONE);
                         try {
                             JSONObject jsonObject = new JSONObject(response);

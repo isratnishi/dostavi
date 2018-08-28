@@ -3,14 +3,12 @@ package com.example.opus;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.opus.Models.RequisitionStatusHomeModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -86,6 +84,6 @@ public class PrDetailsActivity1 extends AppCompatActivity {
         progress = new ProgressDialog(this);
         progress.setMessage("Please Wait");
 
-        requisitionID = getIntent().getExtras().getString(Constants.REQUISTION_ID);
+        requisitionID = getIntent().getExtras().getString(Constants.REQUISITION_ID);
     }
 }

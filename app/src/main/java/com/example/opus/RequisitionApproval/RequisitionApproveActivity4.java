@@ -18,11 +18,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
+import com.example.opus.HomeActivity;
 import com.example.opus.Models.RequisitionApprovalListModel;
 import com.example.opus.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
+
+import es.dmoral.toasty.Toasty;
 
 public class RequisitionApproveActivity4 extends AppCompatActivity {
 
@@ -71,9 +77,38 @@ public class RequisitionApproveActivity4 extends AppCompatActivity {
     }
 
     private void changeRadioButtonStatus(boolean isEnabled) {
+        if (!isEnabled) {
+            returnRejectRadioGroup.clearCheck();
+        }
         for (int i = 0; i < returnRejectRadioGroup.getChildCount(); i++) {
             returnRejectRadioGroup.getChildAt(i).setEnabled(isEnabled);
         }
+    }
+
+    private JSONObject getRequisitionStatusJsonObject() {
+
+        String reqMasterID = model.getRequisitionID();
+        String remark = "";
+        String tempAppType = String.valueOf(appType);
+        String projectID = model.getProjectID();
+        String reqNo = model.getRequisitionNo();
+
+        JSONObject requisitionApprovalJsonObject = new JSONObject();
+        try {
+
+            requisitionApprovalJsonObject.put("ReqMasterId", reqMasterID);
+            requisitionApprovalJsonObject.put("Remark", remark);
+            requisitionApprovalJsonObject.put("AppType", tempAppType);
+            requisitionApprovalJsonObject.put("ProjectId", projectID);
+            requisitionApprovalJsonObject.put("reqNo", reqNo);
+            requisitionApprovalJsonObject.put("sender", Constants.USER_EMAIL);
+            requisitionApprovalJsonObject.put("EmailID", Constants.USER_EMAIL);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return requisitionApprovalJsonObject;
     }
 
     private void postApproveData() {
@@ -84,19 +119,18 @@ public class RequisitionApproveActivity4 extends AppCompatActivity {
 
             @Override
             public void onResponse(String response) {
-                Log.d(Constants.LOGTAG, response);
-                //progressBar.setVisibility(View.GONE);
+                if (response.equals("-1"))
+                    Toasty.success(getApplicationContext(), "Your PR has been rejected", Toast.LENGTH_SHORT).show();
+                else if (response.equals("4"))
+                    Toasty.success(getApplicationContext(), "Your PR has been returned", Toast.LENGTH_SHORT).show();
+                else
+                    Toasty.success(getApplicationContext(), "Your PR has been approved", Toast.LENGTH_SHORT).show();
 
-                // Successfully Logged in
-                /* if (response.equals("1")) {
-                 *//* Toast.makeText(RequisitionApproveActivity4.this, "Successfully Logged in",
-                            Toast.LENGTH_SHORT).show();*//*
-                    //finish();
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                } else {
-                    Toast.makeText(LoginActivity.this, "Invalid email or password! please try again",
-                            Toast.LENGTH_SHORT).show();
-                }*/
+                Intent intent = new Intent(RequisitionApproveActivity4.this, RequisitionApproveActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
+                //Log.d(Constants.LOGTAG, response);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -105,12 +139,9 @@ public class RequisitionApproveActivity4 extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Something went wrong!  Please try again later",
                         Toast.LENGTH_SHORT).show();*/
             }
-        }) {
+        }) /*{
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-
-                // String email = emailTextView.getText().toString();
-                // String password = passwordEditText.getText().toString();
 
                 String reqMasterID = model.getRequisitionID();
                 String remark = "";
@@ -124,8 +155,20 @@ public class RequisitionApproveActivity4 extends AppCompatActivity {
                 params.put("AppType", tempAppType);
                 params.put("ProjectId", projectID);
                 params.put("reqNo", reqNo);
-
+                params.put("sender", Constants.USER_EMAIL);
+                params.put("EmailID", Constants.USER_EMAIL);
                 return params;
+            }
+        }*/ {
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return getRequisitionStatusJsonObject().toString().getBytes();
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
             }
         };
         AppSingleton.getInstance(getApplicationContext())
