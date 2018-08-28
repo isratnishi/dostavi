@@ -11,6 +11,7 @@ public class ItemModel {
     private String approxPrice;
     private String total;
     private double quantity;
+    private double requiredQuantity;
     private String specification;
     private String lastRate;
 
@@ -79,5 +80,13 @@ public class ItemModel {
 
     public void setLastRate(String lastRate) {
         this.lastRate = lastRate;
+    }
+
+    public double getRequiredQuantity() {
+        return requiredQuantity;
+    }
+
+    public void setRequiredQuantity(double requiredQuantity) {
+        this.requiredQuantity = requiredQuantity;
     }
 }

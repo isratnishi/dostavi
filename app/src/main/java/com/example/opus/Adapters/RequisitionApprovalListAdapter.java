@@ -17,12 +17,12 @@ import com.example.opus.RequisitionApproval.RequisitionApproveActivity;
 
 import java.util.List;
 
-public class RequistionApprovalListAdapter extends RecyclerView.Adapter<RequistionApprovalListAdapter.ItemViewHolder> {
+public class RequisitionApprovalListAdapter extends RecyclerView.Adapter<RequisitionApprovalListAdapter.ItemViewHolder> {
 
     private List<RequisitionApprovalListModel> itemList;
     private Context context;
 
-    public RequistionApprovalListAdapter(List<RequisitionApprovalListModel> itemList, Context context) {
+    public RequisitionApprovalListAdapter(List<RequisitionApprovalListModel> itemList, Context context) {
         this.itemList = itemList;
         this.context = context;
     }
@@ -30,15 +30,15 @@ public class RequistionApprovalListAdapter extends RecyclerView.Adapter<Requisti
 
     @NonNull
     @Override
-    public RequistionApprovalListAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RequisitionApprovalListAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.requisition_approve_list_view, parent, false);
-        return new RequistionApprovalListAdapter.ItemViewHolder(itemView);
+        return new RequisitionApprovalListAdapter.ItemViewHolder(itemView);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull RequistionApprovalListAdapter.ItemViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull RequisitionApprovalListAdapter.ItemViewHolder holder, final int position) {
         holder.requisitionNoTextView.setText(itemList.get(position).getRequisitionNo());
         holder.requisitionDateTextView.setText(itemList.get(position).getRequisitionDate());
         holder.subjectTextView.setText(itemList.get(position).getSubject());
@@ -48,7 +48,6 @@ public class RequistionApprovalListAdapter extends RecyclerView.Adapter<Requisti
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, RequisitionApproveActivity.class);
-                //intent.putExtra(Constants.REQUISTION_ID, itemList.get(position).getRequisitionID());
                 intent.putExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL, itemList.get(position));
                 context.startActivity(intent);
             }

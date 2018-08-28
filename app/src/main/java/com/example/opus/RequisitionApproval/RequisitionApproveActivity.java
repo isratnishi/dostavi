@@ -78,7 +78,8 @@ public class RequisitionApproveActivity extends AppCompatActivity {
 
     private void getJSON() {
         loadStatusProgressbar.setVisibility(View.VISIBLE);
-        String finalURL = Constants.GET_PRA_APPROVER + "?username=" + Constants.USER_EMAIL + "&projectID=" + model.getProjectID();
+        String finalURL = Constants.GET_PRA_APPROVER + "?username=" + Constants.USER_EMAIL + "&projectID=" + model.getRequisitionID();
+        //Log.d(Constants.LOGTAG, finalURL);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
