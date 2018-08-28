@@ -125,6 +125,7 @@ public class RequisitionStatusHome extends AppCompatActivity {
                 fromDate + "&toDate=" + toDate +
                 "&Search=" +
                 "&searchType=&EmailID=" + Constants.USER_EMAIL;
+        Log.d(Constants.LOGTAG, finalURL);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,

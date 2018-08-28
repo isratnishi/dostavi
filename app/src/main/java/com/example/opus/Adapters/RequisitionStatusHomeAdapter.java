@@ -14,6 +14,7 @@ import com.example.opus.Constants;
 import com.example.opus.Models.RequisitionStatusHomeModel;
 import com.example.opus.PrDetailsActivity1;
 import com.example.opus.R;
+import com.example.opus.RequisitionStatus.PrStatusActivity;
 
 import java.util.List;
 
@@ -46,15 +47,23 @@ public class RequisitionStatusHomeAdapter extends RecyclerView.Adapter<Requisiti
         holder.csNoTextView.setText(itemList.get(position).getPrValue());
         holder.csValueTextView.setText(itemList.get(position).getCsNO());
         holder.subjectTextView.setText(itemList.get(position).getSubject());
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PrStatusActivity.class);
+                intent.putExtra(Constants.REQUISTION_ID, itemList.get(position).getRequisitionID());
+                context.startActivity(intent);
+            }
+        });
 
-        holder.prInfoButtoon.setOnClickListener(new View.OnClickListener() {
+        /*holder.prInfoButtoon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PrDetailsActivity1.class);
                 intent.putExtra(Constants.REQUISITION_ID, itemList.get(position).getRequisitionID());
                 context.startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
@@ -72,11 +81,11 @@ public class RequisitionStatusHomeAdapter extends RecyclerView.Adapter<Requisiti
         public TextView csValueTextView;
         public TextView subjectTextView;
         public Button prInfoButtoon;
-
+        public View view;
 
         public ItemViewHolder(View view) {
             super(view);
-
+            this.view = view;
             requisitionNoTextView = view.findViewById(R.id.requisition_no_text_view);
             reqDateTextView = view.findViewById(R.id.requisition_date_text_view);
             projectNameTextView = view.findViewById(R.id.project_name_text_view);

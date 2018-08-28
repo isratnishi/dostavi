@@ -31,6 +31,7 @@ public class PrStatusActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     PrStatusAdapter adapter;
     ProgressDialog progress;
+    String requisitionID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,22 +47,23 @@ public class PrStatusActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
-
         progress = new ProgressDialog(this);
         progress.setMessage("Please Wait");
+        requisitionID = getIntent().getExtras().getString(Constants.REQUISTION_ID);
     }
 
     private void getPrStatusJson() {
         progress.show();
-        String finalURL = Constants.GET_PRA_STATUS_INFO + "?reqID=146236";
+        String finalURL = Constants.GET_PRA_STATUS_INFO + "?reqID=" + requisitionID;
+        Log.d(Constants.LOGTAG, finalURL);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                         progress.dismiss();
-                        Log.d(Constants.LOGTAG, response);
+                        progress.dismiss();
+                        // Log.d(Constants.LOGTAG, response);
                         try {
                             JSONArray jsonArray = new JSONArray(response);
                             for (int i = 0; i < jsonArray.length(); i++) {
