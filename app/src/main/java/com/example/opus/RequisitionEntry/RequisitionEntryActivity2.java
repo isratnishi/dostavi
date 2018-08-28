@@ -2,6 +2,7 @@ package com.example.opus.RequisitionEntry;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,10 +31,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.opus.Adapters.ItemAdapter;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
+import com.example.opus.HomeActivity;
 import com.example.opus.Models.ItemModel;
 import com.example.opus.Models.RequisitionMaster;
 import com.example.opus.Models.RequisitionModel;
 import com.example.opus.Models.ShowItemModel;
+import com.example.opus.Models.User;
 import com.example.opus.R;
 
 import org.json.JSONArray;
@@ -252,7 +256,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
             requisitionApprovalJsonObject.put("MaxMasterId", requisitionID);
             requisitionApprovalJsonObject.put("UserTypeID", requisitionModel.getUserID());
             requisitionApprovalJsonObject.put("empCode", requisitionMaster.getEmpCode());
-            requisitionApprovalJsonObject.put("_empCode", requisitionMaster.getEmpCode());
+            requisitionApprovalJsonObject.put("_empCode", User.getInstance().getNextEmpCode());
             requisitionApprovalJsonObject.put("empName", requisitionMaster.getEmpName());
             requisitionApprovalJsonObject.put("NextEmpName", requisitionMaster.getEmpName());
             requisitionApprovalJsonObject.put("RequisitionNos", requisitionMaster.getRequisitionNo());
@@ -270,12 +274,14 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //Log.d(Constants.LOGTAG, response);
-                        Toast.makeText(RequisitionEntryActivity2.this, "Data saved to server", Toast.LENGTH_SHORT)
-                                .show();
+                        Toasty.success(getApplicationContext(), "Data saved to server",
+                                Toast.LENGTH_SHORT, true).show();
                         items.clear();
                         itemAdapter.notifyDataSetChanged();
                         saveButton.setVisibility(View.GONE);
+                        Intent intent = new Intent(RequisitionEntryActivity2.this, HomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                     }
                 },
                 new Response.ErrorListener() {
@@ -493,7 +499,9 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        // Replacing unwanted quotations
+                        response = response.replaceAll("\"", "");
+                        User.getInstance().setNextEmpCode(response);
                         postRequisitionDetails(0);
                     }
                 },
