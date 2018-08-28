@@ -58,7 +58,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
     private List<ShowItemModel> JsonItems = new ArrayList<>();
     RecyclerView recyclerView;
     ItemAdapter itemAdapter;
-    String draffOrFinal = "0";
+    private final String draffOrFinal = "1"; // Always final from android app
 
     public TextView itemCodeEditText;
     public TextView mainCategoryEditText;
@@ -70,7 +70,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
     public EditText specificationEditText;
     public EditText quantityEditText;
     public EditText approxPriceEditText;
-    Spinner requisitionStatusSpinner;
+    //Spinner requisitionStatusSpinner;
     Button addButton;
     public static Button saveButton;
     ProgressDialog progress;
@@ -106,19 +106,6 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
             }
         });
 
-        requisitionStatusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if (position == 1)
-                    draffOrFinal = "1";
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-
-        });
-
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,7 +121,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
 
                     ItemModel itemModel = new ItemModel();
                     itemModel.setItemName(itemNameEditText.getText().toString());
-                    itemModel.setItemCode(itemCodeEditText.getText().toString());
+                    itemModel.setItemCode(getID(itemCodeEditText.getText().toString()));
                     itemModel.setUnit(unitEditText.getText().toString());
                     itemModel.setApproxPrice(approxPriceEditText.getText().toString());
                     itemModel.setSpecification(specificationEditText.getText().toString());
@@ -146,6 +133,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                     clearTexts();
                     Toasty.info(getApplicationContext(), "Item Added", Toast.LENGTH_SHORT, true).show();
                     saveButton.setVisibility(View.VISIBLE);
+                    itemNameEditText.setText("");
                 } catch (Exception e) {
                     Toasty.error(getApplicationContext(), "Invalid Quantity or Price!", Toast.LENGTH_SHORT,
                             true).show();
@@ -281,7 +269,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                         saveButton.setVisibility(View.GONE);
                         Intent intent = new Intent(RequisitionEntryActivity2.this, HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
+                        //startActivity(intent);
                     }
                 },
                 new Response.ErrorListener() {
@@ -337,7 +325,6 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
         approxPriceEditText = findViewById(R.id.approx_price_edit_text);
         specificationEditText = findViewById(R.id.specification_edit_text);
         quantityEditText = findViewById(R.id.quantity_edit_text);
-        requisitionStatusSpinner = findViewById(R.id.requisition_status_spinner);
         itemNameEditText = findViewById(R.id.item_name_edit_text);
 
         addButton = findViewById(R.id.add_button);
@@ -412,6 +399,14 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                 });
         AppSingleton.getInstance(getApplicationContext())
                 .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
+    }
+
+    private String getID(String itemCode) {
+        for (int i = 0; i < JsonItems.size(); i++)
+            if (itemCode.equals(JsonItems.get(i).getItemCode())) {
+                return JsonItems.get(i).getID();
+            }
+        return "";
     }
 
     private void addItemsToAutoCompleteTextView() {
@@ -566,6 +561,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
             requisitionApprovalJsonObject.put("MaxMasterId", maxMasterId);
             requisitionApprovalJsonObject.put("UserId", requisitionModel.getUserID());
             requisitionApprovalJsonObject.put("EmailID", requisitionModel.getUserName());
+            requisitionApprovalJsonObject.put("EmpCode", requisitionModel.getEmpCode());
 
         } catch (JSONException e) {
             e.printStackTrace();

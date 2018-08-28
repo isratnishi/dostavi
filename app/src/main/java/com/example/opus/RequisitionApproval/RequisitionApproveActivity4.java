@@ -128,7 +128,7 @@ public class RequisitionApproveActivity4 extends AppCompatActivity {
 
                 Intent intent = new Intent(RequisitionApproveActivity4.this, RequisitionApproveActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                //startActivity(intent);
 
                 //Log.d(Constants.LOGTAG, response);
             }

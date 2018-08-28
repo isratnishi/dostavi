@@ -26,6 +26,7 @@ import com.example.opus.Constants;
 import com.example.opus.Models.RequisitionMaster;
 import com.example.opus.Models.RequisitionModel;
 import com.example.opus.R;
+import com.example.opus.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,6 +58,8 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
     String selectedProjectID = null;
     RequisitionModel requisitionModel = new RequisitionModel();
     Calendar mCurrentDate = Calendar.getInstance();
+    Calendar fromDate = Calendar.getInstance();
+    Calendar toDate = Calendar.getInstance();
     int mYear, mMonth, mDay;
 
     @Override
@@ -71,13 +74,13 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
             public void onClick(View view) {
                 RequisitionMaster requisitionMaster = new RequisitionMaster();
                 requisitionMaster.setRequisitionNo(requisitionNumberTextView.getText().toString());
-                requisitionMaster.setRequisitionDate(requisitionDateEditText.getText().toString());
-                requisitionMaster.setTargetDate(productTargetDateEditText.getText().toString());
+                requisitionMaster.setRequisitionDate(Utils.getFormattedDate(fromDate));
+                requisitionMaster.setTargetDate(Utils.getFormattedDate(toDate));
                 requisitionMaster.setProjectId(selectedProjectID);
                 requisitionMaster.setEmpCode(requisitionModel.getEmpCode());
                 requisitionMaster.setEmpName(requisitionModel.getEmpName());
                 requisitionMaster.setDept(requisitionModel.getDept());
-                requisitionMaster.setDraffOrFinal("0");
+                requisitionMaster.setDraffOrFinal("1");
                 requisitionMaster.setSubject(subjectEditText.getText().toString());
                 requisitionMaster.setRemarks(justificationEditText.getText().toString());
 
@@ -106,6 +109,10 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
                                 mCurrentDate.set(Calendar.MONTH, selectedMonth);
                                 mCurrentDate.set(Calendar.DAY_OF_MONTH, selectedDay);
 
+                                fromDate.set(Calendar.YEAR, selectedYear);
+                                fromDate.set(Calendar.MONTH, selectedMonth);
+                                fromDate.set(Calendar.DAY_OF_MONTH, selectedDay);
+
                                 requisitionDateEditText.setText(selectedDay + "/" + selectedMonth + "/" + selectedYear);
                             }
                         }, mYear, mMonth, mDay);
@@ -127,7 +134,11 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
                                 mCurrentDate.set(Calendar.MONTH, selectedMonth);
                                 mCurrentDate.set(Calendar.DAY_OF_MONTH, selectedDay);
 
-                                productTargetDateEditText.setText(selectedDay + "/" + selectedMonth + "/" + selectedYear);
+                                toDate.set(Calendar.YEAR, selectedYear);
+                                toDate.set(Calendar.MONTH, selectedMonth);
+                                toDate.set(Calendar.DAY_OF_MONTH, selectedDay);
+
+                                productTargetDateEditText.setText(selectedMonth + "/" + selectedDay + "/" + selectedYear);
                             }
                         }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select Date");
@@ -265,6 +276,8 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
         productTargetDateEditText.setText(tempTargetDate);
         progress = new ProgressDialog(this);
         progress.setMessage("Please Wait");
+
+        toDate.add(Calendar.DAY_OF_MONTH, 10);
 
     }
 
