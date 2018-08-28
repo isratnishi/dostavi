@@ -36,14 +36,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Name :"
-                    android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/person_name_textview"
+                    android:id="@+id/person_name_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MD. Saddam Hossain"
+                    android:text=""
+                    android:textColor="@android:color/black"
                     android:textSize="16sp" />
             </TableRow>
 
@@ -53,14 +53,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email : "
-                    android:textColor="@android:color/black"
                     android:textSize="16dp" />
 
                 <TextView
-                    android:id="@+id/person_email_textview"
+                    android:id="@+id/person_email_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="saddam@bnb.com"
+                    android:text=""
+                    android:textColor="@android:color/black"
                     android:textSize="16sp" />
             </TableRow>
         </TableLayout>
@@ -118,8 +118,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_weight="1"
             android:layout_margin="@dimen/card_margin"
+            android:layout_weight="1"
             android:elevation="3dp"
             card_view:cardCornerRadius="@dimen/card_album_radius">
 
@@ -174,8 +174,8 @@
                 android:id="@+id/requisition_status_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/requisition_status_image_view"
@@ -200,42 +200,42 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-         <android.support.v7.widget.CardView
-             android:layout_width="0dp"
-             android:layout_height="match_parent"
-             android:layout_gravity="center"
-             android:layout_margin="@dimen/card_margin"
-             android:layout_weight="1"
-             android:elevation="3dp"
-             card_view:cardCornerRadius="@dimen/card_album_radius">
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/card_margin"
+            android:layout_weight="1"
+            android:elevation="3dp"
+            card_view:cardCornerRadius="@dimen/card_album_radius">
 
 
-             <LinearLayout
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical"
-                 android:layout_gravity="center">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
-                 <ImageView
-                     android:layout_width="130dp"
-                     android:layout_height="130dp"
-                     android:layout_gravity="center"
-                     android:background="?attr/selectableItemBackgroundBorderless"
-                     android:clickable="true"
-                     android:focusable="true"
-                     android:scaleType="fitXY"
-                     android:src="@drawable/about_us_icon" />
+                <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/about_us_icon" />
 
-                 <TextView
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:gravity="center"
-                     android:text="About us"
-                     android:textSize="18sp"
-                     android:visibility="visible" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="About us"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
 
-             </LinearLayout>
-         </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
 
