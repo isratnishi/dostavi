@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".requisition_status.RequisitionStatusHome">
 
     <TableLayout
@@ -25,8 +25,9 @@
                 android:id="@+id/requisition_date_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
+                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
+                android:focusable="false"
                 android:hint="Requisition Date"
                 android:imeActionId="6"
                 android:imeOptions="actionUnspecified"
@@ -45,9 +46,10 @@
                 android:id="@+id/product_delivery_date_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
+                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="Product Delivery Target Date: "
+                android:focusable="false"
+                android:hint="Product Delivery Target Date:"
                 android:imeActionId="6"
                 android:imeOptions="actionUnspecified"
                 android:maxLines="1"
@@ -56,19 +58,19 @@
     </TableLayout>
 
     <Button
-        android:layout_marginTop="10dp"
         android:id="@+id/search_button"
         android:layout_width="match_parent"
-        android:background="@drawable/roundshaped"
-        android:textSize="16sp"
-        android:textColor="@android:color/white"
         android:layout_height="wrap_content"
-        android:text="Search"/>
+        android:layout_marginTop="10dp"
+        android:background="@drawable/roundshaped"
+        android:text="Search"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="10dp"
         android:id="@+id/requisition_status_home_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>

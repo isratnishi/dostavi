@@ -42,7 +42,6 @@ import java.util.List;
 public class RequisitionEntryActivity1 extends AppCompatActivity {
 
     TextView requisitionNumberTextView;
-    //EditText requisitionNumberEditText;
     EditText requisitionDateEditText;
     EditText productTargetDateEditText;
     EditText subjectEditText;
@@ -115,7 +114,7 @@ public class RequisitionEntryActivity1 extends AppCompatActivity {
                                 fromDate.set(Calendar.MONTH, selectedMonth);
                                 fromDate.set(Calendar.DAY_OF_MONTH, selectedDay);
 
-                                requisitionDateEditText.setText(selectedDay + "/" + selectedMonth + "/" + selectedYear);
+                                requisitionDateEditText.setText((selectedMonth + 1) + "/" + selectedDay + "/" + selectedYear);
                             }
                         }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select Date");
@@ -140,7 +139,7 @@ public class RequisitionEntryActivity1 extends AppCompatActivity {
                                 toDate.set(Calendar.MONTH, selectedMonth);
                                 toDate.set(Calendar.DAY_OF_MONTH, selectedDay);
 
-                                productTargetDateEditText.setText(selectedMonth + "/" + selectedDay + "/" + selectedYear);
+                                requisitionDateEditText.setText((selectedMonth + 1) + "/" + selectedDay + "/" + selectedYear);
                             }
                         }, mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select Date");
@@ -265,13 +264,13 @@ public class RequisitionEntryActivity1 extends AppCompatActivity {
         mMonth = mCurrentDate.get(Calendar.MONTH);
         mDay = mCurrentDate.get(Calendar.DAY_OF_MONTH);
 
-        requisitionDateEditText.setText(mDay + "/" + mMonth + "/" + mYear);
+        requisitionDateEditText.setText((mMonth + 1) + "/" + mDay + "/" + mYear);
 
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, 10);
 
-        String tempTargetDate = calendar.get(Calendar.DATE) + "/" + calendar.get(Calendar.MONTH) + "/"
-                + calendar.get(Calendar.YEAR);
+        String tempTargetDate = (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" +
+                +calendar.get(Calendar.YEAR);
 
         productTargetDateEditText.setText(tempTargetDate);
         progress = new ProgressDialog(this);

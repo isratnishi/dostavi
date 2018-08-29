@@ -2,10 +2,12 @@ package com.example.opus.requisition_status;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.opus.LoginActivity;
+import com.example.opus.Utils;
 import com.example.opus.adapters.RequisitionStatusHomeAdapter;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
@@ -60,6 +64,7 @@ public class RequisitionStatusHome extends AppCompatActivity {
                                 mCurrentDate.set(Calendar.YEAR, selectedYear);
                                 mCurrentDate.set(Calendar.MONTH, selectedMonth);
                                 mCurrentDate.set(Calendar.DAY_OF_MONTH, selectedDay);
+
                                 searchFromEditText.setText((selectedMonth + 1) + "/" + selectedDay + "/" + selectedYear);
                             }
                         }, mYear, mMonth, mDay);
@@ -113,6 +118,10 @@ public class RequisitionStatusHome extends AppCompatActivity {
 
         progress = new ProgressDialog(this);
         progress.setMessage("Please Wait");
+
+        String tempDate = (mMonth + 1) + "/" + mDay + "/" + mYear;
+        searchFromEditText.setText(tempDate);
+        searchToEditText.setText(tempDate);
     }
 
     private void getRequisitionStatusJson() {
@@ -162,9 +171,19 @@ public class RequisitionStatusHome extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+        if (id == R.id.logout) {
+            Intent intent = new Intent(RequisitionStatusHome.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
         if (id == android.R.id.home) {
             finish();
             return true;
