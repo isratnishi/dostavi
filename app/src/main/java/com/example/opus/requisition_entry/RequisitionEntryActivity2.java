@@ -107,11 +107,11 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isAlreadyAdded()) {
-                    Toasty.error(getApplicationContext(), "Item Already added!", Toast.LENGTH_SHORT,
-                            false).show();
+                // Validation
+                if (!isInputFormValidated()) {
                     return;
                 }
+
                 int total = 0;
                 try {
                     total = Integer.parseInt(quantityEditText.getText().toString())
@@ -133,6 +133,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                     saveButton.setVisibility(View.VISIBLE);
                     itemNameEditText.setText("");
                 } catch (Exception e) {
+
                     Toasty.error(getApplicationContext(), "Invalid Quantity or Price!", Toast.LENGTH_SHORT,
                             true).show();
                     e.printStackTrace();
@@ -148,6 +149,35 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                 clearScreen();
             }
         });
+    }
+
+    private boolean isInputFormValidated() {
+        if (isAlreadyAdded()) {
+            Toasty.error(getApplicationContext(), "Item Already added!", Toast.LENGTH_SHORT,
+                    false).show();
+            return false;
+        } else if (isItemNameEmpty()) {
+            Toasty.error(getApplicationContext(), "Please input item name", Toast.LENGTH_SHORT,
+                    false).show();
+            itemNameEditText.requestFocus();
+            itemNameEditText.setError("Item name can not be empty");
+            return false;
+        } else if (TextUtils.isEmpty(quantityEditText.getText().toString())) {
+            quantityEditText.requestFocus();
+            quantityEditText.setError("This field cannot be empty");
+            return false;
+        } else if (TextUtils.isEmpty(approxPriceEditText.getText().toString())) {
+            approxPriceEditText.requestFocus();
+            approxPriceEditText.setError("This field cannot be empty");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isItemNameEmpty() {
+        if (TextUtils.isEmpty(itemNameEditText.getText().toString()))
+            return true;
+        return false;
     }
 
     private void clearTexts() {
