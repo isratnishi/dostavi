@@ -2,11 +2,13 @@ package com.example.opus.requisition_entry;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -65,10 +67,9 @@ public class RequisitionEntryActivity1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setContentView(R.layout.activity_requisition_entry_form);
+        setContentView(R.layout.activity_requisition_entry_1);
         initializeVariables();
         getRequisitionJSON();
-        //Utils.hideSoftKeyboard(this);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override

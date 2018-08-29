@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -26,6 +27,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.opus.Utils;
 import com.example.opus.adapters.ItemAdapter;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
@@ -80,8 +82,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_requistion_entry_2);
         initializeVariables();
         getJSON();
-
-
+        // Utils.hideSoftKeyboard(this);
         itemNameEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -96,6 +97,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 changeTextsAccordingToText(itemNameEditText.getText().toString());
+                Utils.hideSoftKeyboard(RequisitionEntryActivity2.this);
             }
         });
 

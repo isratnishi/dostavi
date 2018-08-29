@@ -38,24 +38,25 @@
         <!-- Requisition Entry -->
         <activity
             android:name=".requisition_entry.RequisitionEntryActivity1"
-            android:label="@string/requisition_entry_label">
+            android:label="@string/requisition_entry_label"
+            android:windowSoftInputMode="stateAlwaysHidden">
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
         </activity>
         <activity
             android:name=".requisition_entry.RequisitionEntryActivity2"
-            android:label="@string/requisition_entry_label">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".requisition_entry.RequisitionEntryActivity1" />
+            android:label="@string/requisition_entry_label"
+            android:windowSoftInputMode="stateAlwaysHidden">
+
         </activity>
 
         <!-- Requisition Approval -->
 
         <activity
             android:name=".requisition_approval.RequisitionApprovalActivity1"
-            android:label="@string/requisition_approve_label"/>
+            android:label="@string/requisition_approve_label" />
         <activity
             android:name=".requisition_approval.RequisitionApproveActivity2"
             android:label="@string/requisition_approve_label" />
