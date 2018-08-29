@@ -1,4 +1,4 @@
-package com.example.opus.Models;
+package com.example.opus.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;

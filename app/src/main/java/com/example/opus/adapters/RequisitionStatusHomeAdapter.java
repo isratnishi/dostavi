@@ -1,4 +1,4 @@
-package com.example.opus.Adapters;
+package com.example.opus.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.opus.Constants;
-import com.example.opus.Models.RequisitionStatusHomeModel;
+import com.example.opus.models.RequisitionStatusHomeModel;
 import com.example.opus.R;
-import com.example.opus.RequisitionStatus.PrStatusActivity;
+import com.example.opus.requisition_status.PrStatusActivity;
 
 import java.util.List;
 

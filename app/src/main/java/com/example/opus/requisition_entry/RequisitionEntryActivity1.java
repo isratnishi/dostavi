@@ -1,4 +1,4 @@
-package com.example.opus.RequisitionEntry;
+package com.example.opus.requisition_entry;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -23,8 +23,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
-import com.example.opus.Models.RequisitionMaster;
-import com.example.opus.Models.RequisitionModel;
+import com.example.opus.models.RequisitionMaster;
+import com.example.opus.models.RequisitionModel;
 import com.example.opus.R;
 import com.example.opus.Utils;
 

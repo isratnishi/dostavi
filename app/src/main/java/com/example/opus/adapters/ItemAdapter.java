@@ -1,4 +1,4 @@
-package com.example.opus.Adapters;
+package com.example.opus.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,33 +9,34 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.opus.Models.ItemModel;
+import com.example.opus.models.ItemModel;
 import com.example.opus.R;
-import com.example.opus.RequisitionEntry.RequisitionEntryActivity2;
+import com.example.opus.requisition_entry.RequisitionEntryActivity2;
 
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
-public class RequisitionApprovalItemAdapter extends RecyclerView.Adapter<RequisitionApprovalItemAdapter.ItemViewHolder> {
+
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
     private List<ItemModel> itemList;
     private Context context;
 
-    public RequisitionApprovalItemAdapter(List<ItemModel> itemList, Context context) {
+    public ItemAdapter(List<ItemModel> itemList, Context context) {
         this.itemList = itemList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public RequisitionApprovalItemAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ItemAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.requisition_approve1_listview, parent, false);
-        return new RequisitionApprovalItemAdapter.ItemViewHolder(itemView);
+                .inflate(R.layout.listview, parent, false);
+        return new ItemViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RequisitionApprovalItemAdapter.ItemViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ItemAdapter.ItemViewHolder holder, final int position) {
         holder.itemCode.setText(itemList.get(position).getItemCode());
         holder.itemName.setText(itemList.get(position).getItemName());
         holder.unit.setText(itemList.get(position).getUnit());
@@ -43,8 +44,18 @@ public class RequisitionApprovalItemAdapter extends RecyclerView.Adapter<Requisi
         holder.total.setText(itemList.get(position).getTotal());
         holder.quantity.setText(String.valueOf(itemList.get(position).getQuantity()));
         holder.specification.setText(itemList.get(position).getSpecification());
-        holder.requiredQuantity.setText(String.valueOf(itemList.get(position).getRequiredQuantity()));
-        holder.lastPrice.setText(itemList.get(position).getLastRate());
+
+        holder.view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toasty.info(context, "Item removed", Toast.LENGTH_SHORT, true).show();
+                itemList.remove(position);
+                notifyDataSetChanged();
+                if (itemList.size() == 0)
+                    RequisitionEntryActivity2.saveButton.setVisibility(View.GONE);
+                return false;
+            }
+        });
     }
 
     @Override
@@ -58,8 +69,6 @@ public class RequisitionApprovalItemAdapter extends RecyclerView.Adapter<Requisi
         public TextView unit;
         public TextView approxPrice;
         public TextView total;
-        public TextView requiredQuantity;
-        public TextView lastPrice;
         public TextView quantity;
         public TextView specification;
         public View view;
@@ -74,8 +83,6 @@ public class RequisitionApprovalItemAdapter extends RecyclerView.Adapter<Requisi
             total = view.findViewById(R.id.total_text_view);
             quantity = view.findViewById(R.id.quantity_text_view);
             specification = view.findViewById(R.id.specification_text_view);
-            requiredQuantity = view.findViewById(R.id.req_qty_text_view);
-            lastPrice = view.findViewById(R.id.last_price_text_view);
         }
     }
 }

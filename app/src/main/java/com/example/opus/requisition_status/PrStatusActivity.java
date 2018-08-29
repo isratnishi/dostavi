@@ -1,4 +1,4 @@
-package com.example.opus.RequisitionStatus;
+package com.example.opus.requisition_status;
 
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -6,15 +6,16 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.opus.Adapters.PrStatusAdapter;
+import com.example.opus.adapters.PrStatusAdapter;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
-import com.example.opus.Models.PrStatusModel;
+import com.example.opus.models.PrStatusModel;
 import com.example.opus.R;
 
 import org.json.JSONArray;
@@ -33,6 +34,7 @@ public class PrStatusActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_pr_status);
         initializeVariables();
         getPrStatusJson();
@@ -88,5 +90,16 @@ public class PrStatusActivity extends AppCompatActivity {
                 });
         AppSingleton.getInstance(getApplicationContext())
                 .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

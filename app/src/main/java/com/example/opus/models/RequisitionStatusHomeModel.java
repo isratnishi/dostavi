@@ -1,4 +1,4 @@
-package com.example.opus.Models;
+package com.example.opus.models;
 
 public class RequisitionStatusHomeModel {
     private String requisitionNo;

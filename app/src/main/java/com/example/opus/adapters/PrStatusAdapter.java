@@ -1,4 +1,4 @@
-package com.example.opus.Adapters;
+package com.example.opus.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,15 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.opus.Models.PrStatusModel;
+import com.example.opus.models.PrStatusModel;
 import com.example.opus.R;
-import com.example.opus.RequisitionEntry.RequisitionEntryActivity2;
 
 import java.util.List;
-
-import es.dmoral.toasty.Toasty;
 
 public class PrStatusAdapter extends RecyclerView.Adapter<PrStatusAdapter.ItemViewHolder> {
 

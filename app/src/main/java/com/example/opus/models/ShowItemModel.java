@@ -1,6 +1,4 @@
-package com.example.opus.Models;
-
-import com.google.gson.annotations.SerializedName;
+package com.example.opus.models;
 
 
 /**

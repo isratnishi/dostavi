@@ -1,4 +1,4 @@
-package com.example.opus.Adapters;
+package com.example.opus.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.opus.Constants;
-import com.example.opus.Models.RequisitionApprovalListModel;
+import com.example.opus.models.RequisitionApprovalListModel;
 import com.example.opus.R;
-import com.example.opus.RequisitionApproval.RequisitionApproveActivity2;
+import com.example.opus.requisition_approval.RequisitionApproveActivity2;
 
 import java.util.List;
 

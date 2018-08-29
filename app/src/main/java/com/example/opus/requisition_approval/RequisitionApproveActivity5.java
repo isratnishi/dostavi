@@ -1,4 +1,4 @@
-package com.example.opus.RequisitionApproval;
+package com.example.opus.requisition_approval;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
-import com.example.opus.Models.RequisitionApprovalListModel;
+import com.example.opus.models.RequisitionApprovalListModel;
 import com.example.opus.R;
 
 import org.json.JSONException;

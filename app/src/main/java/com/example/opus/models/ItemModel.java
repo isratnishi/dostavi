@@ -1,4 +1,4 @@
-package com.example.opus.Models;
+package com.example.opus.models;
 
 /**
  * Created by Shoukhin on 7/23/2018.

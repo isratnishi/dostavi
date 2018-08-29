@@ -14,10 +14,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.opus.Models.User;
-import com.example.opus.RequisitionApproval.RequisitionApprovalActivity1;
-import com.example.opus.RequisitionEntry.RequisitionEntryActivity1;
-import com.example.opus.RequisitionStatus.RequisitionStatusHome;
+import com.example.opus.models.User;
+import com.example.opus.requisition_approval.RequisitionApprovalActivity1;
+import com.example.opus.requisition_entry.RequisitionEntryActivity1;
+import com.example.opus.requisition_status.RequisitionStatusHome;
 
 import org.json.JSONException;
 import org.json.JSONObject;

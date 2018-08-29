@@ -1,4 +1,4 @@
-package com.example.opus.RequisitionStatus;
+package com.example.opus.requisition_status;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -6,22 +6,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.opus.Adapters.RequisitionStatusHomeAdapter;
+import com.example.opus.adapters.RequisitionStatusHomeAdapter;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
-import com.example.opus.Models.RequisitionStatusHomeModel;
+import com.example.opus.models.RequisitionStatusHomeModel;
 import com.example.opus.R;
 
 import org.json.JSONArray;
@@ -32,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class RequisitionStatusHome extends AppCompatActivity {
-
     private ArrayList<RequisitionStatusHomeModel> items = new ArrayList<>();
     RecyclerView recyclerView;
     RequisitionStatusHomeAdapter adapter;
@@ -47,6 +44,7 @@ public class RequisitionStatusHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_requisition_status_home);
         initializeVariables();
 
@@ -125,7 +123,6 @@ public class RequisitionStatusHome extends AppCompatActivity {
                 fromDate + "&toDate=" + toDate +
                 "&Search=" +
                 "&searchType=&EmailID=" + Constants.USER_EMAIL;
-        Log.d(Constants.LOGTAG, finalURL);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
@@ -133,7 +130,6 @@ public class RequisitionStatusHome extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         progress.dismiss();
-                        //Log.d(Constants.LOGTAG, response);
                         try {
                             JSONArray jsonArray = new JSONArray(response);
                             for (int i = 0; i < jsonArray.length(); i++) {
@@ -148,7 +144,6 @@ public class RequisitionStatusHome extends AppCompatActivity {
                                 model.setCsValue(tempObject.getString("CSVALUE"));
                                 model.setSubject(tempObject.getString("Subject"));
                                 model.setRequisitionID(tempObject.getString("RequisitionId"));
-
                                 items.add(model);
                             }
                             adapter.notifyDataSetChanged();
@@ -164,5 +159,16 @@ public class RequisitionStatusHome extends AppCompatActivity {
                 });
         AppSingleton.getInstance(getApplicationContext())
                 .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

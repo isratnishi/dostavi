@@ -1,4 +1,4 @@
-package com.example.opus.RequisitionEntry;
+package com.example.opus.requisition_entry;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -12,14 +12,11 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,15 +25,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.opus.Adapters.ItemAdapter;
+import com.example.opus.adapters.ItemAdapter;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
 import com.example.opus.HomeActivity;
-import com.example.opus.Models.ItemModel;
-import com.example.opus.Models.RequisitionMaster;
-import com.example.opus.Models.RequisitionModel;
-import com.example.opus.Models.ShowItemModel;
-import com.example.opus.Models.User;
+import com.example.opus.models.ItemModel;
+import com.example.opus.models.RequisitionMaster;
+import com.example.opus.models.RequisitionModel;
+import com.example.opus.models.ShowItemModel;
+import com.example.opus.models.User;
 import com.example.opus.R;
 
 import org.json.JSONArray;

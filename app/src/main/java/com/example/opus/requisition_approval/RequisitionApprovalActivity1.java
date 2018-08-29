@@ -1,19 +1,19 @@
-package com.example.opus.RequisitionApproval;
+package com.example.opus.requisition_approval;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.MenuItem;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.opus.Adapters.RequisitionApprovalListAdapter;
+import com.example.opus.adapters.RequisitionApprovalListAdapter;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
-import com.example.opus.Models.RequisitionApprovalListModel;
+import com.example.opus.models.RequisitionApprovalListModel;
 import com.example.opus.R;
 
 import org.json.JSONArray;
@@ -30,6 +30,7 @@ public class RequisitionApprovalActivity1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_requisition_list);
         initializeVariables();
         getRequisitionApprovedList();
@@ -46,13 +47,11 @@ public class RequisitionApprovalActivity1 extends AppCompatActivity {
 
     private void getRequisitionApprovedList() {
         String finalURL = Constants.GET_REQUISITION_LIST_FOR_APPROVE + "?Email=" + Constants.USER_EMAIL;
-        Log.d(Constants.LOGTAG, finalURL);
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d(Constants.LOGTAG, response);
                         try {
                             JSONArray jsonArray = new JSONArray(response);
 
@@ -76,7 +75,6 @@ public class RequisitionApprovalActivity1 extends AppCompatActivity {
                                 items.add(listModel);
                             }
                             requisitionApprovalListAdapter.notifyDataSetChanged();
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -89,5 +87,16 @@ public class RequisitionApprovalActivity1 extends AppCompatActivity {
                 });
         AppSingleton.getInstance(getApplicationContext())
                 .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,8 +1,4 @@
-package com.example.opus.Models;
-
-import android.content.Context;
-
-import com.example.opus.AppSingleton;
+package com.example.opus.models;
 
 public class User {
     private String userEmail;
