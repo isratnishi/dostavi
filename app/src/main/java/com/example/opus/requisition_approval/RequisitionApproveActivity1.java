@@ -1,15 +1,18 @@
 package com.example.opus.requisition_approval;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.opus.LoginActivity;
 import com.example.opus.adapters.RequisitionApprovalListAdapter;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
@@ -22,7 +25,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class RequisitionApprovalActivity1 extends AppCompatActivity {
+public class RequisitionApproveActivity1 extends AppCompatActivity {
     private ArrayList<RequisitionApprovalListModel> items = new ArrayList<>();
     RecyclerView recyclerView;
     RequisitionApprovalListAdapter requisitionApprovalListAdapter;
@@ -90,9 +93,19 @@ public class RequisitionApprovalActivity1 extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+        if (id == R.id.logout) {
+            Intent intent = new Intent(RequisitionApproveActivity1.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
         if (id == android.R.id.home) {
             finish();
             return true;

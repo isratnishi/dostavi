@@ -3,6 +3,7 @@ package com.example.opus.requisition_approval;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
+import com.example.opus.LoginActivity;
 import com.example.opus.models.RequisitionApprovalListModel;
 import com.example.opus.R;
 
@@ -50,7 +52,7 @@ public class RequisitionApproveActivity2 extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RequisitionApproveActivity2.this, RequistionApproveActivity3.class);
+                Intent intent = new Intent(RequisitionApproveActivity2.this, RequisitionApproveActivity3.class);
                 intent.putExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL, model);
                 startActivity(intent);
             }
@@ -132,9 +134,19 @@ public class RequisitionApproveActivity2 extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+        if (id == R.id.logout) {
+            Intent intent = new Intent(RequisitionApproveActivity2.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
         if (id == android.R.id.home) {
             finish();
             return true;

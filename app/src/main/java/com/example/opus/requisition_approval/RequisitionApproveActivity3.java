@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.opus.LoginActivity;
 import com.example.opus.adapters.RequisitionApprovalItemAdapter;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
@@ -26,7 +28,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class RequistionApproveActivity3 extends AppCompatActivity {
+public class RequisitionApproveActivity3 extends AppCompatActivity {
 
     private ArrayList<ItemModel> items = new ArrayList<>();
     RecyclerView recyclerView;
@@ -47,7 +49,7 @@ public class RequistionApproveActivity3 extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RequistionApproveActivity3.this, RequisitionApproveActivity4.class);
+                Intent intent = new Intent(RequisitionApproveActivity3.this, RequisitionApproveActivity4.class);
                 intent.putExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL, model);
                 startActivity(intent);
             }
@@ -122,8 +124,19 @@ public class RequistionApproveActivity3 extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        if (id == R.id.logout) {
+            Intent intent = new Intent(RequisitionApproveActivity3.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
         if (id == android.R.id.home) {
             finish();
             return true;

@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,7 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.opus.models.User;
-import com.example.opus.requisition_approval.RequisitionApprovalActivity1;
+import com.example.opus.requisition_approval.RequisitionApproveActivity1;
+import com.example.opus.requisition_approval.RequisitionApproveActivity2;
 import com.example.opus.requisition_entry.RequisitionEntryActivity1;
 import com.example.opus.requisition_status.RequisitionStatusHome;
 
@@ -39,8 +42,8 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_home);
-
         initializeVariables();
         getUserInformationFromServer();
 
@@ -61,14 +64,14 @@ public class HomeActivity extends AppCompatActivity {
         requisitionApproveImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, RequisitionApprovalActivity1.class));
+                startActivity(new Intent(HomeActivity.this, RequisitionApproveActivity1.class));
             }
         });
 
         requisitionApproveLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, RequisitionApprovalActivity1.class));
+                startActivity(new Intent(HomeActivity.this, RequisitionApproveActivity1.class));
             }
         });
 
@@ -136,6 +139,26 @@ public class HomeActivity extends AppCompatActivity {
         progress = new ProgressDialog(this);
         progress.setMessage("Please Wait");
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.logout) {
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

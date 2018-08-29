@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -26,10 +27,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.opus.AppSingleton;
 import com.example.opus.Constants;
+import com.example.opus.LoginActivity;
 import com.example.opus.models.RequisitionMaster;
 import com.example.opus.models.RequisitionModel;
 import com.example.opus.R;
 import com.example.opus.Utils;
+import com.example.opus.requisition_status.PrStatusActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -298,9 +301,19 @@ public class RequisitionEntryActivity1 extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+        if (id == R.id.logout) {
+            Intent intent = new Intent(RequisitionEntryActivity1.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
         if (id == android.R.id.home) {
             finish();
             return true;
