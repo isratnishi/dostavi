@@ -1,7 +1,10 @@
 package com.opus_bd.dostavi.adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.widget.Toast;
 import com.opus_bd.dostavi.models.ItemModel;
 import com.opus_bd.dostavi.requisition_entry.RequisitionEntryActivity2;
 import com.opus_bd.dostavi.R;
+
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
@@ -47,12 +51,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toasty.info(context, "Item removed", Toast.LENGTH_SHORT, true).show();
-                itemList.remove(position);
-                notifyDataSetChanged();
-                if (itemList.size() == 0)
-                    RequisitionEntryActivity2.saveButton.setVisibility(View.GONE);
-                return false;
+                showAlertDialog(position);
+                return true;
             }
         });
     }
@@ -83,5 +83,32 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             quantity = view.findViewById(R.id.quantity_text_view);
             specification = view.findViewById(R.id.specification_text_view);
         }
+    }
+
+    private void showAlertDialog(final int position) {
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(context,
+                    android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(context);
+        }
+        builder.setTitle("Remove Entry")
+                .setMessage("Do you want to remove the entry?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        itemList.remove(position);
+                        notifyDataSetChanged();
+                        if (itemList.size() == 0)
+                            RequisitionEntryActivity2.saveButton.setVisibility(View.GONE);
+                        Toasty.info(context, "Item removed", Toast.LENGTH_SHORT, true).show();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }

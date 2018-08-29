@@ -20,7 +20,8 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp">
+                android:padding="4dp"
+                android:shrinkColumns="1">
 
                 <TableRow android:paddingBottom="10dp">
 
