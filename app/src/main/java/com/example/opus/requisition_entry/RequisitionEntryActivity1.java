@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -51,8 +52,6 @@ public class RequisitionEntryActivity1 extends AppCompatActivity {
     CheckBox compititionWaiver;
     Button next;
     EditText supplierNameEditText;
-    //TableRow supplierNameRow;
-    // ProgressBar loadStatusProgressbar;
     ProgressDialog progress;
 
     String selectedProjectID = null;
@@ -65,9 +64,11 @@ public class RequisitionEntryActivity1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_requisition_entry_form);
         initializeVariables();
         getRequisitionJSON();
+        //Utils.hideSoftKeyboard(this);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -239,8 +240,6 @@ public class RequisitionEntryActivity1 extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //Log.d(Constants.LOGTAG, error.getMessage() + "");
-
                     }
                 });
         AppSingleton.getInstance(getApplicationContext())
@@ -296,5 +295,16 @@ public class RequisitionEntryActivity1 extends AppCompatActivity {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         projectNameSpinner.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,5 +1,8 @@
 package com.example.opus;
 
+import android.app.Activity;
+import android.view.inputmethod.InputMethodManager;
+
 import java.util.Calendar;
 
 public class Utils {
@@ -22,4 +25,9 @@ public class Utils {
 
         return year + tempMonth + tempDay;
     }
+
+   /* public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+    }*/
 }

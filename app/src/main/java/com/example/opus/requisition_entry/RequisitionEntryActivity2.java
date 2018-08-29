@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -67,7 +68,6 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
     public EditText specificationEditText;
     public EditText quantityEditText;
     public EditText approxPriceEditText;
-    //Spinner requisitionStatusSpinner;
     Button addButton;
     public static Button saveButton;
     ProgressDialog progress;
@@ -76,15 +76,11 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_requistion_entry_2);
         initializeVariables();
         getJSON();
-        recyclerView = findViewById(R.id.requisition_recycler_view);
-        itemAdapter = new ItemAdapter(items, this);
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(itemAdapter);
 
         itemNameEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -323,12 +319,16 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
         specificationEditText = findViewById(R.id.specification_edit_text);
         quantityEditText = findViewById(R.id.quantity_edit_text);
         itemNameEditText = findViewById(R.id.item_name_edit_text);
-
         addButton = findViewById(R.id.add_button);
         saveButton = findViewById(R.id.saveButton);
-
         progress = new ProgressDialog(this);
         progress.setMessage("Please Wait");
+        recyclerView = findViewById(R.id.requisition_recycler_view);
+        itemAdapter = new ItemAdapter(items, this);
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(itemAdapter);
     }
 
     private void getJSON() {
@@ -432,6 +432,7 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                 unitEditText.setText(showItemModel.getUnitName());
                 lastPriceEditText.setText(showItemModel.getReOrderLevel());
                 subCategoryEditText.setText(showItemModel.getSubCatName());
+//                selectedID = showItemModel.getID();
                 isFound = true;
                 break;
             }
@@ -566,5 +567,15 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
             e.printStackTrace();
         }
         return requisitionApprovalJsonObject;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

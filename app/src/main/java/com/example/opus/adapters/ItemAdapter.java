@@ -10,9 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.opus.models.ItemModel;
-import com.example.opus.R;
 import com.example.opus.requisition_entry.RequisitionEntryActivity2;
-
+import com.example.opus.R;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
