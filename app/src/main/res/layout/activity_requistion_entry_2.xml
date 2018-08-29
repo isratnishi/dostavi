@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context="com.opus_bd.dostana.requisition_entry.RequisitionEntryActivity2">
+    tools:context="com.opus_bd.dostavi.requisition_entry.RequisitionEntryActivity2">
 
     <LinearLayout
         android:layout_width="match_parent"
