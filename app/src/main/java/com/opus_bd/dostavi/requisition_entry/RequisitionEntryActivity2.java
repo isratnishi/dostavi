@@ -50,7 +50,6 @@ import java.util.List;
 import es.dmoral.toasty.Toasty;
 
 public class RequisitionEntryActivity2 extends AppCompatActivity {
-
     RequisitionMaster requisitionMaster;
     RequisitionModel requisitionModel;
     String requisitionID;
@@ -124,14 +123,12 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
                     itemModel.setSpecification(specificationEditText.getText().toString());
                     itemModel.setQuantity(Integer.parseInt(quantityEditText.getText().toString()));
                     itemModel.setTotal(String.valueOf(total));
-
                     items.add(itemModel);
                     itemAdapter.notifyDataSetChanged();
                     clearTexts();
                     Toasty.info(getApplicationContext(), "Item Added", Toast.LENGTH_SHORT, true).show();
                     saveButton.setVisibility(View.VISIBLE);
-                    itemNameEditText.setText("");
-                    itemNameEditText.requestFocus();
+
                 } catch (Exception e) {
 
                     Toasty.error(getApplicationContext(), "Invalid Quantity or Price!", Toast.LENGTH_SHORT,
@@ -184,6 +181,8 @@ public class RequisitionEntryActivity2 extends AppCompatActivity {
         specificationEditText.setText("");
         quantityEditText.setText("");
         approxPriceEditText.setText("");
+        itemNameEditText.setText("");
+        itemNameEditText.requestFocus();
     }
 
     private boolean isAlreadyAdded() {
