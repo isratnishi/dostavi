@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.opus">
+    package="com.opus_bd.dostana">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -28,12 +28,8 @@
 
         <activity
             android:name=".HomeActivity"
-            android:label="Home">
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity" />
-        </activity>
+            android:label="Home"
+            android:screenOrientation="portrait"/>
 
         <!-- Requisition Entry -->
         <activity
