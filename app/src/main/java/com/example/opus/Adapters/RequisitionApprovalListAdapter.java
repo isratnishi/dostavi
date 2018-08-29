@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.example.opus.Constants;
 import com.example.opus.Models.RequisitionApprovalListModel;
 import com.example.opus.R;
-import com.example.opus.RequisitionApproval.RequisitionApproveActivity;
+import com.example.opus.RequisitionApproval.RequisitionApproveActivity2;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class RequisitionApprovalListAdapter extends RecyclerView.Adapter<Requisi
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, RequisitionApproveActivity.class);
+                Intent intent = new Intent(context, RequisitionApproveActivity2.class);
                 intent.putExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL, itemList.get(position));
                 context.startActivity(intent);
             }

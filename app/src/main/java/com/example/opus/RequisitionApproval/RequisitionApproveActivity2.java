@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -26,9 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import es.dmoral.toasty.Toasty;
-
-public class RequisitionApproveActivity extends AppCompatActivity {
+public class RequisitionApproveActivity2 extends AppCompatActivity {
     ProgressBar loadStatusProgressbar;
     TextView requisitionNumberTextView;
     TextView requisitionDateTextView;
@@ -56,7 +53,7 @@ public class RequisitionApproveActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RequisitionApproveActivity.this, RequistionApproveActivity2.class);
+                Intent intent = new Intent(RequisitionApproveActivity2.this, RequistionApproveActivity3.class);
                 intent.putExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL, model);
                 startActivity(intent);
             }
@@ -137,44 +134,14 @@ public class RequisitionApproveActivity extends AppCompatActivity {
                 .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
     }
 
-    private void getRequisitionItem() {
-        loadStatusProgressbar.setVisibility(View.VISIBLE);
-        String maxMasterID = "146257";
-        String finalURL = Constants.GET_REQUISITION_LIST + "?MasterId=" + maxMasterID;
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                finalURL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        loadStatusProgressbar.setVisibility(View.GONE);
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
-                            Log.d(Constants.LOGTAG, response);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                    }
-                });
-        AppSingleton.getInstance(getApplicationContext())
-                .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            NavUtils.navigateUpFromSameTask(this);
+            finish();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

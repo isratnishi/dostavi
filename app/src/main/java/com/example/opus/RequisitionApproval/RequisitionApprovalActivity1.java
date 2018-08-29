@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class RequisitionApprovalListActivity extends AppCompatActivity {
+public class RequisitionApprovalActivity1 extends AppCompatActivity {
     private ArrayList<RequisitionApprovalListModel> items = new ArrayList<>();
     RecyclerView recyclerView;
     RequisitionApprovalListAdapter requisitionApprovalListAdapter;

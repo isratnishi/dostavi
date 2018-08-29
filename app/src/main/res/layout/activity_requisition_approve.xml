@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".RequisitionApproval.RequisitionApproveActivity">
+    tools:context=".RequisitionApproval.RequisitionApproveActivity2">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingBottom="10dp"
-        tools:context=".RequisitionEntry.RequisitionEntryFormActivity">
+        tools:context=".RequisitionEntry.RequisitionEntryActivity1">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"

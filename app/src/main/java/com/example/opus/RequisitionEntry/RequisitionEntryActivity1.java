@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class RequisitionEntryFormActivity extends AppCompatActivity {
+public class RequisitionEntryActivity1 extends AppCompatActivity {
 
     TextView requisitionNumberTextView;
     //EditText requisitionNumberEditText;
@@ -89,7 +89,7 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
                 if (isPostPR.isChecked())
                     requisitionMaster.setPostPR("1");
 
-                Intent intent = new Intent(RequisitionEntryFormActivity.this, RequisitionEntryActivity2.class);
+                Intent intent = new Intent(RequisitionEntryActivity1.this, RequisitionEntryActivity2.class);
                 intent.putExtra(Constants.REQUISITION_MODEL, requisitionModel);
                 intent.putExtra(Constants.REQUISITION_MASTER, requisitionMaster);
                 startActivity(intent);
@@ -100,7 +100,7 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatePickerDialog mDatePicker;
-                mDatePicker = new DatePickerDialog(RequisitionEntryFormActivity.this,
+                mDatePicker = new DatePickerDialog(RequisitionEntryActivity1.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             public void onDateSet(DatePicker datepicker, int
@@ -125,7 +125,7 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatePickerDialog mDatePicker;
-                mDatePicker = new DatePickerDialog(RequisitionEntryFormActivity.this,
+                mDatePicker = new DatePickerDialog(RequisitionEntryActivity1.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             public void onDateSet(DatePicker datepicker, int
@@ -212,7 +212,7 @@ public class RequisitionEntryFormActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progress.dismiss();
-                        Toast.makeText(RequisitionEntryFormActivity.this, "Something went wrong! Please try again later",
+                        Toast.makeText(RequisitionEntryActivity1.this, "Something went wrong! Please try again later",
                                 Toast.LENGTH_SHORT).show();
                         finish();
                     }

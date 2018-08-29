@@ -15,8 +15,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.opus.Models.User;
-import com.example.opus.RequisitionApproval.RequisitionApprovalListActivity;
-import com.example.opus.RequisitionEntry.RequisitionEntryFormActivity;
+import com.example.opus.RequisitionApproval.RequisitionApprovalActivity1;
+import com.example.opus.RequisitionEntry.RequisitionEntryActivity1;
 import com.example.opus.RequisitionStatus.RequisitionStatusHome;
 
 import org.json.JSONException;
@@ -47,28 +47,28 @@ public class HomeActivity extends AppCompatActivity {
         requisitionEntryImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, RequisitionEntryFormActivity.class));
+                startActivity(new Intent(HomeActivity.this, RequisitionEntryActivity1.class));
             }
         });
 
         requisitionEntryLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, RequisitionEntryFormActivity.class));
+                startActivity(new Intent(HomeActivity.this, RequisitionEntryActivity1.class));
             }
         });
 
         requisitionApproveImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, RequisitionApprovalListActivity.class));
+                startActivity(new Intent(HomeActivity.this, RequisitionApprovalActivity1.class));
             }
         });
 
         requisitionApproveLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, RequisitionApprovalListActivity.class));
+                startActivity(new Intent(HomeActivity.this, RequisitionApprovalActivity1.class));
             }
         });
 
