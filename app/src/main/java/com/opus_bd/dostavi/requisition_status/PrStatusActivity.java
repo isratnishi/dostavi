@@ -57,7 +57,7 @@ public class PrStatusActivity extends AppCompatActivity {
     private void getPrStatusJson() {
         progress.show();
         String finalURL = Constants.GET_PRA_STATUS_INFO + "?reqID=" + requisitionID;
-        Log.d(Constants.LOGTAG, finalURL);
+       // Log.d(Constants.LOGTAG, finalURL);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,

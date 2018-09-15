@@ -8,7 +8,7 @@ public class Constants {
     private static final String BASE_SERVER_ADDRESS = SERVER + "OAK/api/OAKAPI/";
     public static final String LOGIN_URL = SERVER + "OAK/Account/LoginAPI";
 
-    public static final String LOGTAG = "logtag";
+    //public static final String LOGTAG = "logtag";
     public static final String REQUEST_TAG = "com.example.opus";
     public static final String GET_REQUISITION_INFO = BASE_SERVER_ADDRESS + "GetRequisitionEntryInfo";
     public static final String GET_REQUISITION_NUMBER = BASE_SERVER_ADDRESS + "GetRequisitionAutoNumber";
