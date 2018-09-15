@@ -147,6 +147,12 @@ public class RequisitionApproveActivity2 extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
+        if (id == R.id.next) {
+            Intent intent = new Intent(RequisitionApproveActivity2.this, RequisitionApproveActivity3.class);
+            intent.putExtra(Constants.REQUISITION_APPROVAL_LIST_MODEL, model);
+            startActivity(intent);
+            return true;
+        }
         if (id == android.R.id.home) {
             finish();
             return true;

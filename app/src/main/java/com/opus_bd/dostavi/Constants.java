@@ -2,8 +2,8 @@ package com.opus_bd.dostavi;
 
 public class Constants {
 
-    private static final String SERVER = "http://192.168.0.50/";
-   // private static final String SERVER = "http://119.148.9.154/";
+   // private static final String SERVER = "http://192.168.0.50/";
+    private static final String SERVER = "http://119.148.9.154/";
 
     private static final String BASE_SERVER_ADDRESS = SERVER + "OAK/api/OAKAPI/";
     public static final String LOGIN_URL = SERVER + "OAK/Account/LoginAPI";
