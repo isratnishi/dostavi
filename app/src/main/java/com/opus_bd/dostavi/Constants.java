@@ -2,13 +2,13 @@ package com.opus_bd.dostavi;
 
 public class Constants {
 
-   // private static final String SERVER = "http://192.168.0.50/";
-    private static final String SERVER = "http://119.148.9.154/";
+    private static final String SERVER = "http://192.168.0.50/";
+   // private static final String SERVER = "http://119.148.9.154/";
 
     private static final String BASE_SERVER_ADDRESS = SERVER + "OAK/api/OAKAPI/";
     public static final String LOGIN_URL = SERVER + "OAK/Account/LoginAPI";
 
-    //public static final String LOGTAG = "logtag";
+    public static final String LOGTAG = "logtag";
     public static final String REQUEST_TAG = "com.example.opus";
     public static final String GET_REQUISITION_INFO = BASE_SERVER_ADDRESS + "GetRequisitionEntryInfo";
     public static final String GET_REQUISITION_NUMBER = BASE_SERVER_ADDRESS + "GetRequisitionAutoNumber";
@@ -45,5 +45,9 @@ public class Constants {
     public static String userCode = "";
     public static String userName = "";
     public static String nextEmpCode = "";
+
+    // IOU Approval
+
+    public static String GET_IOU_APPROVAL = BASE_SERVER_ADDRESS + "GetIOUListForApprove";
 
 }
