@@ -36,6 +36,7 @@ public class IOUApprovalActivity2 extends AppCompatActivity {
     RecyclerView recyclerView;
     public IOUItemAdapter iouItemAdapter;
     private Gson gson;
+    private int masterId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +57,17 @@ public class IOUApprovalActivity2 extends AppCompatActivity {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setDateFormat("M/d/yy hh:mm a");
         gson = gsonBuilder.create();
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            masterId = bundle.getInt(Constants.MASTER_ID);
+        }
     }
 
     private void getIouApprovalData() {
         // TODO : Must Change
-        String finalURL = Constants.GET_IOU_ITEMS + "?MasterId=91656";
-        //String finalURL = Constants.GET_IOU_ITEMS + "?MasterId=mamun@bnb.com";
+        //String finalURL = Constants.GET_IOU_ITEMS + "?MasterId=91656";
+        String finalURL = Constants.GET_IOU_ITEMS + "?MasterId=" + masterId;
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
                 new Response.Listener<String>() {

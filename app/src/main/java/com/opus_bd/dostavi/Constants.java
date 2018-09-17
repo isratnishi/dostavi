@@ -39,6 +39,7 @@ public class Constants {
     public static final String REQUISITION_MODEL = "requisitionmodel";
     public static final String REQUISITION_MASTER = "requisitionmastermodel";
     public static final String REQUISITION_APPROVAL_LIST_MODEL = "requistionapprovallistmodel";
+    public static final String MASTER_ID = "masterid";
 
     // Constants varies according to logged data
     public static String USER_EMAIL = "";

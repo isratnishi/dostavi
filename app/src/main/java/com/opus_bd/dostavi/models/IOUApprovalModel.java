@@ -7,7 +7,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class IOUApprovalModel implements Serializable
 {
-
+    @SerializedName("ID")
+    private int ID;
     @SerializedName("IOUNo")
     @Expose
     private String iOUNo;
@@ -186,4 +187,11 @@ public class IOUApprovalModel implements Serializable
         this.remarks = remarks;
     }
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 }

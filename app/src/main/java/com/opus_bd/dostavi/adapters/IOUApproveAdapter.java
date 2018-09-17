@@ -1,14 +1,18 @@
 package com.opus_bd.dostavi.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.opus_bd.dostavi.Constants;
 import com.opus_bd.dostavi.R;
+import com.opus_bd.dostavi.iou_approval.IOUApprovalActivity2;
 import com.opus_bd.dostavi.models.IOUApprovalModel;
 
 import java.util.List;
@@ -39,6 +43,15 @@ public class IOUApproveAdapter extends RecyclerView.Adapter<IOUApproveAdapter.It
         holder.iOUValueTextView.setText(itemList.get(position).getIOUValue().toString());
         holder.prNoTextView.setText(itemList.get(position).getPrIOUNo());
         holder.statusTextView.setText(itemList.get(position).getStatusDesc());
+
+        holder.rootLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, IOUApprovalActivity2.class);
+                intent.putExtra(Constants.MASTER_ID, itemList.get(position).getID());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -47,6 +60,7 @@ public class IOUApproveAdapter extends RecyclerView.Adapter<IOUApproveAdapter.It
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
+        public View rootLayout;
         public TextView iOUDateTextView;
         public TextView iOUNoTextView;
         public TextView deliveryDateTextView;
@@ -62,6 +76,7 @@ public class IOUApproveAdapter extends RecyclerView.Adapter<IOUApproveAdapter.It
             iOUValueTextView = view.findViewById(R.id.iou_value_text_view);
             prNoTextView = view.findViewById(R.id.pr_no_text_view);
             statusTextView = view.findViewById(R.id.status_text_view);
+            rootLayout = view.findViewById(R.id.root_layout);
         }
     }
 }

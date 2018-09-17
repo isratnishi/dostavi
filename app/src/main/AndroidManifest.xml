@@ -65,14 +65,14 @@
         <!-- IOU Approval -->
 
         <activity android:name=".iou_approval.IOUApprovalActivity">
-
-        </activity>
-        <activity android:name=".iou_approval.IOUApprovalActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".iou_approval.IOUApprovalActivity2">
+
         </activity>
     </application>
 
