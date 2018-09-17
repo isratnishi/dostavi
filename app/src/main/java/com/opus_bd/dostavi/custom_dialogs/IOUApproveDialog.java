@@ -133,24 +133,37 @@ public class IOUApproveDialog extends Dialog implements View.OnClickListener {
 
     private JSONObject getIouApprovalJsonObject() {
         JSONObject requisitionApprovalJsonObject = new JSONObject();
-        /*try {
-            requisitionApprovalJsonObject.put("MaxMasterId", maxMasterId);
-            requisitionApprovalJsonObject.put("UserId", requisitionModel.getUserID());
-            requisitionApprovalJsonObject.put("EmailID", requisitionModel.getUserName());
-            requisitionApprovalJsonObject.put("EmpCode", requisitionModel.getEmpCode());
+        try {
+            requisitionApprovalJsonObject.put("ID", iouApprovalModel.getID());
+            requisitionApprovalJsonObject.put("IOUNo", iouApprovalModel.getIOUNo());
+            requisitionApprovalJsonObject.put("IOUDate", iouApprovalModel.getIOUDate());
+            requisitionApprovalJsonObject.put("ReqID", iouApprovalModel.getReqID());
+            requisitionApprovalJsonObject.put("UserID", iouApprovalModel.getUserID());
+            requisitionApprovalJsonObject.put("ProjectID", iouApprovalModel.getProjectID());
+            requisitionApprovalJsonObject.put("IOUStatus", iouApprovalModel.getIOUStatus());
+            requisitionApprovalJsonObject.put("AttentionTo", iouApprovalModel.getAttentionTo());
+            requisitionApprovalJsonObject.put("EntryTime", iouApprovalModel.getEntryTime());
+            requisitionApprovalJsonObject.put("StatusDesc", iouApprovalModel.getStatusDesc());
+            requisitionApprovalJsonObject.put("IOUValue", iouApprovalModel.getIOUValue());
+            requisitionApprovalJsonObject.put("ReqNo", iouApprovalModel.getReqNo());
+            requisitionApprovalJsonObject.put("TargetDate", iouApprovalModel.getTargetDate());
+            requisitionApprovalJsonObject.put("ReqDate", iouApprovalModel.getReqDate());
+            requisitionApprovalJsonObject.put("PrIOUNo", iouApprovalModel.getPrIOUNo());
+            requisitionApprovalJsonObject.put("ProjectName", iouApprovalModel.getProjectName());
+            requisitionApprovalJsonObject.put("Remarks", remarkEditText.getText().toString());
+            requisitionApprovalJsonObject.put("AppType", appType + "");
 
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
         return requisitionApprovalJsonObject;
     }
 
     private void saveIouItems(final int id) {
 
         if (id == items.size()) {
-            //After saving all data, Requisition Status will be saved
             saveIouApprove();
             return;
         }
@@ -208,13 +221,14 @@ public class IOUApproveDialog extends Dialog implements View.OnClickListener {
     }
 
     private void saveIouApprove() {
-        Utils.showLogcatMessage(appType + "");
-        /*StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                Constants.POST_REQUISITION_LOG,
+        //Utils.showLogcatMessage(appType + "");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                Constants.POST_IOU_APPROVE,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Utils.showLogcatMessage(response);
+                        //Utils.showLogcatMessage("From approve " +response);
+                        dismiss();
                     }
                 },
                 new Response.ErrorListener() {
@@ -234,7 +248,7 @@ public class IOUApproveDialog extends Dialog implements View.OnClickListener {
             }
         };
         AppSingleton.getInstance(context)
-                .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);*/
+                .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
     }
 
 }

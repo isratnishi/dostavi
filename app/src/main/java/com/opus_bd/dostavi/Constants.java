@@ -52,6 +52,7 @@ public class Constants {
     public static String GET_IOU_APPROVAL = BASE_SERVER_ADDRESS + "GetIOUListForApprove";
     public static String GET_IOU_ITEMS = SERVER + "OAK/IOU/ItemDetailsForIOUApprove";
     public static String POST_SAVE_ITEMS = BASE_SERVER_ADDRESS + "PostIouItems";
+    public static String POST_IOU_APPROVE = BASE_SERVER_ADDRESS + "PostIOUApprove";
 
     // IOU Constants
     public static final int RETURN = 3;
