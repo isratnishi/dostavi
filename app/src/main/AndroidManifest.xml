@@ -16,7 +16,13 @@
 
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_title"></activity>
+            android:label="@string/app_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <!-- Home Activity -->
 
@@ -65,11 +71,7 @@
         <!-- IOU Approval -->
 
         <activity android:name=".iou_approval.IOUApprovalActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".iou_approval.IOUApprovalActivity2">
 

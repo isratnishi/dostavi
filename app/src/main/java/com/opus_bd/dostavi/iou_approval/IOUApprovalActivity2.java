@@ -1,9 +1,12 @@
 package com.opus_bd.dostavi.iou_approval;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -14,6 +17,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.opus_bd.dostavi.AppSingleton;
 import com.opus_bd.dostavi.Constants;
+import com.opus_bd.dostavi.HomeActivity;
+import com.opus_bd.dostavi.LoginActivity;
 import com.opus_bd.dostavi.R;
 import com.opus_bd.dostavi.Utils;
 import com.opus_bd.dostavi.adapters.IOUItemAdapter;
@@ -48,6 +53,7 @@ public class IOUApprovalActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iouapproval2);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         initializeVariables();
         getIouApprovalData();
@@ -72,28 +78,11 @@ public class IOUApprovalActivity2 extends AppCompatActivity {
     }
 
     @OnClick(R.id.next_button)
-    public void showDialog()
-    {
+    public void showDialog() {
         IOUApproveDialog dialog = new IOUApproveDialog(this);
         dialog.setItems(items);
         dialog.setIouApprovalModel(iouItemModel);
         dialog.show();
-    }
-
-    private JSONObject getIouApprovalJsonObject() {
-        JSONObject requisitionApprovalJsonObject = new JSONObject();
-        /*try {
-            requisitionApprovalJsonObject.put("MaxMasterId", maxMasterId);
-            requisitionApprovalJsonObject.put("UserId", requisitionModel.getUserID());
-            requisitionApprovalJsonObject.put("EmailID", requisitionModel.getUserName());
-            requisitionApprovalJsonObject.put("EmpCode", requisitionModel.getEmpCode());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-        return requisitionApprovalJsonObject;
     }
 
     private void getIouApprovalData() {
@@ -128,38 +117,24 @@ public class IOUApprovalActivity2 extends AppCompatActivity {
                 .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
     }
 
-    private void saveIouItems()
-    {
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
-    private void saveIouApprove()
-    {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                Constants.POST_REQUISITION_LOG,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Utils.showLogcatMessage(response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                    }
-                }) {
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-
-                return getIouApprovalJsonObject().toString().getBytes();
-            }
-
-            @Override
-            public String getBodyContentType() {
-                return "application/json";
-            }
-        };
-        AppSingleton.getInstance(getApplicationContext())
-                .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.logout) {
+            Intent intent = new Intent(IOUApprovalActivity2.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

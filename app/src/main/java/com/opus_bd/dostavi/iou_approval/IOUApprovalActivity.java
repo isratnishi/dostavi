@@ -1,9 +1,12 @@
 package com.opus_bd.dostavi.iou_approval;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -13,6 +16,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.opus_bd.dostavi.AppSingleton;
 import com.opus_bd.dostavi.Constants;
+import com.opus_bd.dostavi.HomeActivity;
+import com.opus_bd.dostavi.LoginActivity;
 import com.opus_bd.dostavi.R;
 import com.opus_bd.dostavi.Utils;
 import com.opus_bd.dostavi.adapters.IOUApproveAdapter;
@@ -40,6 +45,7 @@ public class IOUApprovalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iouapproval);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         initializeVariables();
         getIouApprovalData();
@@ -58,9 +64,7 @@ public class IOUApprovalActivity extends AppCompatActivity {
     }
 
     private void getIouApprovalData() {
-        // TODO : Must Change
-        String finalURL = Constants.GET_IOU_APPROVAL + "?userName=mamun@bnb.com";
-        //String finalURL = Constants.GET_IOU_APPROVAL + "?userName=" + Constants.USER_EMAIL;
+        String finalURL = Constants.GET_IOU_APPROVAL + "?userName=" + Constants.USER_EMAIL;
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
                 new Response.Listener<String>() {
@@ -89,5 +93,26 @@ public class IOUApprovalActivity extends AppCompatActivity {
                 });
         AppSingleton.getInstance(getApplicationContext())
                 .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.logout) {
+            Intent intent = new Intent(IOUApprovalActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

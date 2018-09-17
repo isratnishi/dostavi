@@ -2,6 +2,7 @@ package com.opus_bd.dostavi.custom_dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -20,8 +22,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.opus_bd.dostavi.AppSingleton;
 import com.opus_bd.dostavi.Constants;
+import com.opus_bd.dostavi.LoginActivity;
 import com.opus_bd.dostavi.R;
 import com.opus_bd.dostavi.Utils;
+import com.opus_bd.dostavi.iou_approval.IOUApprovalActivity;
+import com.opus_bd.dostavi.iou_approval.IOUApprovalActivity2;
 import com.opus_bd.dostavi.models.IOUApprovalModel;
 import com.opus_bd.dostavi.models.IOUItemModel;
 import com.opus_bd.dostavi.models.ItemModel;
@@ -33,6 +38,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
+import es.dmoral.toasty.Toasty;
 
 public class IOUApproveDialog extends Dialog implements View.OnClickListener {
 
@@ -138,7 +144,7 @@ public class IOUApproveDialog extends Dialog implements View.OnClickListener {
             requisitionApprovalJsonObject.put("IOUNo", iouApprovalModel.getIOUNo());
             requisitionApprovalJsonObject.put("IOUDate", iouApprovalModel.getIOUDate());
             requisitionApprovalJsonObject.put("ReqID", iouApprovalModel.getReqID());
-            requisitionApprovalJsonObject.put("UserID", iouApprovalModel.getUserID());
+            requisitionApprovalJsonObject.put("UserID", Constants.USER_EMAIL);
             requisitionApprovalJsonObject.put("ProjectID", iouApprovalModel.getProjectID());
             requisitionApprovalJsonObject.put("IOUStatus", iouApprovalModel.getIOUStatus());
             requisitionApprovalJsonObject.put("AttentionTo", iouApprovalModel.getAttentionTo());
@@ -173,9 +179,8 @@ public class IOUApproveDialog extends Dialog implements View.OnClickListener {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Utils.showLogcatMessage(response);
+                        // Utils.showLogcatMessage(response);
                         if (response.equals("true")) {
-
                             saveIouItems(id + 1);
                         } else
                             saveIouItems(id);
@@ -210,9 +215,7 @@ public class IOUApproveDialog extends Dialog implements View.OnClickListener {
             jsonObject.put("Rate", itemModel.getRate());
             jsonObject.put("Qty", itemModel.getQty());
             jsonObject.put("reqID", itemModel.getReqID());
-            // TODO must change
-            jsonObject.put("EmailID", "mamun@bnb.com");
-            //jsonObject.put("EmailID", Constants.USER_EMAIL);
+            jsonObject.put("EmailID", Constants.USER_EMAIL);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -221,13 +224,17 @@ public class IOUApproveDialog extends Dialog implements View.OnClickListener {
     }
 
     private void saveIouApprove() {
-        //Utils.showLogcatMessage(appType + "");
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.POST_IOU_APPROVE,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //Utils.showLogcatMessage("From approve " +response);
+                        if (response.equalsIgnoreCase("true")) {
+                            Intent intent = new Intent(context, IOUApprovalActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            context.startActivity(intent);
+                            Toasty.success(context, "Data saved to server!", Toast.LENGTH_SHORT, true).show();
+                        }
                         dismiss();
                     }
                 },

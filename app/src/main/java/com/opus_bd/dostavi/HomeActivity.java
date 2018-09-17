@@ -16,6 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.opus_bd.dostavi.iou_approval.IOUApprovalActivity;
 import com.opus_bd.dostavi.models.User;
 import com.opus_bd.dostavi.requisition_approval.RequisitionApproveActivity1;
 import com.opus_bd.dostavi.requisition_approval.RequisitionApproveActivity2;
@@ -25,6 +26,8 @@ import com.opus_bd.dostavi.requisition_status.RequisitionStatusHome;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import es.dmoral.toasty.Toasty;
 
 public class HomeActivity extends AppCompatActivity {
@@ -44,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
         initializeVariables();
         getUserInformationFromServer();
 
@@ -88,6 +92,13 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, RequisitionStatusHome.class));
             }
         });
+
+
+    }
+
+    @OnClick(R.id.iou_approve_image_view)
+    public void showIouApproveActivity() {
+        startActivity(new Intent(HomeActivity.this, IOUApprovalActivity.class));
     }
 
     private void getUserInformationFromServer() {
