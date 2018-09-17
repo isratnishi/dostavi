@@ -37,8 +37,8 @@ public class IOUApproveAdapter extends RecyclerView.Adapter<IOUApproveAdapter.It
         holder.iOUNoTextView.setText(itemList.get(position).getIOUNo());
         holder.deliveryDateTextView.setText(itemList.get(position).getTargetDate());
         holder.iOUValueTextView.setText(itemList.get(position).getIOUValue().toString());
-        //holder.prNoTextView.setText(itemList.get(position).getPrIOUNo());
-       // holder.statusTextView.setText(itemList.get(position).getIOUStatus());
+        holder.prNoTextView.setText(itemList.get(position).getPrIOUNo());
+        holder.statusTextView.setText(itemList.get(position).getStatusDesc());
     }
 
     @Override

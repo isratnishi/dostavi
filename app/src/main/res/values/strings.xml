@@ -2,12 +2,24 @@
     <string name="app_name">Dostavi</string>
     <string name="app_title">Dostavi</string>
     <string name="title_activity_login">Sign in</string>
+
+    <!-- IOU Approval -->
     <string name="iou_date">IOU Date</string>
     <string name="iou_no">IOU No</string>
     <string name="delivery_date">Delivery Date</string>
     <string name="iou_value">IOU Value</string>
     <string name="pr_no">PR No</string>
     <string name="status">Status</string>
+
+    <!-- IOU Items -->
+    <string name="item_name">Item Name</string>
+    <string name="qty">Qty</string>
+    <string name="cum_qty">Cum Qty</string>
+    <string name="unit_name">Unit Name</string>
+    <string name="rate">Rate</string>
+    <string name="last_price">Last Price</string>
+    <string name="sub_total">Sub Total</string>
+    <string name="item_specification">Item Specification</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

@@ -16,9 +16,7 @@
 
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_title">
-
-        </activity>
+            android:label="@string/app_title"></activity>
 
         <!-- Home Activity -->
 
@@ -31,11 +29,11 @@
         <activity
             android:name=".requisition_entry.RequisitionEntryActivity1"
             android:label="@string/requisition_entry_label"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".requisition_entry.RequisitionEntryActivity2"
             android:label="@string/requisition_entry_label"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <!-- Requisition Approval -->
 
@@ -67,6 +65,9 @@
         <!-- IOU Approval -->
 
         <activity android:name=".iou_approval.IOUApprovalActivity">
+
+        </activity>
+        <activity android:name=".iou_approval.IOUApprovalActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

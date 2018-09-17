@@ -11,7 +11,7 @@ public class IOUApprovalModel implements Serializable
     @SerializedName("IOUNo")
     @Expose
     private String iOUNo;
-    @SerializedName("iOUDateTextView")
+    @SerializedName("itemNameTextView")
     @Expose
     private String iOUDate;
     @SerializedName("ReqID")
@@ -34,7 +34,7 @@ public class IOUApprovalModel implements Serializable
     private Object entryTime;
     @SerializedName("StatusDesc")
     @Expose
-    private Object statusDesc;
+    private String statusDesc;
     @SerializedName("IOUValue")
     @Expose
     private Double iOUValue;
@@ -122,11 +122,11 @@ public class IOUApprovalModel implements Serializable
         this.entryTime = entryTime;
     }
 
-    public Object getStatusDesc() {
+    public String getStatusDesc() {
         return statusDesc;
     }
 
-    public void setStatusDesc(Object statusDesc) {
+    public void setStatusDesc(String statusDesc) {
         this.statusDesc = statusDesc;
     }
 

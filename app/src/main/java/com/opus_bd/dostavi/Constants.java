@@ -47,7 +47,7 @@ public class Constants {
     public static String nextEmpCode = "";
 
     // IOU Approval
-
     public static String GET_IOU_APPROVAL = BASE_SERVER_ADDRESS + "GetIOUListForApprove";
+    public static String GET_IOU_ITEMS = SERVER + "OAK/IOU/ItemDetailsForIOUApprove";
 
 }
