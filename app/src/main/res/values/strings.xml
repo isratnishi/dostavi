@@ -21,6 +21,14 @@
     <string name="sub_total">Sub Total</string>
     <string name="item_specification">Item Specification</string>
 
+    <!-- Custom Dialog -->
+    <string name="return_string">Return</string>
+    <string name="reject">Rejected</string>
+    <string name="approve">Approved</string>
+    <string name="remarks">Remarks</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

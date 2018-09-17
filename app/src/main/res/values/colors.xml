@@ -3,4 +3,7 @@
     <color name="colorPrimary">#1976d2</color>
     <color name="colorPrimaryDark">#004ba0</color>
     <color name="colorAccent">#63a4ff</color>
+
+    <color name="saveButtonColor">#43a047</color>
+    <color name="cancelButtonColor">#CF3A24</color>
 </resources>

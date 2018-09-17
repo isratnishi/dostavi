@@ -3,7 +3,7 @@ package com.opus_bd.dostavi;
 public class Constants {
 
     private static final String SERVER = "http://192.168.0.50/";
-   // private static final String SERVER = "http://119.148.9.154/";
+    // private static final String SERVER = "http://119.148.9.154/";
 
     private static final String BASE_SERVER_ADDRESS = SERVER + "OAK/api/OAKAPI/";
     public static final String LOGIN_URL = SERVER + "OAK/Account/LoginAPI";
@@ -40,6 +40,7 @@ public class Constants {
     public static final String REQUISITION_MASTER = "requisitionmastermodel";
     public static final String REQUISITION_APPROVAL_LIST_MODEL = "requistionapprovallistmodel";
     public static final String MASTER_ID = "masterid";
+    public static final String IOU_APPROVAL_MODEL = "iouapprovalmodel";
 
     // Constants varies according to logged data
     public static String USER_EMAIL = "";
@@ -50,5 +51,11 @@ public class Constants {
     // IOU Approval
     public static String GET_IOU_APPROVAL = BASE_SERVER_ADDRESS + "GetIOUListForApprove";
     public static String GET_IOU_ITEMS = SERVER + "OAK/IOU/ItemDetailsForIOUApprove";
+    public static String POST_SAVE_ITEMS = BASE_SERVER_ADDRESS + "PostIouItems";
+
+    // IOU Constants
+    public static final int RETURN = 3;
+    public static final int REJECT = -1;
+    public static final int APPROVED = 4;
 
 }

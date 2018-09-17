@@ -66,7 +66,6 @@ public class IOUApprovalActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Utils.showLogcatMessage(response);
                         JSONArray jsonArray = null;
                         try {
                             jsonArray = new JSONArray(response);

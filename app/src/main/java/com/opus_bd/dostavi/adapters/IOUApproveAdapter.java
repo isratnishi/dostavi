@@ -49,6 +49,7 @@ public class IOUApproveAdapter extends RecyclerView.Adapter<IOUApproveAdapter.It
             public void onClick(View view) {
                 Intent intent = new Intent(context, IOUApprovalActivity2.class);
                 intent.putExtra(Constants.MASTER_ID, itemList.get(position).getID());
+                intent.putExtra(Constants.IOU_APPROVAL_MODEL, itemList.get(position));
                 context.startActivity(intent);
             }
         });
