@@ -154,6 +154,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void saveUserInfo() {
+        Constants.USER_EMAIL = mEmailView.getText().toString();
         UserSingleton.getInstance().setUserName(mEmailView.getText().toString());
         LoggedUser user = new LoggedUser(mEmailView.getText().toString(), mPasswordView.getText().toString());
         SharedPrefManager.getInstance(this).userLogin(user);

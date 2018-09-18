@@ -23,6 +23,7 @@ import com.opus_bd.dostavi.requisition_approval.RequisitionApproveActivity1;
 import com.opus_bd.dostavi.requisition_approval.RequisitionApproveActivity2;
 import com.opus_bd.dostavi.requisition_entry.RequisitionEntryActivity1;
 import com.opus_bd.dostavi.requisition_status.RequisitionStatusHome;
+import com.opus_bd.dostavi.singletones.UserSingleton;
 
 import org.json.JSONException;
 import org.json.JSONObject;

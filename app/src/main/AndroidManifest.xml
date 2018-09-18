@@ -16,7 +16,9 @@
 
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_title">
+            android:label="@string/app_title"
+            android:theme="@style/SignInTheme"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -70,11 +72,12 @@
 
         <!-- IOU Approval -->
 
-        <activity android:name=".iou_approval.IOUApprovalActivity"/>
-        <activity android:name=".iou_approval.IOUApprovalActivity2"/>
+        <activity android:name=".iou_approval.IOUApprovalActivity" />
+        <activity android:name=".iou_approval.IOUApprovalActivity2" />
 
         <!-- PO Approve -->
-        <activity android:name=".po_approve.POApproveActivity"
+        <activity
+            android:name=".po_approve.POApproveActivity"
             android:label="@string/po_approval">
 
         </activity>
