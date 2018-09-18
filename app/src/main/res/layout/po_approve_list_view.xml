@@ -1,136 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/root_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:elevation="3dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/requisition_no" />
-
-                    <TextView
-                        style="@style/po_approve_list_view_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/requisition_date" />
-
-                    <TextView
-                        style="@style/po_approve_list_view_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/procurement_person" />
-
-                    <TextView
-                        style="@style/po_approve_list_view_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/cs_no" />
-
-                    <TextView
-                        style="@style/po_approve_list_view_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/cs_creation_date" />
-
-                    <TextView
-                        style="@style/po_approve_list_view_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/final_approver" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/requisition_no_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/requisition_no" />
-
-                    <TextView
-                        style="@style/po_approve_list_view_style"
-                        android:id="@+id/requisition_date_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/requisition_date" />
-
-                    <TextView
-                        style="@style/po_approve_list_view_style"
-                        android:id="@+id/procurement_person_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/procurement_person" />
-
-                    <TextView
-                        style="@style/po_approve_list_view_style"
-                        android:id="@+id/cs_no_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/cs_no" />
-
-                    <TextView
-                        style="@style/po_approve_list_view_style"
-                        android:id="@+id/cs_creation_date_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/cs_creation_date" />
-
-                    <TextView
-                        style="@style/po_approve_list_view_style"
-                        android:id="@+id/final_approver_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/final_approver" />
-                </LinearLayout>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-    </LinearLayout>
-
-    <!--<?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/root_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -150,7 +25,7 @@
 
                 <TableRow android:paddingBottom="10dp">
 
-                   <TextView
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -173,131 +48,90 @@
                         android:layout_weight="1"
                         android:text="@string/requisition_date" />
 
+
+
                     <TextView
-                        android:id="@+id/item_name_text_view"
+                        style="@style/po_approve_list_view_style"
+                        android:id="@+id/requisition_date_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="null"
-                        android:textColor="@android:color/black" />
+                        android:layout_weight="1"
+                        android:text="@string/requisition_date" />
                 </TableRow>
 
                 <TableRow android:paddingBottom="10dp">
 
                     <TextView
-
+                        style="@style/po_approve_list_view_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Unit: " />
+                        android:layout_weight="1"
+                        android:text="@string/procurement_person" />
 
                     <TextView
-                        android:id="@+id/unit_text_view"
+                        style="@style/po_approve_list_view_style"
+                        android:id="@+id/procurement_person_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="null"
-                        android:textColor="@android:color/black" />
+                        android:layout_weight="1"
+                        android:text="@string/procurement_person" />
                 </TableRow>
 
                 <TableRow android:paddingBottom="10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Cum Qty: " />
-
-                    <TextView
-                        android:id="@+id/quantity_text_view"
+                        style="@style/po_approve_list_view_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="null"
-                        android:textColor="@android:color/black" />
+                        android:layout_weight="1"
+                        android:text="@string/cs_no" />
+
+                    <TextView
+                        style="@style/po_approve_list_view_style"
+                        android:id="@+id/cs_no_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/cs_no" />
                 </TableRow>
 
                 <TableRow android:paddingBottom="10dp">
 
                     <TextView
-
+                        style="@style/po_approve_list_view_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Req Qty: " />
+                        android:layout_weight="1"
+                        android:text="@string/cs_creation_date" />
 
                     <TextView
-                        android:id="@+id/req_qty_text_view"
+                        style="@style/po_approve_list_view_style"
+                        android:id="@+id/cs_creation_date_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="null"
-                        android:textColor="@android:color/black" />
+                        android:layout_weight="1"
+                        android:text="@string/cs_creation_date" />
                 </TableRow>
 
                 <TableRow android:paddingBottom="10dp">
 
                     <TextView
+                        style="@style/po_approve_list_view_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Approx Price: " />
+                        android:layout_weight="1"
+                        android:text="@string/final_approver" />
 
                     <TextView
-                        android:id="@+id/approx_price_text_view"
+                        style="@style/po_approve_list_view_style"
+                        android:id="@+id/final_approver_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="null"
-                        android:textColor="@android:color/black" />
-                </TableRow>
-
-                <TableRow android:paddingBottom="10dp">
-
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Last Price: " />
-
-                    <TextView
-                        android:id="@+id/last_price_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="null"
-                        android:textColor="@android:color/black" />
-                </TableRow>
-
-                <TableRow android:paddingBottom="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Total: " />
-
-                    <TextView
-                        android:id="@+id/total_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="null"
-                        android:textColor="@android:color/black" />
-                </TableRow>
-
-                <TableRow>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Specification: " />
-
-                    <TextView
-                        android:id="@+id/specification_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="null"
-                        android:textColor="@android:color/black" />
+                        android:layout_weight="1"
+                        android:text="@string/final_approver" />
                 </TableRow>
 
             </TableLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
-    </LinearLayout>-->
+    </LinearLayout>
