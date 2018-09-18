@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.opus_bd.dostavi.iou_approval.IOUApprovalActivity;
 import com.opus_bd.dostavi.models.User;
+import com.opus_bd.dostavi.po_approve.POApproveActivity;
 import com.opus_bd.dostavi.requisition_approval.RequisitionApproveActivity1;
 import com.opus_bd.dostavi.requisition_approval.RequisitionApproveActivity2;
 import com.opus_bd.dostavi.requisition_entry.RequisitionEntryActivity1;
@@ -99,6 +100,11 @@ public class HomeActivity extends AppCompatActivity {
     @OnClick(R.id.iou_approve_image_view)
     public void showIouApproveActivity() {
         startActivity(new Intent(HomeActivity.this, IOUApprovalActivity.class));
+    }
+
+    @OnClick(R.id.po_approval_image_button)
+    public void showPOApproveActivity() {
+        startActivity(new Intent(HomeActivity.this, POApproveActivity.class));
     }
 
     private void getUserInformationFromServer() {

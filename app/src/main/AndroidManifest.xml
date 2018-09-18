@@ -17,7 +17,11 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!-- Home Activity -->
@@ -71,11 +75,7 @@
 
         <!-- PO Approve -->
         <activity android:name=".po_approve.POApproveActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
