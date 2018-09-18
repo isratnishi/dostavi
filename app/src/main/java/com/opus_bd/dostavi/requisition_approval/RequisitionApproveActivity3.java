@@ -1,6 +1,7 @@
 package com.opus_bd.dostavi.requisition_approval;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,7 +35,7 @@ public class RequisitionApproveActivity3 extends AppCompatActivity {
     RecyclerView recyclerView;
     RequisitionApprovalItemAdapter itemAdapter;
 
-    Button nextButton;
+    FloatingActionButton nextButton;
 
     RequisitionApprovalListModel model;
 
