@@ -1,6 +1,7 @@
 package com.opus_bd.dostavi.custom_dialogs;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,9 +35,6 @@ import java.util.ArrayList;
 import es.dmoral.toasty.Toasty;
 
 public class POApproveDialog extends Dialog implements View.OnClickListener {
-
-
-
     Context context;
     Button saveButton;
     Button cancelButton;
@@ -47,6 +45,7 @@ public class POApproveDialog extends Dialog implements View.OnClickListener {
     int appType = 1;
     private ArrayList<POApproveModel> items = new ArrayList<>();
     POApproveModel poApproveModel;
+    ProgressDialog progressDialog;
 
     public POApproveDialog(@NonNull Context context) {
         super(context);
@@ -71,6 +70,9 @@ public class POApproveDialog extends Dialog implements View.OnClickListener {
         saveButton.setOnClickListener(this);
         cancelButton.setOnClickListener(this);
         remarkEditText = findViewById(R.id.remark_edit_text);
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Please Wait");
 
         returnRejectCheckBox = findViewById(R.id.return_reject_checkbox);
         returnRejectRadioGroup = findViewById(R.id.return_reject_radio_group);
@@ -109,7 +111,7 @@ public class POApproveDialog extends Dialog implements View.OnClickListener {
                 } else
                     appType = 1;
 
-                    savePOApprove();
+                savePOApprove();
                 break;
             case R.id.cancel_button:
                 dismiss();
@@ -141,11 +143,14 @@ public class POApproveDialog extends Dialog implements View.OnClickListener {
     }
 
     private void savePOApprove() {
+        dismiss();
+        progressDialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.POST_PO_APPROVE_INFO,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressDialog.dismiss();
                         if (response.equalsIgnoreCase("true")) {
                             Intent intent = new Intent(context, POApproveActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -158,6 +163,7 @@ public class POApproveDialog extends Dialog implements View.OnClickListener {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
                     }
                 }) {
             @Override

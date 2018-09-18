@@ -70,11 +70,12 @@
 
         <!-- IOU Approval -->
 
-        <activity android:name=".iou_approval.IOUApprovalActivity"></activity>
-        <activity android:name=".iou_approval.IOUApprovalActivity2"></activity>
+        <activity android:name=".iou_approval.IOUApprovalActivity"/>
+        <activity android:name=".iou_approval.IOUApprovalActivity2"/>
 
         <!-- PO Approve -->
-        <activity android:name=".po_approve.POApproveActivity">
+        <activity android:name=".po_approve.POApproveActivity"
+            android:label="@string/po_approval">
 
         </activity>
     </application>

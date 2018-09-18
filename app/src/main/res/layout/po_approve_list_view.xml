@@ -21,6 +21,7 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:shrinkColumns="1"
                 android:padding="4dp">
 
                 <TableRow android:paddingBottom="10dp">
@@ -32,6 +33,7 @@
                         android:text="@string/requisition_no" />
 
                     <TextView
+                        style="@style/po_approve_list_view_style"
                         android:id="@+id/requisition_no_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -42,7 +44,6 @@
                 <TableRow android:paddingBottom="10dp">
 
                     <TextView
-                        style="@style/po_approve_list_view_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -62,7 +63,6 @@
                 <TableRow android:paddingBottom="10dp">
 
                     <TextView
-                        style="@style/po_approve_list_view_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -80,7 +80,6 @@
                 <TableRow android:paddingBottom="10dp">
 
                     <TextView
-                        style="@style/po_approve_list_view_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -98,7 +97,6 @@
                 <TableRow android:paddingBottom="10dp">
 
                     <TextView
-                        style="@style/po_approve_list_view_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -116,7 +114,6 @@
                 <TableRow android:paddingBottom="10dp">
 
                     <TextView
-                        style="@style/po_approve_list_view_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

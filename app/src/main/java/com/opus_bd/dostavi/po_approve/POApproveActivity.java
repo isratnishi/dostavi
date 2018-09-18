@@ -1,9 +1,12 @@
 package com.opus_bd.dostavi.po_approve;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -13,10 +16,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.opus_bd.dostavi.AppSingleton;
 import com.opus_bd.dostavi.Constants;
+import com.opus_bd.dostavi.LoginActivity;
 import com.opus_bd.dostavi.R;
 import com.opus_bd.dostavi.Utils;
 import com.opus_bd.dostavi.adapters.IOUApproveAdapter;
 import com.opus_bd.dostavi.adapters.POApprovalAdapter;
+import com.opus_bd.dostavi.iou_approval.IOUApprovalActivity;
 import com.opus_bd.dostavi.models.IOUApprovalModel;
 import com.opus_bd.dostavi.models.POApproveModel;
 
@@ -42,6 +47,7 @@ public class POApproveActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poapprove);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         initializeVariables();
         getPOApprovalData();
@@ -60,9 +66,7 @@ public class POApproveActivity extends AppCompatActivity {
     }
 
     private void getPOApprovalData() {
-        // TODO Change user name
-        String finalURL = Constants.GET_PO_APPROVE_INFO + "?userEmail=rangit@bnb.com";
-        //String finalURL = Constants.GET_PO_APPROVE_INFO + "?userEmail=" + Constants.USER_EMAIL;
+        String finalURL = Constants.GET_PO_APPROVE_INFO + "?userEmail=" + Constants.USER_EMAIL;
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
                 new Response.Listener<String>() {
@@ -91,5 +95,26 @@ public class POApproveActivity extends AppCompatActivity {
                 });
         AppSingleton.getInstance(getApplicationContext())
                 .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.logout) {
+            Intent intent = new Intent(POApproveActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

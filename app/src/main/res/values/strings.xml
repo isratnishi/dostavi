@@ -53,6 +53,7 @@
     <string name="requisition_entry_label">Requisition Entry</string>
     <string name="requisition_approve_label">Requisition Approve</string>
     <string name="requisition_status_label">Requisition Status</string>
+    <string name="po_approval">PO Approval</string>
 
     <string-array name="resuisition_status">
         <item>Draft</item>

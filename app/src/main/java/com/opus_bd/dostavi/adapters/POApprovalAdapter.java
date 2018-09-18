@@ -51,9 +51,7 @@ public class POApprovalAdapter extends RecyclerView.Adapter<POApprovalAdapter.It
             public void onClick(View view) {
                 POApproveDialog dialog = new POApproveDialog(context);
                 dialog.setPoApproveModel(itemList.get(position));
-                //dialog.show();
-
-                Utils.showLogcatMessage(itemList.get(position).getBuyerName());
+                dialog.show();
             }
         });
     }
