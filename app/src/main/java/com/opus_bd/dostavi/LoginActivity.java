@@ -131,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = mPasswordView.getText().toString();
 
                 Map<String, String> params = new HashMap<>();
-                params.put("UserName", email);
+                params.put("Email", email);
                 params.put("Password", password);
                 return params;
             }
