@@ -106,10 +106,6 @@ public class RequisitionApproveActivity1 extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
-        /*if (id == android.R.id.next) {
-            finish();
-            return true;
-        }*/
         if (id == android.R.id.home) {
             finish();
             return true;

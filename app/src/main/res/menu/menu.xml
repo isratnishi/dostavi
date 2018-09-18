@@ -6,12 +6,4 @@
         android:orderInCategory="100"
         android:title="Logout"
         app:showAsAction="never" />
-
-    <item
-        android:id="@+id/next"
-        android:icon="@drawable/ic_next"
-        android:orderInCategory="100"
-        android:title="Next"
-        app:showAsAction="always" />
-
 </menu>
