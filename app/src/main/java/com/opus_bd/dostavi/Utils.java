@@ -48,6 +48,6 @@ public class Utils {
     }
 
     public static void showLogcatMessage(String message) {
-        Log.d(Constants.LOGTAG, message);
+        //Log.d(Constants.LOGTAG, message);
     }
 }
