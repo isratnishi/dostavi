@@ -61,5 +61,7 @@ public class Constants {
 
     // PO Approve
     public static String GET_PO_APPROVE_INFO = BASE_SERVER_ADDRESS + "GetCSListForApprove";
+    public static String POST_PO_APPROVE_INFO = BASE_SERVER_ADDRESS + "PostCSApprove";
+
 
 }

@@ -60,10 +60,7 @@ public class POApproveActivity extends AppCompatActivity {
     }
 
     private void getPOApprovalData() {
-        // TODO : Final URL must be changed
-        String finalURL = Constants.GET_PO_APPROVE_INFO + "?userEmail=rangit@bnb.com";
-        //String finalURL = Constants.GET_IOU_APPROVAL + "?userName=" + Constants.USER_EMAIL;
-        //Utils.showLogcatMessage(finalURL);
+        String finalURL = Constants.GET_IOU_APPROVAL + "?userName=" + Constants.USER_EMAIL;
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
                 new Response.Listener<String>() {

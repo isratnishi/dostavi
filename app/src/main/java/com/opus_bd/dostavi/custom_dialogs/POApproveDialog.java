@@ -23,9 +23,8 @@ import com.opus_bd.dostavi.AppSingleton;
 import com.opus_bd.dostavi.Constants;
 import com.opus_bd.dostavi.R;
 import com.opus_bd.dostavi.iou_approval.IOUApprovalActivity;
-import com.opus_bd.dostavi.models.IOUApprovalModel;
-import com.opus_bd.dostavi.models.IOUItemModel;
 import com.opus_bd.dostavi.models.POApproveModel;
+import com.opus_bd.dostavi.po_approve.POApproveActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,27 +46,19 @@ public class POApproveDialog extends Dialog implements View.OnClickListener {
     Button approveButton;
     int appType = 1;
     private ArrayList<POApproveModel> items = new ArrayList<>();
-    IOUApprovalModel iouApprovalModel;
+    POApproveModel poApproveModel;
 
     public POApproveDialog(@NonNull Context context) {
         super(context);
         this.context = context;
     }
 
-    public ArrayList<POApproveModel> getItems() {
-        return items;
+    public POApproveModel getPoApproveModel() {
+        return poApproveModel;
     }
 
-    public void setItems(ArrayList<POApproveModel> items) {
-        this.items = items;
-    }
-
-    public IOUApprovalModel getIouApprovalModel() {
-        return iouApprovalModel;
-    }
-
-    public void setIouApprovalModel(IOUApprovalModel iouApprovalModel) {
-        this.iouApprovalModel = iouApprovalModel;
+    public void setPoApproveModel(POApproveModel poApproveModel) {
+        this.poApproveModel = poApproveModel;
     }
 
     @Override
@@ -108,7 +99,6 @@ public class POApproveDialog extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.save_button:
-                //Utils.showLogcatMessage("save button clicked, appType " + appType);
                 if (returnRejectCheckBox.isChecked()) {
                     if (returnRejectRadioGroup.getCheckedRadioButtonId() == R.id.return_radio_button)
                         appType = 4;
@@ -119,10 +109,7 @@ public class POApproveDialog extends Dialog implements View.OnClickListener {
                 } else
                     appType = 1;
 
-                if (appType == 1) {
-                    saveIouItems(0);
-                } else
-                    saveIouApprove();
+                    savePOApprove();
                 break;
             case R.id.cancel_button:
                 dismiss();
@@ -132,100 +119,35 @@ public class POApproveDialog extends Dialog implements View.OnClickListener {
         }
     }
 
-    private JSONObject getIouApprovalJsonObject() {
-        JSONObject requisitionApprovalJsonObject = new JSONObject();
+    private JSONObject getPOApprovalJsonObject() {
+        JSONObject POApprovalJsonObject = new JSONObject();
         try {
-            requisitionApprovalJsonObject.put("ID", iouApprovalModel.getID());
-            requisitionApprovalJsonObject.put("IOUNo", iouApprovalModel.getIOUNo());
-            requisitionApprovalJsonObject.put("IOUDate", iouApprovalModel.getIOUDate());
-            requisitionApprovalJsonObject.put("ReqID", iouApprovalModel.getReqID());
-            requisitionApprovalJsonObject.put("UserID", Constants.USER_EMAIL);
-            requisitionApprovalJsonObject.put("ProjectID", iouApprovalModel.getProjectID());
-            requisitionApprovalJsonObject.put("IOUStatus", iouApprovalModel.getIOUStatus());
-            requisitionApprovalJsonObject.put("AttentionTo", iouApprovalModel.getAttentionTo());
-            requisitionApprovalJsonObject.put("EntryTime", iouApprovalModel.getEntryTime());
-            requisitionApprovalJsonObject.put("StatusDesc", iouApprovalModel.getStatusDesc());
-            requisitionApprovalJsonObject.put("IOUValue", iouApprovalModel.getIOUValue());
-            requisitionApprovalJsonObject.put("ReqNo", iouApprovalModel.getReqNo());
-            requisitionApprovalJsonObject.put("TargetDate", iouApprovalModel.getTargetDate());
-            requisitionApprovalJsonObject.put("ReqDate", iouApprovalModel.getReqDate());
-            requisitionApprovalJsonObject.put("PrIOUNo", iouApprovalModel.getPrIOUNo());
-            requisitionApprovalJsonObject.put("ProjectName", iouApprovalModel.getProjectName());
-            requisitionApprovalJsonObject.put("Remarks", remarkEditText.getText().toString());
-            requisitionApprovalJsonObject.put("AppType", appType + "");
+
+            POApprovalJsonObject.put("Email", Constants.USER_EMAIL);
+            POApprovalJsonObject.put("csID", poApproveModel.getID());
+            POApprovalJsonObject.put("csNo", poApproveModel.getCSNo());
+            POApprovalJsonObject.put("ReqID", poApproveModel.getReqID());
+            POApprovalJsonObject.put("ReqNo", poApproveModel.getReqNo());
+            POApprovalJsonObject.put("ReqDate", poApproveModel.getReqDate());
+            POApprovalJsonObject.put("Remarks", remarkEditText.getText().toString());
+            POApprovalJsonObject.put("AppType", appType + "");
 
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return requisitionApprovalJsonObject;
+        return POApprovalJsonObject;
     }
 
-    private void saveIouItems(final int id) {
-
-        if (id == items.size()) {
-            saveIouApprove();
-            return;
-        }
-
+    private void savePOApprove() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                Constants.POST_SAVE_ITEMS,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Utils.showLogcatMessage(response);
-                        if (response.equals("true")) {
-                            saveIouItems(id + 1);
-                        } else
-                            saveIouItems(id);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                    }
-                }) {
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-
-                return getRequisitionDetailsJsonObject(items.get(id)).toString().getBytes();
-            }
-
-            @Override
-            public String getBodyContentType() {
-                return "application/json";
-            }
-        };
-        AppSingleton.getInstance(context)
-                .addToRequestQueue(stringRequest, Constants.REQUEST_TAG);
-
-    }
-
-    public JSONObject getRequisitionDetailsJsonObject(POApproveModel itemModel) {
-
-        JSONObject jsonObject = new JSONObject();
-        /*try {
-            jsonObject.put("ID", iouApprovalModel.getID());
-            jsonObject.put("Rate", itemModel.getRate());
-            jsonObject.put("Qty", itemModel.getQty());
-            jsonObject.put("reqID", itemModel.getReqID());
-            jsonObject.put("EmailID", Constants.USER_EMAIL);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
-        return jsonObject;
-    }
-
-    private void saveIouApprove() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                Constants.POST_IOU_APPROVE,
+                Constants.POST_PO_APPROVE_INFO,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response.equalsIgnoreCase("true")) {
-                            Intent intent = new Intent(context, IOUApprovalActivity.class);
+                            Intent intent = new Intent(context, POApproveActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             context.startActivity(intent);
                             Toasty.success(context, "Data saved to server!", Toast.LENGTH_SHORT, true).show();
@@ -241,7 +163,7 @@ public class POApproveDialog extends Dialog implements View.OnClickListener {
             @Override
             public byte[] getBody() throws AuthFailureError {
 
-                return getIouApprovalJsonObject().toString().getBytes();
+                return getPOApprovalJsonObject().toString().getBytes();
             }
 
             @Override
