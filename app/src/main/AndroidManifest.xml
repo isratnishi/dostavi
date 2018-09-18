@@ -17,11 +17,7 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <!-- Home Activity -->
@@ -70,11 +66,16 @@
 
         <!-- IOU Approval -->
 
-        <activity android:name=".iou_approval.IOUApprovalActivity">
+        <activity android:name=".iou_approval.IOUApprovalActivity"></activity>
+        <activity android:name=".iou_approval.IOUApprovalActivity2"></activity>
 
-        </activity>
-        <activity android:name=".iou_approval.IOUApprovalActivity2">
+        <!-- PO Approve -->
+        <activity android:name=".po_approve.POApproveActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

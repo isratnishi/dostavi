@@ -59,4 +59,7 @@ public class Constants {
     public static final int REJECT = -1;
     public static final int APPROVED = 4;
 
+    // PO Approve
+    public static String GET_PO_APPROVE_INFO = BASE_SERVER_ADDRESS + "GetCSListForApprove";
+
 }

@@ -29,6 +29,14 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
 
+    <!-- PO Approve -->
+    <string name="requisition_no">Requisition No</string>
+    <string name="requisition_date">Requisition Date</string>
+    <string name="procurement_person">Procurement Person</string>
+    <string name="cs_no">CS NO</string>
+    <string name="cs_creation_date">CS Creation Date</string>
+    <string name="final_approver">Final Approver</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
