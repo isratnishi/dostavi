@@ -60,21 +60,23 @@ public class POApproveActivity extends AppCompatActivity {
     }
 
     private void getPOApprovalData() {
-        String finalURL = Constants.GET_IOU_APPROVAL + "?userName=" + Constants.USER_EMAIL;
+        // TODO Change user name
+        String finalURL = Constants.GET_PO_APPROVE_INFO + "?userEmail=rangit@bnb.com";
+        //String finalURL = Constants.GET_PO_APPROVE_INFO + "?userEmail=" + Constants.USER_EMAIL;
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 finalURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                       // Utils.showLogcatMessage(response);
+                        Utils.showLogcatMessage(response);
                         JSONArray jsonArray = null;
                         try {
                             jsonArray = new JSONArray(response);
                             if (jsonArray.length() > 0) {
-                                List<POApproveModel> leaveApprovalModels = Arrays.asList(gson.fromJson(jsonArray.toString(),
+                                List<POApproveModel> poApproveModels = Arrays.asList(gson.fromJson(jsonArray.toString(),
                                         POApproveModel[].class));
 
-                                items.addAll(leaveApprovalModels);
+                                items.addAll(poApproveModels);
                                 POApproveAdapter.notifyDataSetChanged();
                             }
                         } catch (JSONException e) {

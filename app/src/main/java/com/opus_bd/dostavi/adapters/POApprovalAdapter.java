@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.opus_bd.dostavi.Constants;
 import com.opus_bd.dostavi.R;
+import com.opus_bd.dostavi.Utils;
 import com.opus_bd.dostavi.custom_dialogs.IOUApproveDialog;
 import com.opus_bd.dostavi.custom_dialogs.POApproveDialog;
 import com.opus_bd.dostavi.iou_approval.IOUApprovalActivity2;
@@ -49,7 +51,9 @@ public class POApprovalAdapter extends RecyclerView.Adapter<POApprovalAdapter.It
             public void onClick(View view) {
                 POApproveDialog dialog = new POApproveDialog(context);
                 dialog.setPoApproveModel(itemList.get(position));
-                dialog.show();
+                //dialog.show();
+
+                Utils.showLogcatMessage(itemList.get(position).getBuyerName());
             }
         });
     }
