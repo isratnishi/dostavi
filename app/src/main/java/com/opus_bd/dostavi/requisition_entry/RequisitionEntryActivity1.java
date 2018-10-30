@@ -2,14 +2,12 @@ package com.opus_bd.dostavi.requisition_entry;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,11 +26,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.opus_bd.dostavi.AppSingleton;
 import com.opus_bd.dostavi.Constants;
 import com.opus_bd.dostavi.LoginActivity;
-import com.opus_bd.dostavi.models.RequisitionMaster;
-import com.opus_bd.dostavi.models.RequisitionModel;
 import com.opus_bd.dostavi.R;
 import com.opus_bd.dostavi.Utils;
-import com.opus_bd.dostavi.requisition_status.PrStatusActivity;
+import com.opus_bd.dostavi.models.RequisitionMaster;
+import com.opus_bd.dostavi.models.RequisitionModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -154,6 +151,7 @@ public class RequisitionEntryActivity1 extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedProjectID = requisitionModel.getProjects().get(position).id;
+                getAutoRequisitionNumber();
             }
 
             @Override
